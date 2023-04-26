@@ -3,7 +3,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
 
-from .import Region
 
 # Create your models here.
 
@@ -18,6 +17,19 @@ class CustomUserManager(BaseUserManager):
         return user
 
 
+# class BaseUser(AbstractBaseUser, PermissionsMixin):
+#     email = models.EmailField(unique=True)
+#     is_active = models.BooleanField(default=True)
+#     is_staff = models.BooleanField(default=False)
+
+#     objects = CustomUserManager()
+
+#     USERNAME_FIELD = "email"
+#     REQUIRED_FIELDS = []
+
+#     def __str__(self):
+#         return self.email
+
 class BaseUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     is_active = models.BooleanField(default=True)
@@ -28,18 +40,37 @@ class BaseUser(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
+    # Add related_name arguments to the ManyToManyField and ForeignKey fields
+    groups = models.ManyToManyField(
+        'auth.Group',
+        verbose_name=('groups'),
+        blank=True,
+        help_text=(
+            'The groups this user belongs to. A user will get all permissions granted to each of their groups.'),
+        related_query_name="base_user",
+        related_name="base_user_set",
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        verbose_name=('user permissions'),
+        blank=True,
+        help_text=('Specific permissions for this user.'),
+        related_query_name="base_user",
+        related_name="base_user_set",
+    )
+
     def __str__(self):
         return self.email
 
 
 class Manager(BaseUser):
-    regions = models.ManyToManyField(Region, related_name='managers')
+    regions = models.ManyToManyField('Region', related_name='managers')
 
 
 class Staff(BaseUser):
     department = models.CharField(max_length=100)
     region = models.ForeignKey(
-        Region, on_delete=models.CASCADE, related_name='staff_members')
+        'Region', on_delete=models.CASCADE, related_name='staff_members')
 
 
 class Guest(BaseUser):

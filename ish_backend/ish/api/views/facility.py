@@ -3,7 +3,6 @@ from api.models import FacilityCategory, FacilitySubCategory, FacilityItem, Regi
 from api.serializers import FacilityCategorySerializer, FacilitySubCategorySerializer, ProfileFacilityItemSerializer, RegionSerializer, ProfileSerializer, ReservationSerializer, FacilityItemSerializer, ProfileFacilityCategorySerializer, ProfileFacilitySubCategorySerializer
 
 
-
 class FacilityCategoryListCreateView(generics.ListCreateAPIView):
     queryset = FacilityCategory.objects.all()
     serializer_class = FacilityCategorySerializer
@@ -32,4 +31,3 @@ class FacilityItemListCreateView(generics.ListCreateAPIView):
 class FacilityItemDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = FacilityItem.objects.all()
     serializer_class = FacilityItemSerializer
-

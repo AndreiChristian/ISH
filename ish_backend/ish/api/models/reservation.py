@@ -22,7 +22,7 @@ class Reservation(models.Model):
     profiles = models.ManyToManyField(Profile, related_name='reservations')
     start_date = models.DateField()
     end_date = models.DateField()
-
+    
     def __str__(self):
         return f"Reservation {self.id} at {self.property}"
 

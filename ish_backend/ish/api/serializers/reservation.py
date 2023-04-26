@@ -7,7 +7,9 @@ class ProfileSerializer(serializers.ModelSerializer):
         fields = ['id', 'first_name', 'last_name', 'email', 'user']
 
 class ReservationSerializer(serializers.ModelSerializer):
-    profiles = ProfileSerializer(many=True)
+    # profiles = ProfileSerializer(many=True)
+    profiles = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    # profiles = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Reservation

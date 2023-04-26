@@ -31,6 +31,7 @@ class ProfileFacilityCategory(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='profile_facility_categories')
     facility_category = models.ForeignKey(FacilityCategory, on_delete=models.CASCADE, related_name='profile_facility_categories')
     requested_call = models.BooleanField(default=False)
+    touched = models.BooleanField(default=False)
 
     class Meta:
         unique_together = ('profile', 'facility_category')
@@ -42,6 +43,8 @@ class ProfileFacilitySubCategory(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='profile_facility_subcategories')
     facility_subcategory = models.ForeignKey(FacilitySubCategory, on_delete=models.CASCADE, related_name='profile_facility_subcategories')
     requested_call = models.BooleanField(default=False)
+    touched = models.BooleanField(default=False)
+
 
     class Meta:
         unique_together = ('profile', 'facility_subcategory')

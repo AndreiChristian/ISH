@@ -17,10 +17,19 @@ export class NavigationComponent {
       shareReplay()
     );
 
+  isOnline: boolean = navigator.onLine;
   constructor(
     private breakpointObserver: BreakpointObserver,
     private fullscreenService: FullscreenService
-  ) {}
+  ) {
+    window.addEventListener('online', () => {
+      this.isOnline = true;
+    });
+
+    window.addEventListener('offline', () => {
+      this.isOnline = false;
+    });
+  }
 
   toggleFullScreen(): void {
     this.fullscreenService.toggleFullScreen();

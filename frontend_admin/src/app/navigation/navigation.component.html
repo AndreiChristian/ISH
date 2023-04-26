@@ -20,8 +20,10 @@
       <mat-toolbar-row style=" width: 99%; margin: 0 auto; box-sizing:
         border-box;
         gap: 2vw; border-radius: 20px; ">
-        <h3>ISH</h3>
+        <h1>ISH</h1>
         <span class="example-spacer"></span>
+        <button mat-button *ngIf="isOnline">Connected</button>
+        <button mat-raised-button *ngIf="!isOnline" color="warn">No internet connection</button>
         <button mat-stroked-button (click)="toggleFullScreen()">Full screen</button>
         <button mat-button>
           <mat-icon aria-hidden="false" aria-label="Example home icon"
@@ -35,7 +37,7 @@
       <mat-toolbar-row style=" width: 99%; margin: 0 auto; box-sizing:
         border-box;
         gap: 2vw; background-color: mediumseagreen; border-radius: 20px; ">
-        <button [matMenuTriggerFor]="reservations" mat-stroked-button>
+        <button [matMenuTriggerFor]="reservations" mat-button>
           <h4>Reservations</h4>
         </button>
         <mat-menu #reservations="matMenu">
@@ -45,17 +47,17 @@
         </mat-menu>
 
 
-        <button mat-stroked-button [matMenuTriggerFor]="facilities"><h4>Reservations</h4></button>
+        <button mat-button [matMenuTriggerFor]="facilities"><h4>Reservations</h4></button>
         <mat-menu #facilities="matMenu">
           <a mat-menu-item href="#">Categories</a>
           <a mat-menu-item href="#">Subcategory</a>
           <a mat-menu-item href="#">Item</a>
         </mat-menu>
 
-        <button mat-stroked-button><h4>Regions</h4></button>
-        <button mat-stroked-button><h4>Guests</h4></button>
-        <button mat-stroked-button><h4>Profiles</h4></button>
-        <button mat-stroked-button><h4>Staff</h4></button>
+        <button mat-button><h4>Regions</h4></button>
+        <button mat-button><h4>Guests</h4></button>
+        <button mat-button><h4>Profiles</h4></button>
+        <button mat-button><h4>Staff</h4></button>
 
 
 

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Property, PropertyFacilityCategory, PropertyFacilitySubCategory, PropertyFacilityItem
+from api.models import Property, PropertyFacilityCategory, PropertyFacilitySubCategory, PropertyFacilityItem
 
 class PropertySerializer(serializers.ModelSerializer):
     class Meta:

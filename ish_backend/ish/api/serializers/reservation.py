@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Profile, Reservation, ProfileFacilityCategory, ProfileFacilitySubCategory, ProfileFacilityItem
+from api.models import Profile, Reservation, ProfileFacilityCategory, ProfileFacilitySubCategory, ProfileFacilityItem
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Manager, Staff, Guest
+from api.models import Manager, Staff, Guest
 
 class ManagerSerializer(serializers.ModelSerializer):
     class Meta:

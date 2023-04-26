@@ -1,9 +1,9 @@
 <mat-sidenav-container class="sidenav-container">
 
   <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === true">
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === true">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item href="#">Link 1</a>
@@ -13,20 +13,67 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+
+    <div style="background-color: hsl(147, 30%, 47%); padding: 1vh 0; position:
+      sticky; top: 0; z-index: 1; ">
+
+      <mat-toolbar-row style=" width: 99%; margin: 0 auto; box-sizing:
+        border-box;
+        gap: 2vw; border-radius: 20px; ">
+        <h3>ISH</h3>
+        <span class="example-spacer"></span>
+        <button mat-stroked-button (click)="toggleFullScreen()">Full screen</button>
+        <button mat-button>
+          <mat-icon aria-hidden="false" aria-label="Example home icon"
+            fontIcon="auth"></mat-icon>
+          <mat-icon>account_circle</mat-icon>
+        </button>
+      </mat-toolbar-row>
 
 
 
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>frontend</span>
-    </mat-toolbar>
+      <mat-toolbar-row style=" width: 99%; margin: 0 auto; box-sizing:
+        border-box;
+        gap: 2vw; background-color: mediumseagreen; border-radius: 20px; ">
+        <button [matMenuTriggerFor]="reservations" mat-stroked-button>
+          <h4>Reservations</h4>
+        </button>
+        <mat-menu #reservations="matMenu">
+          <button mat-menu-item>Past</button>
+          <button mat-menu-item>Current</button>
+          <button mat-menu-item>Future</button>
+        </mat-menu>
+
+
+        <button mat-stroked-button [matMenuTriggerFor]="facilities"><h4>Reservations</h4></button>
+        <mat-menu #facilities="matMenu">
+          <a mat-menu-item href="#">Categories</a>
+          <a mat-menu-item href="#">Subcategory</a>
+          <a mat-menu-item href="#">Item</a>
+        </mat-menu>
+
+        <button mat-stroked-button><h4>Regions</h4></button>
+        <button mat-stroked-button><h4>Guests</h4></button>
+        <button mat-stroked-button><h4>Profiles</h4></button>
+        <button mat-stroked-button><h4>Staff</h4></button>
+
+
+
+        <span class="example-spacer"></span>
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+
+
+
+
+
+      </mat-toolbar-row>
+    </div>
     <!-- Add Content Here -->
   </mat-sidenav-content>
 </mat-sidenav-container>

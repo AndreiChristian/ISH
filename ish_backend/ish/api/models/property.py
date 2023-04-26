@@ -2,7 +2,7 @@ from django.db import models
 from datetime import datetime
 from django.db.models import Q
 
-from .import FacilityCategory, Region
+from .import FacilityCategory, Region, FacilityItem, FacilitySubCategory
 
 def daterange(start_date, end_date):
     for n in range(int((end_date - start_date).days) + 1):
@@ -13,7 +13,6 @@ class Property(models.Model):
     name = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
     square_meters = models.IntegerField()
-    facility_categories = models.ManyToManyField(FacilityCategory)
     region = models.ForeignKey(
         Region, on_delete=models.CASCADE, related_name='properties')
 
@@ -32,3 +31,49 @@ class Property(models.Model):
                 reservation.start_date, reservation.end_date)])
 
         return reserved_dates
+    
+    @property
+    def facility_categories(self):
+        return self.property_facility_categories.all()
+
+    @property
+    def facility_subcategories(self):
+        return self.property_facility_subcategories.all()
+
+    @property
+    def facility_items(self):
+        return self.property_facility_items.all()
+
+class PropertyFacilityCategory(models.Model):
+    property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='property_facility_categories')
+    facility_category = models.ForeignKey(FacilityCategory, on_delete=models.CASCADE, related_name='property_facility_categories')
+    available = models.BooleanField(default=True)
+
+    class Meta:
+        unique_together = ('property', 'facility_category')
+
+    def __str__(self):
+        return f"{self.property} - {self.facility_category}"
+
+class PropertyFacilitySubCategory(models.Model):
+    property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='property_facility_subcategories')
+    facility_subcategory = models.ForeignKey(FacilitySubCategory, on_delete=models.CASCADE, related_name='property_facility_subcategories')
+    available = models.BooleanField(default=True)
+
+    class Meta:
+        unique_together = ('property', 'facility_subcategory')
+
+    def __str__(self):
+        return f"{self.property} - {self.facility_subcategory}"
+
+
+class PropertyFacilityItem(models.Model):
+    property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='property_facility_items')
+    facility_item = models.ForeignKey(FacilityItem, on_delete=models.CASCADE, related_name='property_facility_items')
+    available = models.BooleanField(default=True)
+
+    class Meta:
+        unique_together = ('property', 'facility_item')
+
+    def __str__(self):
+        return f"{self.property} - {self.facility_item}"

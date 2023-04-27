@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container" [ngClass]="themeClass">
+<mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
@@ -18,15 +18,15 @@
       left: 0; z-index: 2; "></mat-progress-bar>
 
 
-    <div style="background-color: hsl(147, 30%, 47%); padding: 1vh 0; position:
+    <div style="background-color: #8C9EFF; padding: 1vh 0; position:
       sticky; top: 0; z-index: 1; color: white; box-shadow: 0 0 3px 1px rgba(0,
       0, 0, 0.327);">
+
       <mat-toolbar-row style=" width: 99%; margin: 0 auto; box-sizing:
         border-box;
         gap: 2vw; border-radius: 20px; ">
         <h1><a routerLink="/">ISH</a></h1>
         <span class="example-spacer"></span>
-        <button mat-raised-button (click)="toggleTheme()">Toggle Theme</button>
         <button mat-button *ngIf="isOnline">Connected</button>
         <button mat-raised-button *ngIf="!isOnline" color="warn">No internet
           connection</button>
@@ -40,7 +40,7 @@
 
       <mat-toolbar-row style=" width: 99%; margin: 0 auto; box-sizing:
         border-box;
-        gap: 2vw; background-color: mediumseagreen; border-radius: 20px;
+        gap: 2vw; background-color: #536DFE; border-radius: 20px;
         box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.327); ">
         <button [matMenuTriggerFor]="reservations" mat-button>
           <h4>Reservations</h4>
@@ -52,11 +52,11 @@
         </mat-menu>
 
 
-        <button mat-button [matMenuTriggerFor]="facilities"><h4>Reservations</h4></button>
+        <button mat-button [matMenuTriggerFor]="facilities"><h4>Facilities</h4></button>
         <mat-menu #facilities="matMenu">
-          <a mat-menu-item href="#">Categories</a>
-          <a mat-menu-item href="#">Subcategory</a>
-          <a mat-menu-item href="#">Item</a>
+          <a mat-menu-item routerLink="/facilities">Categories</a>
+          <a mat-menu-item routerLink="/facilities">Subcategory</a>
+          <a mat-menu-item routerLink="/facilities">Item</a>
         </mat-menu>
 
         <button mat-button><h4><a routerLink="/regions">Regions</a></h4></button>

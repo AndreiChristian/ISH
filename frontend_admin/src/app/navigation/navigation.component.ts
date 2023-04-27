@@ -20,13 +20,6 @@ export class NavigationComponent implements OnInit {
 
   loading: Observable<boolean>;
 
-  themeClass: string = 'light-theme'; // or 'dark-theme' as per your preference
-
-  toggleTheme() {
-    this.themeClass =
-      this.themeClass === 'light-theme' ? 'dark-theme' : 'light-theme';
-  }
-
   isOnline: boolean = navigator.onLine;
   constructor(
     private breakpointObserver: BreakpointObserver,

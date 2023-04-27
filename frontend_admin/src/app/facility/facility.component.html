@@ -1,1 +1,25 @@
-<p>facility works!</p>
+<div style="display: flex; align-items: center; justify-content: space-between;
+  ">
+  <h1>Facilities</h1>
+  <button mat-fab color="primary">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+<mat-tab-group>
+  <mat-tab label="Categories">
+    <ng-template matTabContent>
+      <app-facility-category></app-facility-category>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Subcategories">
+    <ng-template matTabContent>
+      <app-facility-subcategory></app-facility-subcategory>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Items">
+    <ng-template matTabContent>
+      <app-facility-item></app-facility-item>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

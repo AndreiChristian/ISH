@@ -8,7 +8,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 class ReservationSerializer(serializers.ModelSerializer):
     # profiles = ProfileSerializer(many=True)
-    profiles = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    profiles = serializers.PrimaryKeyRelatedField(many=True, queryset=Profile.objects.all())
     # profiles = serializers.StringRelatedField(many=True)
 
     class Meta:

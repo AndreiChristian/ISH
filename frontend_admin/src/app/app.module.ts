@@ -29,6 +29,7 @@ import { FormsModule } from '@angular/forms';
 import { DeleteFacilityDialogComponent } from './facility/dialogs/delete-facility-dialog/delete-facility-dialog.component';
 import { PutFacilityDialogComponent } from './facility/dialogs/put-facility-dialog/put-facility-dialog.component';
 import { PostFacilityDialogComponent } from './facility/dialogs/post-facility-dialog/post-facility-dialog.component';
+import { StaffComponent } from './staff/staff.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { PostFacilityDialogComponent } from './facility/dialogs/post-facility-di
     DeleteFacilityDialogComponent,
     PutFacilityDialogComponent,
     PostFacilityDialogComponent,
+    StaffComponent,
   ],
   imports: [
     BrowserModule,

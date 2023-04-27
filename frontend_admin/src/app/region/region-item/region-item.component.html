@@ -1,10 +1,17 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title><h3>{{region.name}}</h3></mat-card-title>
-    <!-- <mat-card-subtitle *ngIf="showContent" (click)="toggleShowContent()">></mat-card-subtitle>
-    <mat-card-subtitle *ngIf="!showContent" (click)="toggleShowContent()">></mat-card-subtitle> -->
+
+
+    <header style=" width: 100%; display:flex; align-items: center;
+      justify-content: space-between; gap: 2vw; ">
+      <h3> {{index}}. {{region.name}}</h3>
+
+      <mat-icon *ngIf="!showContent" (click)="toggleShowContent()">keyboard_arrow_down</mat-icon>
+      <mat-icon *ngIf="showContent" (click)="toggleShowContent()">keyboard_arrow_up</mat-icon>
+    </header>
+
   </mat-card-header>
-  <div>
+  <div *ngIf="showContent">
     <mat-divider></mat-divider>
     <mat-card-content>
       <p>{{region.description}}</p>
@@ -34,7 +41,7 @@
     <mat-divider></mat-divider>
     <mat-card-actions align="end">
       <button mat-fab color="warn" aria-label="Example icon button with a
-        delete icon">
+        delete icon" (click)="deleteItem(index)">
         <mat-icon>delete</mat-icon>
       </button>
     </mat-card-actions>

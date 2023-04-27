@@ -13,6 +13,7 @@ import { FacilityItemComponent } from './facility/facility-item/facility-item.co
 import { FacilityCategoryComponent } from './facility/facility-category/facility-category.component';
 import { FacilitySubcategoryComponent } from './facility/facility-subcategory/facility-subcategory.component';
 import { RegionComponent } from './region/region.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, NavigationComponent, NavigationMenuFacilitiesComponent, NavigationMenuReservationsComponent, FacilityComponent, FacilityItemComponent, FacilityCategoryComponent, FacilitySubcategoryComponent, RegionComponent],
@@ -21,6 +22,7 @@ import { RegionComponent } from './region/region.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    HttpClientModule
   ],
   providers: [MaterialModule],
   bootstrap: [AppComponent],

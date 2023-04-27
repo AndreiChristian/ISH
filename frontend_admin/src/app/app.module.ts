@@ -14,9 +14,10 @@ import { FacilityCategoryComponent } from './facility/facility-category/facility
 import { FacilitySubcategoryComponent } from './facility/facility-subcategory/facility-subcategory.component';
 import { RegionComponent } from './region/region.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, NavigationComponent, NavigationMenuFacilitiesComponent, NavigationMenuReservationsComponent, FacilityComponent, FacilityItemComponent, FacilityCategoryComponent, FacilitySubcategoryComponent, RegionComponent],
+  declarations: [AppComponent, NavigationComponent, NavigationMenuFacilitiesComponent, NavigationMenuReservationsComponent, FacilityComponent, FacilityItemComponent, FacilityCategoryComponent, FacilitySubcategoryComponent, RegionComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

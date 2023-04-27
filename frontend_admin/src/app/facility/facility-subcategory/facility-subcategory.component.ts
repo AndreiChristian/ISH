@@ -23,4 +23,8 @@ export class FacilitySubcategoryComponent {
       (this.dataSource = data), console.log(data);
     });
   }
+
+  ngOnDestroy(): void {
+    this.isLoading = false;
+  }
 }

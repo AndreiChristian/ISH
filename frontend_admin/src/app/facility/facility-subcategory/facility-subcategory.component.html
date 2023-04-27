@@ -1,3 +1,5 @@
+<mat-progress-spinner mode="indeterminate" *ngIf="isLoading" color="accent"
+  style="width: 0 auto;"></mat-progress-spinner>
 <table *ngIf="!isLoading" mat-table [dataSource]="dataSource"
   class="mat-elevation-z8">
 

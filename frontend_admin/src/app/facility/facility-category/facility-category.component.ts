@@ -24,6 +24,9 @@ export class FacilityCategoryComponent implements OnInit {
     );
     this.httpService.getList('facility_categories');
     this.httpService.data$.subscribe((data) => (this.dataSource = data));
+  }
 
+  ngOnDestroy(): void {
+    this.isLoading = false;
   }
 }

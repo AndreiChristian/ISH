@@ -14,7 +14,8 @@
 
   <mat-sidenav-content>
 
-    <mat-progress-bar mode="indeterminate" style="position: absolute; top:0;
+    <mat-progress-bar *ngIf=" loading | async " mode="indeterminate"
+      style="position: absolute; top:0;
       left: 0; z-index: 2; "></mat-progress-bar>
 
 

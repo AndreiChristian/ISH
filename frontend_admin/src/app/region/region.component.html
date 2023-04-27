@@ -1,4 +1,11 @@
-<h1>Regions</h1>
+<header>
+  <h1>Regions</h1>
+  <span class="spacer"></span>
+  <button mat-fab color="primary" aria-label="Example icon button with a
+    delete icon">
+    <mat-icon>add</mat-icon>
+  </button>
+</header>
 <mat-divider></mat-divider>
 
 <p *ngFor="let region of regions$ | async, let index=index">

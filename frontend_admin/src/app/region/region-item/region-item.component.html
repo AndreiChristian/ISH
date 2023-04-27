@@ -9,7 +9,6 @@
       <mat-icon *ngIf="!showContent" (click)="toggleShowContent()">keyboard_arrow_down</mat-icon>
       <mat-icon *ngIf="showContent" (click)="toggleShowContent()">keyboard_arrow_up</mat-icon>
     </header>
-
   </mat-card-header>
   <div *ngIf="showContent">
     <mat-divider></mat-divider>
@@ -39,7 +38,11 @@
       </mat-list>
     </mat-card-content>
     <mat-divider></mat-divider>
-    <mat-card-actions align="end">
+    <mat-card-actions align="end" style="gap:2vw;">
+      <button mat-fab color="primary" aria-label="Example icon button with a
+        delete icon">
+        <mat-icon>edit</mat-icon>
+      </button>
       <button mat-fab color="warn" aria-label="Example icon button with a
         delete icon" (click)="deleteItem(index)">
         <mat-icon>delete</mat-icon>

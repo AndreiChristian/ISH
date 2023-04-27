@@ -1,0 +1,42 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title><h3>{{region.name}}</h3></mat-card-title>
+    <!-- <mat-card-subtitle *ngIf="showContent" (click)="toggleShowContent()">></mat-card-subtitle>
+    <mat-card-subtitle *ngIf="!showContent" (click)="toggleShowContent()">></mat-card-subtitle> -->
+  </mat-card-header>
+  <div>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <p>{{region.description}}</p>
+      <h4>Properties</h4>
+      <mat-list role="list">
+        <mat-list-item *ngFor="let property of region.properties"
+          role="listitem">{{property}}</mat-list-item>
+        <mat-list-item *ngIf="region.properties.length === 0" role="listitem">No
+          properties for this region</mat-list-item>
+      </mat-list>
+      <h4>Managers</h4>
+      <mat-list role="list">
+        <mat-list-item *ngFor="let manager of region.managers"
+          role="listitem">{{manager}}</mat-list-item>
+        <mat-list-item *ngIf="region.managers.length === 0" role="listitem">No
+          managers for this region</mat-list-item>
+
+      </mat-list>
+      <h4>Staff</h4>
+      <mat-list role="list">
+        <mat-list-item *ngFor="let staff_member of region.staff_members"
+          role="listitem">{{staff_member}}</mat-list-item>
+        <mat-list-item *ngIf="region.staff_members.length === 0"
+          role="listitem">No staff members for this region</mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions align="end">
+      <button mat-fab color="warn" aria-label="Example icon button with a
+        delete icon">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </div>
+</mat-card>

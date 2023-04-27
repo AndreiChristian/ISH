@@ -15,7 +15,8 @@
   <mat-sidenav-content>
 
     <div style="background-color: hsl(147, 30%, 47%); padding: 1vh 0; position:
-      sticky; top: 0; z-index: 1; color: white;  "  >
+      sticky; top: 0; z-index: 1; color: white; box-shadow: 0 0 3px 1px rgba(0,
+      0, 0, 0.327);">
 
       <mat-toolbar-row style=" width: 99%; margin: 0 auto; box-sizing:
         border-box;
@@ -23,7 +24,8 @@
         <h1><a routerLink="/">ISH</a></h1>
         <span class="example-spacer"></span>
         <button mat-button *ngIf="isOnline">Connected</button>
-        <button mat-raised-button *ngIf="!isOnline" color="warn">No internet connection</button>
+        <button mat-raised-button *ngIf="!isOnline" color="warn">No internet
+          connection</button>
         <button mat-stroked-button (click)="toggleFullScreen()">Full screen</button>
         <button mat-button>
           <mat-icon aria-hidden="false" aria-label="Example home icon"
@@ -32,11 +34,10 @@
         </button>
       </mat-toolbar-row>
 
-
-
       <mat-toolbar-row style=" width: 99%; margin: 0 auto; box-sizing:
         border-box;
-        gap: 2vw; background-color: mediumseagreen; border-radius: 20px; ">
+        gap: 2vw; background-color: mediumseagreen; border-radius: 20px;
+        box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.327); ">
         <button [matMenuTriggerFor]="reservations" mat-button>
           <h4>Reservations</h4>
         </button>

@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { RegionService } from './region.service';
+import { Observable } from 'rxjs';
+import { HttpService } from '../services/http.service';
 
 @Component({
   selector: 'app-region',
@@ -11,15 +14,18 @@ export class RegionComponent implements OnInit {
 
   regions: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  regions$: Observable<any[]>;
+
+  constructor(
+    private http: HttpClient,
+    private regionService: RegionService,
+    private httpService: HttpService
+  ) {}
 
   ngOnInit(): void {
-    this.http
-      .get<any[]>('http://127.0.0.1:8000/api/regions/')
-      .subscribe((data) => {
-        console.log(data);
-        this.regions = data;
-      });
+    this.regionService.getAllRegions();
+    this.regions$ = this.httpService.data$;
+    this.regions$.subscribe((data) => console.log(data));
   }
 
   toggleShowContent() {

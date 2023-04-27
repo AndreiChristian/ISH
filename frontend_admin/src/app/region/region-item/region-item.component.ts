@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { RegionService } from '../region.service';
 
 @Component({
   selector: 'app-region-item',
@@ -12,7 +13,7 @@ export class RegionItemComponent implements OnInit {
 
   showContent: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private regionService: RegionService) {}
 
   toggleShowContent() {
     this.showContent = !this.showContent;
@@ -23,11 +24,7 @@ export class RegionItemComponent implements OnInit {
   }
 
   deleteItem(id: number) {
-    console.log(
-      `deleted item number ${id} and made a request to "http://127.0.0.1:8000/api/regions/${id}/"`
-    );
-    this.http
-      .delete(`http://127.0.0.1:8000/api/regions/${id}/`)
-      .subscribe((data) => console.log(data));
+    this.regionService.deleteRegion(id);
+    this.regionService.getAllRegions();
   }
 }

@@ -34,4 +34,5 @@ export class NavigationComponent {
   toggleFullScreen(): void {
     this.fullscreenService.toggleFullScreen();
   }
+
 }

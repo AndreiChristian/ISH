@@ -1,6 +1,6 @@
 <h1>Regions</h1>
 <mat-divider></mat-divider>
 
-<p *ngFor="let region of regions, let index=index">
-  <app-region-item [region]="region" [index]="index" ></app-region-item>
+<p *ngFor="let region of regions$ | async, let index=index">
+  <app-region-item [region]="region" [index]="index"></app-region-item>
 </p>

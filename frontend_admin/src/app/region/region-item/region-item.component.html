@@ -40,11 +40,11 @@
     <mat-divider></mat-divider>
     <mat-card-actions align="end" style="gap:2vw;">
       <button mat-fab color="primary" aria-label="Example icon button with a
-        delete icon">
+        delete icon" (click)="openPutDialog()">
         <mat-icon>edit</mat-icon>
       </button>
       <button mat-fab color="warn" aria-label="Example icon button with a
-        delete icon" (click)="deleteItem(index)">
+        delete icon" (click)="openDeleteDialog()">
         <mat-icon>delete</mat-icon>
       </button>
     </mat-card-actions>

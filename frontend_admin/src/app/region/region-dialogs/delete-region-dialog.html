@@ -1,5 +1,10 @@
-<h1 mat-dialog-title>Dialog with elements</h1>
-<div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
+<h1 mat-dialog-title>WARNING {{region.id}} </h1>
+<div mat-dialog-content> Are you sure you want to delete {{region.name |
+  uppercase }}? This
+  action cannot be undone.</div>
+<div mat-dialog-actions style="display: flex; align-items: center;
+  justify-content: space-between; ">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <!-- <span fl ></span> -->
+  <button mat-button color="warn" mat-dialog-close (click)="deleteRegion(region.id)">Delete</button>
 </div>

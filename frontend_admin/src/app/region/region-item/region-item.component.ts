@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { RegionService } from '../region.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PutRegionDialog } from '../region-dialogs/put-region-dialog.component';
+import { DeleteRegionDialog } from '../region-dialogs/delete-region-dialog.component';
 
 @Component({
   selector: 'app-region-item',
@@ -25,12 +26,15 @@ export class RegionItemComponent implements OnInit {
     this.index++;
   }
 
-  deleteItem(id: number) {
-    this.regionService.deleteRegion(id);
-    this.regionService.getAllRegions();
+
+
+  openPutDialog() {
+    this.dialog.open(PutRegionDialog);
   }
 
-  openDialog() {
-    this.dialog.open(PutRegionDialog);
+  openDeleteDialog() {
+    this.dialog.open(DeleteRegionDialog, {
+      data: this.region,
+    });
   }
 }

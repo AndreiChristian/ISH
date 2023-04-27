@@ -29,7 +29,9 @@ export class RegionItemComponent implements OnInit {
   }
 
   openPutDialog() {
-    this.dialog.open(PutRegionDialog);
+    this.dialog.open(PutRegionDialog, {
+      data: this.region,
+    });
   }
 
   openDeleteDialog() {

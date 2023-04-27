@@ -1,5 +1,4 @@
-<mat-sidenav-container class="sidenav-container">
-
+<mat-sidenav-container class="sidenav-container" [ngClass]="themeClass">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
@@ -27,6 +26,7 @@
         gap: 2vw; border-radius: 20px; ">
         <h1><a routerLink="/">ISH</a></h1>
         <span class="example-spacer"></span>
+        <button mat-raised-button (click)="toggleTheme()">Toggle Theme</button>
         <button mat-button *ngIf="isOnline">Connected</button>
         <button mat-raised-button *ngIf="!isOnline" color="warn">No internet
           connection</button>

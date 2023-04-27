@@ -20,7 +20,7 @@ export class PostRegionDialog {
   constructor(private regionService: RegionService) {}
 
   postRegion() {
-    console.log(this.newRegion);
     this.regionService.postRegion(this.newRegion);
+    this.regionService.getAllRegions();
   }
 }

@@ -25,7 +25,7 @@ export class RegionService {
   }
 
   putRegion(id: number, data: any) {
-    this.httpService.put((data = data), this.urlEnding + id);
+    this.httpService.put((data = data), this.urlEnding + id + '/');
   }
 
   postRegion(data: any) {

@@ -13,6 +13,7 @@ import { DeleteRegionDialog } from '../region-dialogs/delete-region-dialog.compo
 export class RegionItemComponent implements OnInit {
   @Input() region: any;
   @Input() index: number = 0;
+  // careful index is not the id of the item, it is just used for display purposes,
 
   showContent: boolean = false;
 
@@ -23,10 +24,9 @@ export class RegionItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.region);
     this.index++;
   }
-
-
 
   openPutDialog() {
     this.dialog.open(PutRegionDialog);

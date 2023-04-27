@@ -27,14 +27,13 @@ export class RegionComponent implements OnInit {
   ngOnInit(): void {
     this.regionService.getAllRegions();
     this.regions$ = this.httpService.data$;
-    this.regions$.subscribe((data) => console.log(data));
   }
 
   toggleShowContent() {
     this.showContent = !this.showContent;
   }
 
-  openDialog() {
+  openPostDialog() {
     this.dialog.open(PostRegionDialog);
   }
 }

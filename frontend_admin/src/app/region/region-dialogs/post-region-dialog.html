@@ -1,5 +1,20 @@
-<h1 mat-dialog-title>Dialog with elements</h1>
-<div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
-<div mat-dialog-actions>
+<h1 mat-dialog-title>Create a new region</h1>
+<div style="display: flex; align-items: flex-start; justify-content: center;
+  flex-direction: column; gap: 1vw; " mat-dialog-content>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="newRegion.name">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <textarea matInput [(ngModel)]="newRegion.description"></textarea>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions style=" display: flex; justify-content: space-between;
+  ">
   <button mat-button mat-dialog-close>Close</button>
+  <button mat-button mat-dialog-close (click)="postRegion()">Add</button>
 </div>

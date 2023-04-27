@@ -25,6 +25,7 @@ import { RegionItemComponent } from './region/region-item/region-item.component'
 import { PutRegionDialog } from './region/region-dialogs/put-region-dialog.component';
 import { PostRegionDialog } from './region/region-dialogs/post-region-dialog.component';
 import { DeleteRegionDialog } from './region/region-dialogs/delete-region-dialog.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { DeleteRegionDialog } from './region/region-dialogs/delete-region-dialog
     MatIconModule,
     MatButtonModule,
     LayoutModule,
+    FormsModule,
   ],
   providers: [MaterialModule],
   bootstrap: [AppComponent],

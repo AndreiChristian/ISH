@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable, catchError, of, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class FacilityCategoryService {
+export class FacilityCategoriesService {
   private baseUrl: string = 'http://127.0.0.1:8000/api/facility_categories/';
 
   private dataSubject = new BehaviorSubject<any>(null);

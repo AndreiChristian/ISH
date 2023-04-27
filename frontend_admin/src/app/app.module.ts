@@ -26,6 +26,9 @@ import { PutRegionDialog } from './region/region-dialogs/put-region-dialog.compo
 import { PostRegionDialog } from './region/region-dialogs/post-region-dialog.component';
 import { DeleteRegionDialog } from './region/region-dialogs/delete-region-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { DeleteFacilityDialogComponent } from './facility/dialogs/delete-facility-dialog/delete-facility-dialog.component';
+import { PutFacilityDialogComponent } from './facility/dialogs/put-facility-dialog/put-facility-dialog.component';
+import { PostFacilityDialogComponent } from './facility/dialogs/post-facility-dialog/post-facility-dialog.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,9 @@ import { FormsModule } from '@angular/forms';
     PutRegionDialog,
     PostRegionDialog,
     DeleteRegionDialog,
+    DeleteFacilityDialogComponent,
+    PutFacilityDialogComponent,
+    PostFacilityDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpService } from 'src/app/services/http.service';
+import { FacilitySubcategoriesService } from '../facilitySubcategory.service';
 
 @Component({
   selector: 'app-facility-subcategory',
@@ -12,15 +13,17 @@ export class FacilitySubcategoryComponent {
 
   isLoading: boolean = true;
 
-  constructor(private httpService: HttpService) {}
+  constructor(
+    private facilitySubcategoriesService: FacilitySubcategoriesService
+  ) {}
 
   ngOnInit(): void {
-    this.httpService.loading$.subscribe(
-      (data: boolean) => (this.isLoading = data)
+    this.facilitySubcategoriesService.loading$.subscribe(
+      (data) => (this.isLoading = data)
     );
-    this.httpService.getList('facility_subcategories');
-    this.httpService.data$.subscribe((data) => {
-      (this.dataSource = data), console.log(data);
+    this.facilitySubcategoriesService.getList();
+    this.facilitySubcategoriesService.data$.subscribe((data) => {
+      this.dataSource = data;
     });
   }
 

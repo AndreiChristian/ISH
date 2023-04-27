@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/services/http.service';
+import { FacilityItemService } from '../facilityItem.service';
 
 @Component({
   selector: 'app-facility-item',
@@ -19,15 +20,15 @@ export class FacilityItemComponent implements OnInit, OnDestroy {
 
   isLoading: boolean = true;
 
-  constructor(private httpService: HttpService) {}
+  constructor(private facilityItemsService: FacilityItemService) {}
 
   ngOnInit(): void {
-    this.httpService.loading$.subscribe(
-      (data: boolean) => (this.isLoading = data)
+    this.facilityItemsService.loading$.subscribe(
+      (data) => (this.isLoading = data)
     );
-    this.httpService.getList('facility_items');
-    this.httpService.data$.subscribe((data) => {
-      (this.dataSource = data), console.log(data);
+    this.facilityItemsService.getList();
+    this.facilityItemsService.data$.subscribe((data) => {
+      this.dataSource = data;
     });
   }
 
@@ -36,6 +37,6 @@ export class FacilityItemComponent implements OnInit, OnDestroy {
   }
 
   deleteItem(id: number) {
-    this.httpService.delete(`facility_items/${id}`);
+    this.facilityItemsService.delete(id);
   }
 }

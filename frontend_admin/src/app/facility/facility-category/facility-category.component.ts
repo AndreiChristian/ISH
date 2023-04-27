@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { HttpService } from 'src/app/services/http.service';
+import { FacilityCategoriesService } from '../facilityCategory.service';
 
 @Component({
   selector: 'app-facility-category',
@@ -16,14 +17,19 @@ export class FacilityCategoryComponent implements OnInit {
 
   isLoading: boolean = true;
 
-  constructor(private httpService: HttpService) {}
+  constructor(
+    private httpService: HttpService,
+    private facilityCategoriesService: FacilityCategoriesService
+  ) {}
 
   ngOnInit(): void {
-    this.httpService.loading$.subscribe(
-      (data: boolean) => (this.isLoading = data)
+    this.facilityCategoriesService.loading$.subscribe(
+      (data) => (this.isLoading = data)
     );
-    this.httpService.getList('facility_categories');
-    this.httpService.data$.subscribe((data) => (this.dataSource = data));
+    this.facilityCategoriesService.getList();
+    this.facilityCategoriesService.data$.subscribe((data) => {
+      this.dataSource = data;
+    });
   }
 
   ngOnDestroy(): void {

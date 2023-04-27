@@ -34,4 +34,8 @@ export class FacilityItemComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.isLoading = false;
   }
+
+  deleteItem(id: number) {
+    this.httpService.delete(`facility_items/${id}`);
+  }
 }

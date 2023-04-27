@@ -22,6 +22,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { RegionItemComponent } from './region/region-item/region-item.component';
+import { PutRegionDialog } from './region/region-dialogs/put-region-dialog.component';
+import { PostRegionDialog } from './region/region-dialogs/post-region-dialog.component';
+import { DeleteRegionDialog } from './region/region-dialogs/delete-region-dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,9 @@ import { RegionItemComponent } from './region/region-item/region-item.component'
     RegionComponent,
     HomeComponent,
     RegionItemComponent,
+    PutRegionDialog,
+    PostRegionDialog,
+    DeleteRegionDialog,
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { RegionService } from './region.service';
 import { Observable } from 'rxjs';
 import { HttpService } from '../services/http.service';
+import { PostRegionDialog } from './region-dialogs/post-region-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-region',
@@ -17,7 +19,7 @@ export class RegionComponent implements OnInit {
   regions$: Observable<any[]>;
 
   constructor(
-    private http: HttpClient,
+    public dialog: MatDialog,
     private regionService: RegionService,
     private httpService: HttpService
   ) {}
@@ -30,5 +32,9 @@ export class RegionComponent implements OnInit {
 
   toggleShowContent() {
     this.showContent = !this.showContent;
+  }
+
+  openDialog() {
+    this.dialog.open(PostRegionDialog);
   }
 }

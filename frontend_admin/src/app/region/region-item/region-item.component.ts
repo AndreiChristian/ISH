@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { RegionService } from '../region.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PutRegionDialog } from '../region-dialogs/put-region-dialog.component';
 
 @Component({
   selector: 'app-region-item',
@@ -13,7 +15,7 @@ export class RegionItemComponent implements OnInit {
 
   showContent: boolean = false;
 
-  constructor(private regionService: RegionService) {}
+  constructor(private regionService: RegionService, public dialog: MatDialog) {}
 
   toggleShowContent() {
     this.showContent = !this.showContent;
@@ -26,5 +28,9 @@ export class RegionItemComponent implements OnInit {
   deleteItem(id: number) {
     this.regionService.deleteRegion(id);
     this.regionService.getAllRegions();
+  }
+
+  openDialog() {
+    this.dialog.open(PutRegionDialog);
   }
 }

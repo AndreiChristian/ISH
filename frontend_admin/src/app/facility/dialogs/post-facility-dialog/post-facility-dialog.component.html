@@ -1,1 +1,72 @@
-<p>post-facility-dialog works!</p>
+
+<h1 mat-dialog-title>Create a new faciliy</h1>
+<div mat-dialog-content>
+
+  <mat-tab-group>
+
+    <mat-tab label="Category">
+
+      <mat-form-field class="example-full-width" style="width: 100%; margin-top:
+        5vh; ">
+        <mat-label>Name for the new facility category</mat-label>
+        <input matInput placeholder="Ex. Drinks"
+          [(ngModel)]="newFacilityCategory.name" style="width: 100%;">
+      </mat-form-field>
+
+      <div mat-dialog-actions style="display: flex; align-items: center;
+        justify-content: space-between; ">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <!-- <span fl ></span> -->
+        <button mat-raised-button color="primary" mat-dialog-close
+          (click)="postFacilityCategory()">Add</button>
+      </div>
+
+    </mat-tab>
+
+    <mat-tab label="Subcategory">
+
+      <mat-form-field class="example-full-width" style="width: 100%; margin-top:
+        5vh; ">
+        <mat-label>Name for the new facility subcategory</mat-label>
+        <input matInput placeholder="Ex. Champagne"
+          [(ngModel)]="newFacilityCategory.name" style="width: 100%;">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Number</mat-label>
+        <input type="text"
+               placeholder="Pick one"
+               aria-label="Number"
+               matInput
+               [formControl]="myControl"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of options" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <div mat-dialog-actions style="display: flex; align-items: center;
+        justify-content: space-between; ">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-raised-button color="primary" mat-dialog-close
+          (click)="postFacilityCategory()">Add</button>
+      </div>
+
+    </mat-tab>
+    <mat-tab label="Item">
+
+
+
+      <div mat-dialog-actions style="display: flex; align-items: center;
+        justify-content: space-between; ">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <!-- <span fl ></span> -->
+        <button mat-button color="warn" mat-dialog-close>Add</button>
+      </div>
+
+    </mat-tab>
+  </mat-tab-group>
+
+</div>

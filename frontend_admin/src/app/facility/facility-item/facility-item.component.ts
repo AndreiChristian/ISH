@@ -10,6 +10,7 @@ import { FacilityItemService } from '../facilityItem.service';
 export class FacilityItemComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = [
     'name',
+    'subcategory',
     'price',
     'adult_only',
     'level',

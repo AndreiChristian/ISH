@@ -8,7 +8,7 @@ import { FacilitySubcategoriesService } from '../facilitySubcategory.service';
   styleUrls: ['./facility-subcategory.component.scss'],
 })
 export class FacilitySubcategoryComponent {
-  displayedColumns: string[] = ['name', 'items', 'edit', 'delete'];
+  displayedColumns: string[] = ['name', 'category', 'items', 'edit', 'delete'];
   dataSource = [];
 
   isLoading: boolean = true;

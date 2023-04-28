@@ -17,10 +17,15 @@ import { FacilityItemService } from '../../facilityItem.service';
 })
 export class PostFacilityDialogComponent implements OnInit {
   myControl = new FormControl('');
-  options: string[] = ['One', 'Two', 'Three'];
 
-  facilityCategories$: Observable<any>;
-  facilitySubcategories$: Observable<FacilitySubcategoriesService[]>;
+  facilityCategories$: Observable<FacilityCategoryInterface[]>;
+  facilitySubcategories: FacilitySubcategoryInterface[];
+
+  itemLevelsOptions = [
+    {value: 'IND', viewValue: 'Individual'},
+    {value: 'ROM', viewValue: 'Room'},
+    {value: 'PRP', viewValue: 'Property'},
+  ];
 
   newFacilityCategory: FacilityCategoryInterface = {
     name: '',
@@ -50,9 +55,11 @@ export class PostFacilityDialogComponent implements OnInit {
   ngOnInit(): void {
     this.facilityCategoryService.getList();
     this.facilityCategories$ = this.facilityCategoryService.data$;
+
     this.facilitySubcategoriesService.getList();
-    this.facilitySubcategories$ = this.facilitySubcategoriesService.data$;
-    this.facilitySubcategories$.subscribe((data) => console.log(data));
+    this.facilitySubcategoriesService.data$.subscribe(
+      (data) => (this.facilitySubcategories = data)
+    );
   }
 
   postFacilityCategory() {
@@ -65,7 +72,7 @@ export class PostFacilityDialogComponent implements OnInit {
   }
 
   postFacilityItem() {
-    console.log(this.newFacilityItem);
-    // this.facilityItemService.post(this.newFacilityItem);
+    // console.log(this.newFacilityItem);
+    this.facilityItemService.post(this.newFacilityItem);
   }
 }

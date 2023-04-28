@@ -61,6 +61,8 @@
 
       <!-- THE SECTION FOR ITEMS -->
 
+      <!-- name -->
+
       <mat-form-field class="example-full-width" style="width: 100%; margin-top:
         5vh; ">
         <mat-label>Name for the new facility subcategory</mat-label>
@@ -68,21 +70,48 @@
           [(ngModel)]="newFacilityItem.name" style="width: 100%;">
       </mat-form-field>
 
+      <!-- subcategory -->
+
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Subcategory</mat-label>
         <input type="text"
-          placeholder="Pick one"
-          aria-label="Number"
+          placeholder="Select a subcategory"
+          aria-label="select a option"
           matInput
-          [formControl]="myControl"
           [(ngModel)]="newFacilityItem.subcategory"
-          [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let facilitySubcategory of facilitySubcategories$ |
-            async" [value]="facilitySubcategory" #SubcategoryOptionRef>
-            {{facilitySubcategory}}
+          [matAutocomplete]="autoItem">
+        <mat-autocomplete #autoItem="matAutocomplete">
+
+          <mat-option *ngFor="let element of facilitySubcategories"
+            [value]="element.name">
+            {{element.name}}
           </mat-option>
+
         </mat-autocomplete>
+      </mat-form-field>
+
+      <!-- price -->
+
+      <mat-form-field class="example-full-width" style="width: 100%; ">
+        <mat-label>Price</mat-label>
+        <input matInput placeholder="Ex. Champagne"
+          [(ngModel)]="newFacilityItem.price" type="number">
+      </mat-form-field>
+
+
+      <mat-checkbox color="primary" labelPosition="before"
+        [(ngModel)]="newFacilityItem.adult_only">Adult
+        only</mat-checkbox>
+
+      <br>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Level</mat-label>
+        <mat-select [(ngModel)]="newFacilityItem.level">
+          <mat-option *ngFor="let i of itemLevelsOptions" [value]="i.value">
+            {{i.viewValue}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
 
       <div mat-dialog-actions style="display: flex; align-items: center;
@@ -92,6 +121,8 @@
         <button mat-button color="warn" mat-dialog-close
           (click)="postFacilityItem()">Add</button>
       </div>
+
+
 
     </mat-tab>
   </mat-tab-group>

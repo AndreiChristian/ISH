@@ -1,0 +1,5 @@
+@use "../../../styles.scss";
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  background-color: styles.$primary-color-light;
+}

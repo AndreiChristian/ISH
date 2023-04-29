@@ -1,1 +1,83 @@
-<p>properties-post-dialog works!</p>
+<h1 mat-dialog-title>Dialog with elements</h1>
+<div mat-dialog-content>
+  <form #propertyForm="ngForm" (ngSubmit)="onSubmit(propertyForm)">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="property.name" name="name" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Location</mat-label>
+      <input matInput [(ngModel)]="property.location" name="location" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Square Meters</mat-label>
+      <input matInput [(ngModel)]="property.square_meters" name="square_meters"
+        type="number">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput [(ngModel)]="property.description" name="description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Longitude</mat-label>
+      <input matInput [(ngModel)]="property.long" name="long">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Latitude</mat-label>
+      <input matInput [(ngModel)]="property.lat" name="lat">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>City</mat-label>
+      <input matInput [(ngModel)]="property.city" name="city" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Street</mat-label>
+      <input matInput [(ngModel)]="property.street" name="street">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Number</mat-label>
+      <input matInput [(ngModel)]="property.number" name="number" type="number">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Bathrooms</mat-label>
+      <input matInput [(ngModel)]="property.bathrooms" name="bathrooms"
+        type="number">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Bedrooms</mat-label>
+      <input matInput [(ngModel)]="property.bedrooms" name="bedrooms"
+        type="number">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Price</mat-label>
+      <input matInput [(ngModel)]="property.price" name="price" type="number">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label for="region">Region</mat-label>
+      <mat-select id="region" name="region" [(ngModel)]="property.region" required>
+        <mat-option *ngFor="let region of regions$ | async" [value]="region.id">{{
+          region.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close>Close</button>
+      <button mat-button mat-dialog-close mat-raised-button color="primary"
+        type="submit" [disabled]="!propertyForm.valid">Submit</button>
+    </div>
+
+  </form>
+
+</div>

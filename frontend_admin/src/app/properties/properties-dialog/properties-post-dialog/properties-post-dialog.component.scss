@@ -1,0 +1,19 @@
+form{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1vh;
+  width: 70vw;
+}
+
+mat-form-field{
+  width: 100%;
+}
+
+
+div[mat-dialog-options]{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,20 +1,20 @@
 from django.urls import path
 from api.views import (FacilityCategoryListCreateView, FacilityCategoryDetailView,
-                    FacilitySubCategoryListCreateView, FacilitySubCategoryDetailView,
-                    FacilityItemListCreateView, FacilityItemDetailView,
-                    RegionListCreateView, RegionRetrieveUpdateDestroyView,
-                    ProfileListCreateView, ProfileRetrieveUpdateDestroyView,
-                    ReservationListCreateView, ReservationRetrieveUpdateDestroyView,
-                    ProfileFacilityCategoryListCreateView, ProfileFacilityCategoryRetrieveUpdateDestroyView,
-                    ProfileFacilitySubCategoryListCreateView, ProfileFacilitySubCategoryRetrieveUpdateDestroyView,
-                    ProfileFacilityItemListCreateView, ProfileFacilityItemRetrieveUpdateDestroyView,
-                    PropertyListCreateView, PropertyRetrieveUpdateDestroyView,
-                    PropertyFacilityCategoryListCreateView, PropertyFacilityCategoryRetrieveUpdateDestroyView,
-                    PropertyFacilitySubCategoryListCreateView, PropertyFacilitySubCategoryRetrieveUpdateDestroyView,
-                    PropertyFacilityItemListCreateView, PropertyFacilityItemRetrieveUpdateDestroyView,
-                    ManagerListCreateView, ManagerRetrieveUpdateDestroyView,
-                    StaffListCreateView, StaffRetrieveUpdateDestroyView,
-                    GuestListCreateView, GuestRetrieveUpdateDestroyView)
+                       FacilitySubCategoryListCreateView, FacilitySubCategoryDetailView,
+                       FacilityItemListCreateView, FacilityItemDetailView,
+                       RegionListCreateView, RegionRetrieveUpdateDestroyView,
+                       ProfileListCreateView, ProfileRetrieveUpdateDestroyView,
+                       ReservationListCreateView, ReservationRetrieveUpdateDestroyView,
+                       ProfileFacilityCategoryListCreateView, ProfileFacilityCategoryRetrieveUpdateDestroyView,
+                       ProfileFacilitySubCategoryListCreateView, ProfileFacilitySubCategoryRetrieveUpdateDestroyView,
+                       ProfileFacilityItemListCreateView, ProfileFacilityItemRetrieveUpdateDestroyView,
+                       PropertyListCreateView, PropertyRetrieveUpdateDestroyView,
+                       PropertyFacilityCategoryListCreateView, PropertyFacilityCategoryRetrieveUpdateDestroyView,
+                       PropertyFacilitySubCategoryListCreateView, PropertyFacilitySubCategoryRetrieveUpdateDestroyView,
+                       PropertyFacilityItemListCreateView, PropertyFacilityItemRetrieveUpdateDestroyView,
+                       ManagerListCreateView, ManagerRetrieveUpdateDestroyView,
+                       StaffListCreateView, StaffRetrieveUpdateDestroyView,
+                       GuestListCreateView, GuestRetrieveUpdateDestroyView, TestPropertyListView, TestPropertyDetailView)
 
 urlpatterns = [
     # Facility Category views
@@ -107,4 +107,11 @@ urlpatterns = [
     path('guests/', GuestListCreateView.as_view(), name='guest_list_create'),
     path('guests/<int:pk>/', GuestRetrieveUpdateDestroyView.as_view(),
          name='guest_detail'),
+
+    # test for property serializers
+    path('test_properties/', TestPropertyListView.as_view(), name='property-list'),
+    path('test_properties/<int:pk>/', TestPropertyDetailView.as_view(),
+         name='property-detail'),
+
+
 ]

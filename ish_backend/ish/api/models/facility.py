@@ -33,8 +33,6 @@ class FacilityItem(models.Model):
     )
 
     name = models.CharField(max_length=100)
-    # available = models.BooleanField(default=True)
-    # selected = models.BooleanField(default=False)
     price = models.PositiveIntegerField()
     adult_only = models.BooleanField(default=False)
     level = models.CharField(max_length=3, choices=LEVEL_CHOICES)

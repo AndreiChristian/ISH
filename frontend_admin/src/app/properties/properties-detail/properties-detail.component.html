@@ -1,9 +1,18 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title><h1>{{(property$| async).name }}</h1></mat-card-title>
+    <mat-card-title><h1 *ngIf="(property$| async).name ">{{(property$|
+        async).name }}</h1></mat-card-title>
+    <mat-card-subtitle>{{(property$|async).description }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <app-properties-tree></app-properties-tree>
+
+    <h2>Adress</h2>
+    <span>{{(property$|async).city }} {{(property$|async).street }}
+      {{(property$|async).number }} </span>
+    <app-properties-tree [facilityCategories]="(property$|
+      async).property_facility_categories" [facilitySubcategories]="(property$|
+      async).property_facility_subcategories" [facilityItems]="(property$|
+      async).property_facility_items"></app-properties-tree>
   </mat-card-content>
   <mat-card-actions></mat-card-actions>
   <mat-card-footer></mat-card-footer>

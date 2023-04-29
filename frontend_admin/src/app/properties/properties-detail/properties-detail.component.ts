@@ -3,16 +3,26 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpService } from 'src/app/services/http.service';
 
-export interface PropertyInterface {
+interface PropertyInterface {
   id?: number;
   name: string;
   location: string;
+  square_meters: number;
+  region: string; // Assuming Region has an integer id
+  description: string | null;
+  long: string | null;
+  lat: string | null;
+  city: string | null;
+  street: string | null;
+  number: number | null;
+  price: number | null;
+  bathrooms: number | null;
+  bedrooms: number | null;
   property_facility_categories: string[];
   property_facility_subcategories: string[];
   property_facility_items: string[];
-  region: string;
-  square_meteres: string;
 }
+
 @Component({
   selector: 'app-properties-detail',
   templateUrl: './properties-detail.component.html',

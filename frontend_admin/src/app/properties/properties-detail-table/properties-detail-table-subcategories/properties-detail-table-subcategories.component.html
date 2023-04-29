@@ -1,1 +1,42 @@
-<p>properties-detail-table-subcategories works!</p>
+<section>
+  <h4>Subcategories</h4>
+  <mat-button-toggle-group [(ngModel)]="selectedCategory" aria-label="Font
+    Style">
+    <mat-button-toggle *ngFor="let category of (property$ |
+      async).property_facility_categories" [value]="category.facility_category">
+      {{category.facility_category}}
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+</section>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? toggleAllRows() : null"
+        [checked]="selection.hasValue() && isAllSelected()"
+        [indeterminate]="selection.hasValue() && !isAllSelected()"
+        [aria-label]="checkboxLabel()">
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+        (change)="$event ? selection.toggle(row) : null"
+        [checked]="selection.isSelected(row) || row.available "
+        [aria-label]="checkboxLabel(row)">
+      </mat-checkbox>
+    </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.facility_subcategory}}
+    </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+    (click)="selection.toggle(row)">
+  </tr>
+</table>

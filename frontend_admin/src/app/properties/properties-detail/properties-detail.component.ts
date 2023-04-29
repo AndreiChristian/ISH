@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpService } from 'src/app/services/http.service';
 import { PropertiesService } from '../properties.service';
 
-interface PropertyInterface {
+export interface PropertyInterface {
   id?: number;
   name: string;
   location: string;

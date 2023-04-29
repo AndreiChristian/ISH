@@ -38,6 +38,27 @@ const TREE_DATA: FoodNode[] = [
 export class PropertiesTreeComponent implements OnInit {
   @Input() facilities: any = 'waiting for the data';
 
+  openCategories: any[] = [];
+  openSubCategories: any[] = [];
+
+  toggleCategory(category: any) {
+    const index = this.openCategories.indexOf(category);
+    if (index >= 0) {
+      this.openCategories.splice(index, 1);
+    } else {
+      this.openCategories.push(category);
+    }
+  }
+
+  toggleSubCategory(subcategory: any) {
+    const index = this.openSubCategories.indexOf(subcategory);
+    if (index >= 0) {
+      this.openSubCategories.splice(index, 1);
+    } else {
+      this.openSubCategories.push(subcategory);
+    }
+  }
+
   constructor() {}
 
   ngOnInit(): void {

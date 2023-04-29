@@ -1,9 +1,28 @@
 <mat-list *ngFor="let category of facilities">
-  <div class="category-title" >{{category.name}}</div>
-  <mat-list class="subcategory" *ngFor="let subcategory of
-    category.subcategories">
-    <div class="subcategory-title" >{{subcategory.name}}</div>
-    <mat-list-item *ngFor="let item of subcategory.items" class="item">{{item.name}}</mat-list-item>
-  </mat-list>
-
+  <button
+    mat-stroked-button
+    color="primary"
+    class="category-title"
+    (click)="toggleCategory(category)">
+    <h2>{{ category.name }}</h2>
+  </button>
+  <ng-container *ngIf="openCategories.includes(category)">
+    <mat-list
+      class="subcategory"
+      *ngFor="let subcategory of category.subcategories">
+      <button
+        mat-button
+        class="subcategory-title"
+        (click)="toggleSubCategory(subcategory)">
+        <h3>{{ subcategory.name }}</h3>
+      </button>
+      <ng-container *ngIf="openSubCategories.includes(subcategory)">
+        <mat-list-item
+          *ngFor="let item of subcategory.items"
+          class="item">
+          {{ item.name }}
+        </mat-list-item>
+      </ng-container>
+    </mat-list>
+  </ng-container>
 </mat-list>

@@ -1,16 +1,56 @@
 <mat-card>
+
   <mat-card-header>
-    <mat-card-title><h1 *ngIf="(property$| async).name ">{{(property$|
-        async).name }}</h1></mat-card-title>
-    <mat-card-subtitle>{{(property$|async).description }}</mat-card-subtitle>
+    <mat-card-title-group>
+      <mat-card-title>
+        <button mat-stroked-button [disabled]="true">Name </button>
+        <h1 *ngIf="(property$| async).name ">
+          {{(property$|
+          async).name }} </h1> </mat-card-title>
+
+      <mat-card-subtitle> <button mat-stroked-button [disabled]="true">Description</button>
+        <p>{{(property$|async).description }}</p> </mat-card-subtitle>
+    </mat-card-title-group>
   </mat-card-header>
+
   <mat-card-content>
 
-    <h2>Adress</h2>
-    <span>{{(property$|async).city }} {{(property$|async).street }}
-      {{(property$|async).number }} </span>
-    <app-properties-tree [facilities]="(property$|async).facility_categories" ></app-properties-tree>
+    <div class="adress">
+
+      <button mat-stroked-button color="primary">
+        <h2>Adress</h2>
+      </button>
+
+
+      <button mat-fab extended color="primary">
+        <mat-icon>place</mat-icon>
+        {{(property$|async).region }}
+      </button>
+
+      <button mat-fab extended color="primary">
+        <mat-icon>location_city</mat-icon>
+        {{(property$|async).city }} {{(property$|async).street }}
+        {{(property$|async).number }}
+      </button>
+
+      <button mat-fab extended color="primary">
+        <mat-icon>map</mat-icon>
+        Long: {{(property$|async).long }} Lat:{{(property$|async).lat }}
+      </button>
+
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <app-properties-tree [facilities]="(property$|async).facility_categories"></app-properties-tree>
   </mat-card-content>
-  <mat-card-actions></mat-card-actions>
+  <mat-card-actions align="end">
+    <button mat-icon-button color="accent">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button color="warn">
+      <mat-icon>delete_outline</mat-icon>
+    </button>
+  </mat-card-actions>
   <mat-card-footer></mat-card-footer>
 </mat-card>

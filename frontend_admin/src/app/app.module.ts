@@ -34,6 +34,7 @@ import { PropertiesComponent } from './properties/properties.component';
 import { PropertiesListComponent } from './properties/properties-list/properties-list.component';
 import { PropertiesDetailComponent } from './properties/properties-detail/properties-detail.component';
 import { PropertiesTreeComponent } from './properties/properties-tree/properties-tree.component';
+import { PropertiesDetailTableComponent } from './properties/properties-detail-table/properties-detail-table.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { PropertiesTreeComponent } from './properties/properties-tree/properties
     PropertiesListComponent,
     PropertiesDetailComponent,
     PropertiesTreeComponent,
+    PropertiesDetailTableComponent,
   ],
   imports: [
     BrowserModule,

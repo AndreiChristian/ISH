@@ -3,12 +3,12 @@
   <mat-card-header>
     <mat-card-title-group>
       <mat-card-title>
-        <button mat-stroked-button [disabled]="true">Name </button>
+        <button mat-stroked-button color="primary"><h2>Name</h2></button>
         <h1 *ngIf="(property$| async).name ">
           {{(property$|
           async).name }} </h1> </mat-card-title>
 
-      <mat-card-subtitle> <button mat-stroked-button [disabled]="true">Description</button>
+      <mat-card-subtitle> <button mat-stroked-button color="primary"><h2>Description</h2></button>
         <p>{{(property$|async).description }}</p> </mat-card-subtitle>
     </mat-card-title-group>
   </mat-card-header>
@@ -42,14 +42,16 @@
 
     <mat-divider></mat-divider>
 
-    <app-properties-tree [facilities]="(property$|async).facility_categories"></app-properties-tree>
+    <!-- <app-properties-tree [facilities]="(property$|async).facility_categories"></app-properties-tree> -->
   </mat-card-content>
-  <mat-card-actions align="end">
-    <button mat-icon-button color="accent">
+  <mat-card-actions align="end" style="display: flex ; gap: 2vh; " >
+    <button mat-fab color="accent" extended style="color: white;  " >
       <mat-icon>edit</mat-icon>
+      Edit
     </button>
-    <button mat-icon-button color="warn">
+    <button mat-fab color="warn" extended style="color: white;">
       <mat-icon>delete_outline</mat-icon>
+      Delete
     </button>
   </mat-card-actions>
   <mat-card-footer></mat-card-footer>

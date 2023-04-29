@@ -30,6 +30,9 @@ import { DeleteFacilityDialogComponent } from './facility/dialogs/delete-facilit
 import { PutFacilityDialogComponent } from './facility/dialogs/put-facility-dialog/put-facility-dialog.component';
 import { PostFacilityDialogComponent } from './facility/dialogs/post-facility-dialog/post-facility-dialog.component';
 import { StaffComponent } from './staff/staff.component';
+import { PropertiesComponent } from './properties/properties.component';
+import { PropertiesListComponent } from './properties/properties-list/properties-list.component';
+import { PropertiesDetailComponent } from './properties/properties-detail/properties-detail.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +54,9 @@ import { StaffComponent } from './staff/staff.component';
     PutFacilityDialogComponent,
     PostFacilityDialogComponent,
     StaffComponent,
+    PropertiesComponent,
+    PropertiesListComponent,
+    PropertiesDetailComponent,
   ],
   imports: [
     BrowserModule,

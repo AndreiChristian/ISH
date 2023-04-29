@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpService } from 'src/app/services/http.service';
+import { PropertiesService } from '../properties.service';
 
 interface PropertyInterface {
   id?: number;
@@ -18,7 +19,7 @@ interface PropertyInterface {
   price: number | null;
   bathrooms: number | null;
   bedrooms: number | null;
-  facility_categories: any[];
+  property_facility_categories: any[];
   property_facility_subcategories?: string[];
   property_facility_items?: string[];
 }
@@ -34,14 +35,13 @@ export class PropertiesDetailComponent implements OnInit {
   property$: Observable<PropertyInterface>;
 
   constructor(
-    private httpService: HttpService,
+    private propertiesService: PropertiesService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => (this.param = params['id']));
-    this.httpService.getOne(`test_properties/${this.param}/`);
-    this.property$ = this.httpService.data$;
-    this.property$.subscribe((data) => console.log(data));
+    this.propertiesService.getOne(+this.param);
+    this.property$ = this.propertiesService.data$;
   }
 }

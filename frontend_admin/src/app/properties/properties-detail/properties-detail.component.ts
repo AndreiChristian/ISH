@@ -18,9 +18,9 @@ interface PropertyInterface {
   price: number | null;
   bathrooms: number | null;
   bedrooms: number | null;
-  property_facility_categories: string[];
-  property_facility_subcategories: string[];
-  property_facility_items: string[];
+  facility_categories: any[];
+  property_facility_subcategories?: string[];
+  property_facility_items?: string[];
 }
 
 @Component({
@@ -40,8 +40,8 @@ export class PropertiesDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => (this.param = params['id']));
-    this.httpService.getOne(`properties/${this.param}`);
-    this.httpService.data$.subscribe((data) => console.log(data));
+    this.httpService.getOne(`test_properties/${this.param}/`);
     this.property$ = this.httpService.data$;
+    this.property$.subscribe((data) => console.log(data));
   }
 }

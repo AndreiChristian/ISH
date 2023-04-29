@@ -2,6 +2,8 @@ import { NestedTreeControl } from '@angular/cdk/tree';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { PropertiesService } from '../properties.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 interface FoodNode {
   name: string;
@@ -34,27 +36,11 @@ const TREE_DATA: FoodNode[] = [
   styleUrls: ['./properties-tree.component.scss'],
 })
 export class PropertiesTreeComponent implements OnInit {
-  @Input() facilityCategories: any[];
-  @Input() facilitySubcategories: any[];
-  @Input() facilityItems: any[];
+  @Input() facilities: any = 'waiting for the data';
 
-  tree: any;
-
-  treeControl = new NestedTreeControl<FoodNode>((node) => node.children);
-  dataSource = new MatTreeNestedDataSource<FoodNode>();
-
-  hasChild = (_: number, node: FoodNode) =>
-    !!node.children && node.children.length > 0;
-
-  constructor(private propertiesService: PropertiesService) {
-    // this.dataSource.data = TREE_DATA;
-  }
+  constructor() {}
 
   ngOnInit(): void {
-    this.dataSource.data = this.propertiesService.createTree(
-      this.facilityCategories,
-      this.facilitySubcategories,
-      this.facilityItems
-    );
+    console.log(this.facilities);
   }
 }

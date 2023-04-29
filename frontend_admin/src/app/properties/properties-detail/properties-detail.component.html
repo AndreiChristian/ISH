@@ -9,10 +9,7 @@
     <h2>Adress</h2>
     <span>{{(property$|async).city }} {{(property$|async).street }}
       {{(property$|async).number }} </span>
-    <app-properties-tree [facilityCategories]="(property$|
-      async).property_facility_categories" [facilitySubcategories]="(property$|
-      async).property_facility_subcategories" [facilityItems]="(property$|
-      async).property_facility_items"></app-properties-tree>
+    <app-properties-tree [facilities]="(property$|async).facility_categories" ></app-properties-tree>
   </mat-card-content>
   <mat-card-actions></mat-card-actions>
   <mat-card-footer></mat-card-footer>

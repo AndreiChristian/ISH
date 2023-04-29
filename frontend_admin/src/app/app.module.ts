@@ -38,6 +38,9 @@ import { PropertiesDetailTableComponent } from './properties/properties-detail-t
 import { PropertiesDetailTableCategoriesComponent } from './properties/properties-detail-table/properties-detail-table-categories/properties-detail-table-categories.component';
 import { PropertiesDetailTableSubcategoriesComponent } from './properties/properties-detail-table/properties-detail-table-subcategories/properties-detail-table-subcategories.component';
 import { PropertiesDetailTableItemComponent } from './properties/properties-detail-table/properties-detail-table-item/properties-detail-table-item.component';
+import { PropertiesPostDialogComponent } from './properties/properties-dialog/properties-post-dialog/properties-post-dialog.component';
+import { PropertiesPutDialogComponent } from './properties/properties-dialog/properties-put-dialog/properties-put-dialog.component';
+import { PropertiesDeleteDialogComponent } from './properties/properties-dialog/properties-delete-dialog/properties-delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +70,9 @@ import { PropertiesDetailTableItemComponent } from './properties/properties-deta
     PropertiesDetailTableCategoriesComponent,
     PropertiesDetailTableSubcategoriesComponent,
     PropertiesDetailTableItemComponent,
+    PropertiesPostDialogComponent,
+    PropertiesPutDialogComponent,
+    PropertiesDeleteDialogComponent,
   ],
   imports: [
     BrowserModule,

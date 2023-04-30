@@ -23,15 +23,17 @@ export class PropertiesPutDialogComponent {
   ) {}
 
   ngOnInit(): void {
-    this.propertiesService.data$.subscribe((data) => (this.property = data));
-    console.log(this.property);
+    this.property = this.propertiesService.property;
     this.regions$ = this.http.get('http://127.0.0.1:8000/api/regions/');
   }
 
   onSubmit(propertyForm: NgForm) {
     if (propertyForm.valid) {
       console.log('Form submitted', this.property);
-      this.httpService.put(this.property, `test_properties/${this.property.id}/`);
+      this.propertiesService.put(
+        this.property.id,
+        this.propertiesService.prepareProperty(this.property)
+      );
     } else {
       console.log('Form is not valid');
     }

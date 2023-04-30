@@ -41,7 +41,7 @@ export class PropertiesPostDialogComponent implements OnInit {
   onSubmit(propertyForm: NgForm) {
     if (propertyForm.valid) {
       console.log('Form submitted', this.property);
-      // this.httpService.post(this.property, 'new_test_properties/');
+
       this.propertiesService.post(this.property)
     } else {
       console.log('Form is not valid');

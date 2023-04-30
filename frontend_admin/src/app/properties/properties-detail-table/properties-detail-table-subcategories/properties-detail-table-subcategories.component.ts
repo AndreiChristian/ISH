@@ -33,17 +33,9 @@ export class PropertiesDetailTableSubcategoriesComponent {
       (data) => (this.dataSource.data = data.property_facility_subcategories)
     );
     this.property = this.propertiesService.property;
-    // this.dataSource.data = this.property.property_facility_categories;
     this.subcategories$ = this.http.get(
       'http://127.0.0.1:8000/api/facility_subcategories/'
     );
-
-    for (let subcategory of this.property.property_facility_subcategories) {
-      console.log({
-        name: subcategory.facility_subcategory.name,
-        id: subcategory.facility_subcategory.id,
-      });
-    }
   }
 
   selectSubcategory() {
@@ -65,18 +57,6 @@ export class PropertiesDetailTableSubcategoriesComponent {
   }
 
   deleteSubcategory(id: number) {
-    // console.log('The id is', id);
-
-    // console.table({
-    //   property: this.property.property_facility_subcategories.length,
-    //   table: this.dataSource.data.length,
-    // });
-
-    // this.dataSource.data = this.dataSource.data.filter((subcategory) => {
-    //   return subcategory.facility_subcategory.id != id;
-    //   // console.log(subcategory.facility_subcategory.id !== id)
-    // });
-
     this.property.property_facility_subcategories =
       this.property.property_facility_subcategories.filter((subcategory) => {
         console.log(subcategory.facility_subcategory.id !== id);
@@ -86,17 +66,6 @@ export class PropertiesDetailTableSubcategoriesComponent {
     this.dataSource.data = this.property.property_facility_subcategories;
 
     this.table.renderRows();
-
-    // console.table({
-    //   property: this.property.property_facility_subcategories.length,
-    //   table: this.dataSource.data.length,
-    // });
-
-    console.log(
-      this.property.property_facility_subcategories.map(
-        (s) => s.facility_subcategory.id
-      )
-    );
 
     this.propertiesService.put(
       this.property.id,

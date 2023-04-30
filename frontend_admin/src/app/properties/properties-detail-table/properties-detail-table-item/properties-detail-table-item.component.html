@@ -1,1 +1,41 @@
-<p>properties-detail-table-item works!</p>
+
+
+<div class="row">
+  <mat-form-field appearance="fill" class="select">
+    <mat-label>Favorite food</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="category">
+      <mat-option *ngFor="let item of items$ |async"
+        [value]="item">
+        {{item.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-fab extended color="accent" (click)="selectItem()"
+    [disabled]="!selectedValue">
+    <mat-icon>add</mat-icon>
+    Add a new category
+  </button>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element">
+      {{element.facility_item.name}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef>Delete</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="warn"
+        (click)="deleteItem(element.facility_item.id)"><mat-icon>delete</mat-icon></button>
+    </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+  </tr>
+</table>
+

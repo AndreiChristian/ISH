@@ -1,42 +1,33 @@
 from rest_framework import serializers
 from api.models import Property, PropertyFacilityCategory, PropertyFacilitySubCategory, PropertyFacilityItem, FacilityItem, FacilitySubCategory, FacilityCategory
 from api.serializers import FacilityCategorySerializer, FacilityItemSerializer, FacilitySubCategorySerializer
-
-from rest_framework import serializers
 from api.models import Property, PropertyFacilityCategory, PropertyFacilitySubCategory, PropertyFacilityItem, FacilityCategory, FacilityItem, FacilitySubCategory
 
 
-class TestPropertyFacilityCategorySerializer(serializers.ModelSerializer):
-    # property = serializers.SlugRelatedField(
-    #     queryset=Property.objects.all(),
+ # facility_category = serializers.SlugRelatedField(
+    #     queryset=FacilityCategory.objects.all(),
     #     slug_field='name',
-    #     read_only=False
+    #     read_only=False,
     # )
-    facility_category = serializers.SlugRelatedField(
-        queryset=FacilityCategory.objects.all(),
-        slug_field='name',
-        read_only=False,
 
-    )
+class TestFacilityCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FacilityCategory
+        fields = ['id', 'name']
+
+class TestPropertyFacilityCategorySerializer(serializers.ModelSerializer):
+    facility_category = TestFacilityCategorySerializer()
 
     class Meta:
         model = PropertyFacilityCategory
         fields = ('id', 'facility_category', 'available')
 
-
+class TestFacilitySubCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FacilitySubCategory
+        fields = ['id','name']
 class TestPropertyFacilitySubCategorySerializer(serializers.ModelSerializer):
-
-    # property = serializers.SlugRelatedField(
-    #     queryset=Property.objects.all(),
-    #     slug_field='name',
-    #     read_only=False
-    # )
-    facility_subcategory = serializers.SlugRelatedField(
-        queryset=FacilitySubCategory.objects.all(),
-        slug_field='name',
-        read_only=False,
-
-    )
+    facility_subcategory = TestFacilitySubCategorySerializer()
 
     class Meta:
         model = PropertyFacilitySubCategory
@@ -44,11 +35,6 @@ class TestPropertyFacilitySubCategorySerializer(serializers.ModelSerializer):
 
 
 class TestPropertyFacilityItemSerializer(serializers.ModelSerializer):
-    # property = serializers.SlugRelatedField(
-    #     queryset=Property.objects.all(),
-    #     slug_field='name',
-    #     read_only=False
-    # )
     facility_item = FacilityItemSerializer()
 
     class Meta:
@@ -57,11 +43,6 @@ class TestPropertyFacilityItemSerializer(serializers.ModelSerializer):
 
 
 class TestPropertySerializer(serializers.ModelSerializer):
-    # property_facility_categories = TestPropertyFacilityCategorySerializer(
-    #     many=True)
-    # property_facility_subcategories = TestPropertyFacilitySubCategorySerializer(
-    #     many=True)
-    # property_facility_items = TestPropertyFacilityItemSerializer(many=True)
 
     property_facility_categories = serializers.PrimaryKeyRelatedField(
         many=True, queryset=PropertyFacilityCategory.objects.all())
@@ -76,15 +57,12 @@ class TestPropertySerializer(serializers.ModelSerializer):
         model = Property
         fields = '__all__'
 
-    # def to_representation(self, instance):
-    #     representation = super().to_representation(instance)
-    #     representation['items'] = FacilityItemSerializer(
-    #         instance.items.all(), many=True).data
-    #     return representation
 
 class TestPropertyReadSerializer(serializers.ModelSerializer):
-    property_facility_categories = TestPropertyFacilityCategorySerializer(many=True)
-    property_facility_subcategories = TestPropertyFacilitySubCategorySerializer(many=True)
+    property_facility_categories = TestPropertyFacilityCategorySerializer(
+        many=True)
+    property_facility_subcategories = TestPropertyFacilitySubCategorySerializer(
+        many=True)
     property_facility_items = TestPropertyFacilityItemSerializer(many=True)
 
     class Meta:
@@ -105,41 +83,59 @@ class TestPropertyCreateUpdateSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def create(self, validated_data):
-        facility_categories = validated_data.pop('property_facility_categories', [])
-        facility_subcategories = validated_data.pop('property_facility_subcategories', [])
+        facility_categories = validated_data.pop(
+            'property_facility_categories', [])
+        facility_subcategories = validated_data.pop(
+            'property_facility_subcategories', [])
         facility_items = validated_data.pop('property_facility_items', [])
 
         property_instance = Property.objects.create(**validated_data)
 
         for category in facility_categories:
-            PropertyFacilityCategory.objects.create(property=property_instance, facility_category=category)
+            PropertyFacilityCategory.objects.create(
+                property=property_instance, facility_category=category)
 
         for subcategory in facility_subcategories:
-            PropertyFacilitySubCategory.objects.create(property=property_instance, facility_subcategory=subcategory)
+            PropertyFacilitySubCategory.objects.create(
+                property=property_instance, facility_subcategory=subcategory)
 
         for item in facility_items:
-            PropertyFacilityItem.objects.create(property=property_instance, facility_item=item)
+            PropertyFacilityItem.objects.create(
+                property=property_instance, facility_item=item)
 
         return property_instance
 
     def update(self, instance, validated_data):
-        facility_categories = validated_data.pop('property_facility_categories', [])
-        facility_subcategories = validated_data.pop('property_facility_subcategories', [])
-        facility_items = validated_data.pop('property_facility_items', [])
+        # Update the simple fields
+        for field in ['name', 'location', 'square_meters', 'description', 'long', 'lat', 'city', 'street', 'number', 'bathrooms', 'bedrooms', 'price', 'region']:
+            if field in validated_data:
+                setattr(instance, field, validated_data[field])
+        instance.save()
 
-        instance = super().update(instance, validated_data)
+    # Update the related fields if they are present in the request
+        if 'property_facility_categories' in validated_data:
+            PropertyFacilityCategory.objects.filter(property=instance).delete()
+            property_facility_categories_data = validated_data.pop(
+                'property_facility_categories', [])
+            for category in property_facility_categories_data:
+                PropertyFacilityCategory.objects.create(
+                    property=instance, facility_category_id=category.id)
 
-        instance.property_facility_categories.clear()
-        instance.property_facility_subcategories.clear()
-        instance.property_facility_items.clear()
+        if 'property_facility_subcategories' in validated_data:
+            PropertyFacilitySubCategory.objects.filter(
+                property=instance).delete()
+            property_facility_subcategories_data = validated_data.pop(
+                'property_facility_subcategories', [])
+            for subcategory in property_facility_subcategories_data:
+                PropertyFacilitySubCategory.objects.create(
+                    property=instance, facility_subcategory_id=subcategory.id)
 
-        for category in facility_categories:
-            PropertyFacilityCategory.objects.create(property=instance, facility_category=category)
-
-        for subcategory in facility_subcategories:
-            PropertyFacilitySubCategory.objects.create(property=instance, facility_subcategory=subcategory)
-
-        for item in facility_items:
-            PropertyFacilityItem.objects.create(property=instance, facility_item=item)
+        if 'property_facility_items' in validated_data:
+            PropertyFacilityItem.objects.filter(property=instance).delete()
+            property_facility_items_data = validated_data.pop(
+                'property_facility_items', [])
+            for item in property_facility_items_data:
+                PropertyFacilityItem.objects.create(
+                    property=instance, facility_item_id=item.id)
 
         return instance

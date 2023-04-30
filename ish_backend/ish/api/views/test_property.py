@@ -15,12 +15,12 @@ class TestPropertyDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 class NewTestPropertyListCreateView(generics.ListCreateAPIView):
     queryset = Property.objects.all()
-    serializer_class = TestPropertySerializer
+    serializer_class = TestPropertyReadSerializer
 
     def get_serializer_class(self):
         if self.request.method in ['POST', 'PUT', 'PATCH']:
             return TestPropertyCreateUpdateSerializer
-        return TestPropertySerializer
+        return TestPropertyReadSerializer
 
 
 class NewTestPropertyRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):

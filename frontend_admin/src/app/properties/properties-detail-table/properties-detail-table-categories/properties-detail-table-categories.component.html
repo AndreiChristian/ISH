@@ -1,3 +1,19 @@
+<div class="row">
+  <mat-form-field appearance="fill" class="select">
+    <mat-label>Favorite food</mat-label>
+    <mat-select [(ngModel)]="selectedValue" name="category">
+      <mat-option *ngFor="let category of categories$ |async"
+        [value]="category">
+        {{category.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-fab extended color="accent" (click)="selectCategory()">
+    <mat-icon>add</mat-icon>
+    Add a new category
+  </button>
+</div>
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Name </th>

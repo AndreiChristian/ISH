@@ -2,3 +2,14 @@
 .mat-column-name {
   text-align: center;
 }
+
+.row {
+  margin-top: 2vh;
+  width: 100%;
+  display: flex;
+  gap: 2vw;
+}
+
+.select {
+  width: 40%;
+}

@@ -9,7 +9,7 @@ import { PropertiesService } from '../../properties.service';
   styleUrls: ['./properties-detail-table-categories.component.scss'],
 })
 export class PropertiesDetailTableCategoriesComponent implements OnInit {
-  displayedColumns: string[] = ['name'];
+  displayedColumns: string[] = ['name', 'delete'];
   dataSource = new MatTableDataSource<any>();
 
   constructor(private propertiesService: PropertiesService) {}

@@ -46,6 +46,7 @@ export class PropertiesDetailComponent implements OnInit {
     this.route.params.subscribe((params) => (this.param = params['id']));
     this.propertiesService.getOne(+this.param);
     this.property$ = this.propertiesService.data$;
+    this.property$.subscribe((data) => console.log(data));
   }
 
   openDialog() {

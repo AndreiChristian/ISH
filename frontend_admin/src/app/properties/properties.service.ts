@@ -11,7 +11,7 @@ interface TreeNode {
   providedIn: 'root',
 })
 export class PropertiesService {
-  private baseUrl: string = 'http://127.0.0.1:8000/api/test_properties/';
+  private baseUrl: string = 'http://127.0.0.1:8000/api/new_test_properties/';
 
   private dataSubject = new BehaviorSubject<any>(null);
   public data$: Observable<any> = this.dataSubject.asObservable();
@@ -61,10 +61,10 @@ export class PropertiesService {
       .subscribe();
   }
 
-  post(id: number, data: any) {
+  post(data: any) {
     this.loadingSubject.next(true);
     this.http
-      .post(`${this.baseUrl}/${id}/`, data)
+      .post(`${this.baseUrl}`, data)
       .pipe(
         catchError((error) => {
           console.error('An error occurred:', error);

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { HttpService } from 'src/app/services/http.service';
+import { PropertiesService } from '../../properties.service';
 
 @Component({
   selector: 'app-properties-post-dialog',
@@ -30,7 +31,7 @@ export class PropertiesPostDialogComponent implements OnInit {
 
   regions$: Observable<any>;
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService, private propertiesService:PropertiesService ) {}
 
   ngOnInit(): void {
     this.httpService.getList('regions/');
@@ -40,11 +41,10 @@ export class PropertiesPostDialogComponent implements OnInit {
   onSubmit(propertyForm: NgForm) {
     if (propertyForm.valid) {
       console.log('Form submitted', this.property);
-      // Handle form submission logic here
+      // this.httpService.post(this.property, 'new_test_properties/');
+      this.propertiesService.post(this.property)
     } else {
       console.log('Form is not valid');
     }
-
-    this.httpService.post(this.property, 'properties/');
   }
 }

@@ -23,10 +23,6 @@ export class PropertiesPutDialogComponent {
   ) {}
 
   ngOnInit(): void {
-    // this.httpService.data$.subscribe((data) => {
-    //   console.log(data);
-    //   this.property = data;
-    // });
     this.propertiesService.data$.subscribe((data) => (this.property = data));
     console.log(this.property);
     this.regions$ = this.http.get('http://127.0.0.1:8000/api/regions/');

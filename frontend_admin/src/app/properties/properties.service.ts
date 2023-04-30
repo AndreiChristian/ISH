@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, Observable, catchError, of, tap } from 'rxjs';
+import { PropertyInterface } from './properties-detail/properties-detail.component';
 
 interface TreeNode {
   name: string;
@@ -18,6 +19,8 @@ export class PropertiesService {
 
   private loadingSubject = new BehaviorSubject<boolean>(false);
   public loading$: Observable<boolean> = this.loadingSubject.asObservable();
+
+  public property: PropertyInterface;
 
   constructor(private http: HttpClient, private _snackBar: MatSnackBar) {}
 
@@ -58,7 +61,7 @@ export class PropertiesService {
           this.loadingSubject.next(false);
         })
       )
-      .subscribe();
+      .subscribe((data: any) => (this.property = data));
   }
 
   post(data: any) {
@@ -83,10 +86,10 @@ export class PropertiesService {
       .subscribe();
   }
 
-  put(data: any) {
+  put(id: number, data: any) {
     this.loadingSubject.next(true);
     this.http
-      .put(`${this.baseUrl}`, data)
+      .put(`${this.baseUrl}${id}/`, data)
       .pipe(
         catchError((error) => {
           console.error('An error occurred:', error);
@@ -125,5 +128,26 @@ export class PropertiesService {
         })
       )
       .subscribe();
+  }
+
+  prepareProperty(property: PropertyInterface): PropertyInterface {
+    const pkCategories = property.property_facility_categories.map(
+      (category) => category.facility_category.id
+    );
+
+    const pkSubcategories = property.property_facility_subcategories.map(
+      (subcategory) => subcategory.facility_subcategory.id
+    );
+
+    const pkItems = property.property_facility_items.map(
+      (item) => item.facility_item.id
+    );
+
+    return {
+      ...property,
+      property_facility_categories: pkCategories,
+      property_facility_items: pkSubcategories,
+      property_facility_subcategories: pkItems,
+    };
   }
 }

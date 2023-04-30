@@ -1,4 +1,5 @@
-<mat-card>
+<mat-progress-spinner *ngIf="(property$| async)"></mat-progress-spinner>
+<mat-card *ngIf="(property$| async)">
 
   <mat-card-header>
     <mat-card-title-group>

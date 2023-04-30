@@ -22,8 +22,8 @@ export interface PropertyInterface {
   bathrooms: number | null;
   bedrooms: number | null;
   property_facility_categories: any[];
-  property_facility_subcategories?: string[];
-  property_facility_items?: string[];
+  property_facility_subcategories?: any[];
+  property_facility_items?: any[];
 }
 
 @Component({

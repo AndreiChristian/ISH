@@ -8,7 +8,8 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-fab extended color="accent" (click)="selectCategory()">
+  <button mat-fab extended color="accent" (click)="selectCategory()"
+    [disabled]="!selectedValue">
     <mat-icon>add</mat-icon>
     Add a new category
   </button>

@@ -4,6 +4,7 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { PropertiesService } from '../../properties.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { PropertyInterface } from '../../properties-detail/properties-detail.component';
 
 @Component({
   selector: 'app-properties-detail-table-categories',
@@ -18,6 +19,8 @@ export class PropertiesDetailTableCategoriesComponent implements OnInit {
   displayedColumns: string[] = ['name', 'delete'];
   dataSource = new MatTableDataSource<any>();
 
+  property: PropertyInterface;
+
   @ViewChild(MatTable) table: MatTable<any>;
 
   constructor(
@@ -29,14 +32,14 @@ export class PropertiesDetailTableCategoriesComponent implements OnInit {
     this.propertiesService.data$.subscribe(
       (data) => (this.dataSource.data = data.property_facility_categories)
     );
-    // console.log(this.dataSource.data[0])
     this.categories$ = this.http.get(
       'http://127.0.0.1:8000/api/facility_categories/'
     );
+
+    this.property = this.propertiesService.property;
   }
 
   selectCategory() {
-    // console.log(this.selectedValue);
     this.dataSource.data.push({
       available: true,
       facility_category: {
@@ -45,7 +48,12 @@ export class PropertiesDetailTableCategoriesComponent implements OnInit {
       },
       id: 0,
     });
+
     this.table.renderRows();
-    console.log(this.dataSource.data);
+
+    this.propertiesService.put(
+      this.property.id,
+      this.propertiesService.prepareProperty(this.property)
+    );
   }
 }

@@ -1,4 +1,4 @@
-<!-- <h1 mat-dialog-title>Update a certain property</h1>
+<h1 mat-dialog-title>Update a certain property</h1>
 <div mat-dialog-content>
   <form #propertyForm="ngForm" (ngSubmit)="onSubmit(propertyForm)">
     <mat-form-field appearance="fill">
@@ -66,7 +66,8 @@
 
     <mat-form-field appearance="fill">
       <mat-label for="region">Region</mat-label>
-      <mat-select id="region" name="region" [(ngModel)]="property.region" required>
+      <mat-select id="region" name="region" [(ngModel)]="property.region"
+        required>
         <mat-option *ngFor="let region of regions$ | async" [value]="region.id">{{
           region.name }}</mat-option>
       </mat-select>
@@ -81,4 +82,3 @@
   </form>
 
 </div>
- -->

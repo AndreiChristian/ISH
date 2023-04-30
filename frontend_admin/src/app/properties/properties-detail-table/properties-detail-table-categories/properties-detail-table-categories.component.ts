@@ -19,7 +19,6 @@ export class PropertiesDetailTableCategoriesComponent implements OnInit {
     this.propertiesService.data$.subscribe(
       (data) => (this.dataSource.data = data.property_facility_categories)
     );
-    console.log(this.dataSource.data);
   }
 
   /** Whether the number of selected elements matches the total number of rows. */

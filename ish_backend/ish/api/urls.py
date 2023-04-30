@@ -14,7 +14,7 @@ from api.views import (FacilityCategoryListCreateView, FacilityCategoryDetailVie
                        PropertyFacilityItemListCreateView, PropertyFacilityItemRetrieveUpdateDestroyView,
                        ManagerListCreateView, ManagerRetrieveUpdateDestroyView,
                        StaffListCreateView, StaffRetrieveUpdateDestroyView,
-                       GuestListCreateView, GuestRetrieveUpdateDestroyView, TestPropertyListView, TestPropertyDetailView)
+                       GuestListCreateView, GuestRetrieveUpdateDestroyView, TestPropertyListView, TestPropertyDetailView, NewTestPropertyRetrieveUpdateDestroyView, NewTestPropertyListCreateView )
 
 urlpatterns = [
     # Facility Category views
@@ -113,5 +113,7 @@ urlpatterns = [
     path('test_properties/<int:pk>/', TestPropertyDetailView.as_view(),
          name='property-detail'),
 
-
+     path('new_test_properties/', NewTestPropertyListCreateView.as_view(), name='property_list_create'),
+     path('new_test_properties/<int:pk>/', NewTestPropertyRetrieveUpdateDestroyView.as_view(), name='property_retrieve_update_destroy'),
 ]
+

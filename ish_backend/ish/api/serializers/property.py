@@ -61,8 +61,6 @@ class PropertyFacilityItemSerializer(serializers.ModelSerializer):
         queryset=FacilityItem.objects.all(),
         slug_field='name',
         read_only=False,
-
-
     )
 
     class Meta:

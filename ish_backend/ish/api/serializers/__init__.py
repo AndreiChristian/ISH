@@ -3,4 +3,4 @@ from .facility import FacilityCategorySerializer, FacilitySubCategorySerializer,
 from .property import PropertySerializer, PropertyFacilityItemSerializer, PropertyFacilityCategorySerializer, PropertyFacilitySubCategorySerializer
 from .region import RegionSerializer
 from .reservation import ProfileFacilityCategorySerializer, ProfileFacilityItemSerializer, ProfileFacilitySubCategorySerializer, ProfileSerializer, ReservationSerializer
-from .test_property import TestPropertySerializer
+from .test_property import TestPropertySerializer, TestPropertyReadSerializer, TestPropertyCreateUpdateSerializer

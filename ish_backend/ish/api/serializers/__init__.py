@@ -1,4 +1,3 @@
-from .base_user import StaffSerializer, GuestSerializer, ManagerSerializer
 from .facility import FacilityCategorySerializer, FacilitySubCategorySerializer, FacilityItemSerializer
 from .property import PropertySerializer, PropertyFacilityItemSerializer, PropertyFacilityCategorySerializer, PropertyFacilitySubCategorySerializer
 from .region import RegionSerializer

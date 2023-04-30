@@ -12,9 +12,7 @@ from api.views import (FacilityCategoryListCreateView, FacilityCategoryDetailVie
                        PropertyFacilityCategoryListCreateView, PropertyFacilityCategoryRetrieveUpdateDestroyView,
                        PropertyFacilitySubCategoryListCreateView, PropertyFacilitySubCategoryRetrieveUpdateDestroyView,
                        PropertyFacilityItemListCreateView, PropertyFacilityItemRetrieveUpdateDestroyView,
-                       ManagerListCreateView, ManagerRetrieveUpdateDestroyView,
-                       StaffListCreateView, StaffRetrieveUpdateDestroyView,
-                       GuestListCreateView, GuestRetrieveUpdateDestroyView, TestPropertyListView, TestPropertyDetailView, NewTestPropertyRetrieveUpdateDestroyView, NewTestPropertyListCreateView )
+                       TestPropertyListView, TestPropertyDetailView, NewTestPropertyRetrieveUpdateDestroyView, NewTestPropertyListCreateView)
 
 urlpatterns = [
     # Facility Category views
@@ -94,26 +92,15 @@ urlpatterns = [
          PropertyFacilityItemRetrieveUpdateDestroyView.as_view(), name='property_facility_item_detail'),
 
     # Manager views
-    path('managers/', ManagerListCreateView.as_view(), name='manager_list_create'),
-    path('managers/<int:pk>/', ManagerRetrieveUpdateDestroyView.as_view(),
-         name='manager_detail'),
 
-    # Staff views
-    path('staff/', StaffListCreateView.as_view(), name='staff_list_create'),
-    path('staff/<int:pk>/', StaffRetrieveUpdateDestroyView.as_view(),
-         name='staff_detail'),
-
-    # Guest views
-    path('guests/', GuestListCreateView.as_view(), name='guest_list_create'),
-    path('guests/<int:pk>/', GuestRetrieveUpdateDestroyView.as_view(),
-         name='guest_detail'),
 
     # test for property serializers
     path('test_properties/', TestPropertyListView.as_view(), name='property-list'),
     path('test_properties/<int:pk>/', TestPropertyDetailView.as_view(),
          name='property-detail'),
 
-     path('new_test_properties/', NewTestPropertyListCreateView.as_view(), name='property_list_create'),
-     path('new_test_properties/<int:pk>/', NewTestPropertyRetrieveUpdateDestroyView.as_view(), name='property_retrieve_update_destroy'),
+    path('new_test_properties/', NewTestPropertyListCreateView.as_view(),
+         name='property_list_create'),
+    path('new_test_properties/<int:pk>/', NewTestPropertyRetrieveUpdateDestroyView.as_view(),
+         name='property_retrieve_update_destroy'),
 ]
-

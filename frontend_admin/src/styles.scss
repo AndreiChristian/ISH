@@ -20,7 +20,7 @@ $light-theme: mat.define-light-theme(
   (
     color: (
       primary: mat.define-palette(mat.$indigo-palette, A400),
-      accent: mat.define-palette(mat.$green-palette, 500),
+      accent: mat.define-palette(mat.$blue-gray-palette, 500),
       warn: mat.define-palette(mat.$orange-palette, A400),
     ),
   )

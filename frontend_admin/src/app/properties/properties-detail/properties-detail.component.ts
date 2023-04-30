@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpService } from 'src/app/services/http.service';
 import { PropertiesService } from '../properties.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PropertiesPutDialogComponent } from '../properties-dialog/properties-put-dialog/properties-put-dialog.component';
 
 export interface PropertyInterface {
   id?: number;
@@ -36,12 +38,17 @@ export class PropertiesDetailComponent implements OnInit {
 
   constructor(
     private propertiesService: PropertiesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => (this.param = params['id']));
     this.propertiesService.getOne(+this.param);
     this.property$ = this.propertiesService.data$;
+  }
+
+  openDialog() {
+    this.dialog.open(PropertiesPutDialogComponent);
   }
 }

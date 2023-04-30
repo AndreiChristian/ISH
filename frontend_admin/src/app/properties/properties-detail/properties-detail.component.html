@@ -46,7 +46,8 @@
     <app-properties-detail-table></app-properties-detail-table>
   </mat-card-content>
   <mat-card-actions align="end" style="display: flex ; gap: 2vh; ">
-    <button mat-fab color="accent" extended style="color: white; ">
+    <button mat-fab color="accent" extended style="color: white; "
+      (click)="openDialog()">
       <mat-icon>edit</mat-icon>
       Edit
     </button>

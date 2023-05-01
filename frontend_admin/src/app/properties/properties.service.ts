@@ -142,7 +142,6 @@ export class PropertiesService {
     const pkItems = property.property_facility_items.map(
       (item) => item.facility_item.id
     );
-
     return {
       ...property,
       property_facility_categories: pkCategories,

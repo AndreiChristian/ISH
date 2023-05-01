@@ -32,9 +32,7 @@
         <button mat-raised-button *ngIf="!isOnline" color="warn">No internet
           connection</button>
         <button mat-stroked-button (click)="toggleFullScreen()">Full screen</button>
-        <button mat-button>
-          <mat-icon aria-hidden="false" aria-label="Example home icon"
-            fontIcon="auth"></mat-icon>
+        <button mat-icon-button routerLink="/auth" >
           <mat-icon>account_circle</mat-icon>
         </button>
       </mat-toolbar-row>

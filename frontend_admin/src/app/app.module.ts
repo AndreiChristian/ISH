@@ -42,6 +42,7 @@ import { PropertiesPostDialogComponent } from './properties/properties-dialog/pr
 import { PropertiesPutDialogComponent } from './properties/properties-dialog/properties-put-dialog/properties-put-dialog.component';
 import { PropertiesDeleteDialogComponent } from './properties/properties-dialog/properties-delete-dialog/properties-delete-dialog.component';
 import { AuthComponent } from './auth/auth.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { AuthComponent } from './auth/auth.component';
     PropertiesPutDialogComponent,
     PropertiesDeleteDialogComponent,
     AuthComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

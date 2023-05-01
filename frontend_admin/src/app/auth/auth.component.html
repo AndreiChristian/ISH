@@ -10,21 +10,20 @@
       <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)"
         class="login-form">
         <mat-form-field appearance="fill">
-          <mat-label>Email</mat-label>
+          <mat-label>username</mat-label>
           <input
             matInput
-            type="email"
-            name="email"
-            [(ngModel)]="email"
-            #emailField="ngModel"
+            type="username"
+            name="username"
+            [(ngModel)]="username"
+            #usernameField="ngModel"
             required
-            email
             />
-          <mat-error *ngIf="emailField.errors ">
-            Email is required.
+          <mat-error *ngIf="usernameField.errors ">
+            username is required.
           </mat-error>
-          <mat-error *ngIf="emailField.errors ">
-            Please enter a valid email address.
+          <mat-error *ngIf="usernameField.errors ">
+            Please enter a valid username address.
           </mat-error>
         </mat-form-field>
 

@@ -3,13 +3,6 @@ from api.models import Property, PropertyFacilityCategory, PropertyFacilitySubCa
 from api.serializers import FacilityCategorySerializer, FacilityItemSerializer, FacilitySubCategorySerializer
 from api.models import Property, PropertyFacilityCategory, PropertyFacilitySubCategory, PropertyFacilityItem, FacilityCategory, FacilityItem, FacilitySubCategory
 
-
- # facility_category = serializers.SlugRelatedField(
-    #     queryset=FacilityCategory.objects.all(),
-    #     slug_field='name',
-    #     read_only=False,
-    # )
-
 class TestFacilityCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = FacilityCategory

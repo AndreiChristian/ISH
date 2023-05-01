@@ -5,9 +5,6 @@ from datetime import datetime
 
 class FacilityCategory(models.Model):
     name = models.CharField(max_length=100)
-    # touched = models.BooleanField(default=False)
-    # available = models.BooleanField(default=True)
-    # requested_call = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -17,9 +14,6 @@ class FacilitySubCategory(models.Model):
     name = models.CharField(max_length=100)
     category = models.ForeignKey(
         FacilityCategory, on_delete=models.CASCADE, related_name='subcategories')
-    # touched = models.BooleanField(default=False)
-    # available = models.BooleanField(default=True)
-    # requested_call = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name

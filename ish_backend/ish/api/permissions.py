@@ -1,14 +1,14 @@
-# your_app/permissions.py
-from rest_framework.permissions import BasePermission
+# # your_app/permissions.py
+# from rest_framework.permissions import BasePermission
 
-class IsManager(BasePermission):
-    def has_permission(self, request, view):
-        return request.user.is_authenticated and request.user.user_type == "manager"
+# class IsManager(BasePermission):
+#     def has_permission(self, request, view):
+#         return request.user.is_authenticated and request.user.user_type == "manager"
 
-class IsStaff(BasePermission):
-    def has_permission(self, request, view):
-        return request.user.is_authenticated and request.user.user_type == "staff"
+# class IsStaff(BasePermission):
+#     def has_permission(self, request, view):
+#         return request.user.is_authenticated and request.user.user_type == "staff"
 
-class IsGuest(BasePermission):
-    def has_permission(self, request, view):
-        return request.user.is_authenticated and request.user.user_type == "guest"
+# class IsGuest(BasePermission):
+#     def has_permission(self, request, view):
+#         return request.user.is_authenticated and request.user.user_type == "guest"

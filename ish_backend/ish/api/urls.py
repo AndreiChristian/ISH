@@ -91,8 +91,6 @@ urlpatterns = [
     path('property_facility_items/<int:pk>/',
          PropertyFacilityItemRetrieveUpdateDestroyView.as_view(), name='property_facility_item_detail'),
 
-    # Manager views
-
 
     # test for property serializers
     path('test_properties/', TestPropertyListView.as_view(), name='property-list'),

@@ -32,9 +32,24 @@
         <button mat-raised-button *ngIf="!isOnline" color="warn">No internet
           connection</button>
         <button mat-stroked-button (click)="toggleFullScreen()">Full screen</button>
-        <button mat-icon-button routerLink="/auth" >
+        <button mat-icon-button [matMenuTriggerFor]="auth">
           <mat-icon>account_circle</mat-icon>
         </button>
+        <mat-menu #auth="matMenu">
+          <div mat-menu-item>
+            <h4>User</h4>
+            <p>{{ (user$ | async).username }}</p>
+          </div>
+          <div mat-menu-item>
+            <h4>Email</h4>
+            <p>{{ (user$ | async).email }}</p>
+          </div>
+          <span mat-menu-item>
+            <button mat-raised-button color="primary"> Logout </button>
+          </span>
+
+        </mat-menu>
+
       </mat-toolbar-row>
 
       <mat-toolbar-row style=" width: 99%; margin: 0 auto; box-sizing:

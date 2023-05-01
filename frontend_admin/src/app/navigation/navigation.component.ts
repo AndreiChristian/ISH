@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { FullscreenService } from '../fullscreen.service';
 import { HttpService } from '../services/http.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-navigation',
@@ -20,11 +21,14 @@ export class NavigationComponent implements OnInit {
 
   loading: Observable<boolean>;
 
+  user$: Observable<any>;
+
   isOnline: boolean = navigator.onLine;
   constructor(
     private breakpointObserver: BreakpointObserver,
     private fullscreenService: FullscreenService,
-    private httpService: HttpService
+    private httpService: HttpService,
+    private authService: AuthService
   ) {
     window.addEventListener('online', () => {
       this.isOnline = true;
@@ -41,5 +45,6 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = this.httpService.loading$;
+    this.user$ = this.authService.user$;
   }
 }

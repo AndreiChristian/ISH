@@ -9,6 +9,7 @@ import {
 } from '../../facility.models';
 import { FacilitySubcategoriesService } from '../../facilitySubcategory.service';
 import { FacilityItemService } from '../../facilityItem.service';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-post-facility-dialog',
@@ -22,9 +23,9 @@ export class PostFacilityDialogComponent implements OnInit {
   facilitySubcategories: FacilitySubcategoryInterface[];
 
   itemLevelsOptions = [
-    {value: 'IND', viewValue: 'Individual'},
-    {value: 'ROM', viewValue: 'Room'},
-    {value: 'PRP', viewValue: 'Property'},
+    { value: 'IND', viewValue: 'Individual' },
+    { value: 'ROM', viewValue: 'Room' },
+    { value: 'PRP', viewValue: 'Property' },
   ];
 
   newFacilityCategory: FacilityCategoryInterface = {
@@ -49,7 +50,8 @@ export class PostFacilityDialogComponent implements OnInit {
   constructor(
     private facilityCategoryService: FacilityCategoriesService,
     private facilitySubcategoriesService: FacilitySubcategoriesService,
-    private facilityItemService: FacilityItemService
+    private facilityItemService: FacilityItemService,
+    private overlay: OverlayContainer
   ) {}
 
   ngOnInit(): void {
@@ -60,6 +62,8 @@ export class PostFacilityDialogComponent implements OnInit {
     this.facilitySubcategoriesService.data$.subscribe(
       (data) => (this.facilitySubcategories = data)
     );
+
+    this.overlay.getContainerElement().classList.add('dark-mode');
   }
 
   postFacilityCategory() {

@@ -8,6 +8,7 @@ import { PropertiesListComponent } from './properties/properties-list/properties
 import { PropertiesDetailComponent } from './properties/properties-detail/properties-detail.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { AuthComponent } from './auth/auth.component';
+import { StaffComponent } from './staff/staff.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
           { path: '', component: PropertiesListComponent },
           { path: ':id', component: PropertiesDetailComponent },
         ],
+      },
+      {
+        path: 'staff',
+        component: StaffComponent,
       },
     ],
   },

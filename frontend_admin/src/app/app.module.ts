@@ -43,6 +43,8 @@ import { PropertiesPutDialogComponent } from './properties/properties-dialog/pro
 import { PropertiesDeleteDialogComponent } from './properties/properties-dialog/properties-delete-dialog/properties-delete-dialog.component';
 import { AuthComponent } from './auth/auth.component';
 import { UserComponent } from './user/user.component';
+import { GuestsComponent } from './guests/guests.component';
+import { ReservationsComponent } from './reservations/reservations.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +79,8 @@ import { UserComponent } from './user/user.component';
     PropertiesDeleteDialogComponent,
     AuthComponent,
     UserComponent,
+    GuestsComponent,
+    ReservationsComponent,
   ],
   imports: [
     BrowserModule,

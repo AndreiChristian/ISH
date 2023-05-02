@@ -9,6 +9,8 @@ import { PropertiesDetailComponent } from './properties/properties-detail/proper
 import { NavigationComponent } from './navigation/navigation.component';
 import { AuthComponent } from './auth/auth.component';
 import { StaffComponent } from './staff/staff.component';
+import { ReservationsComponent } from './reservations/reservations.component';
+import { GuestsComponent } from './guests/guests.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,14 @@ const routes: Routes = [
       {
         path: 'staff',
         component: StaffComponent,
+      },
+      {
+        path: 'reservations',
+        component: ReservationsComponent,
+      },
+      {
+        path: 'guests',
+        component: GuestsComponent,
       },
     ],
   },

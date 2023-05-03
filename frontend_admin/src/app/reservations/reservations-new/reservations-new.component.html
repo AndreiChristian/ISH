@@ -1,1 +1,67 @@
-<p>reservations-new works!</p>
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title><h1>Create a new reservation</h1></mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <h3>Details</h3>
+
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+      <mat-form-field appearance="fill">
+        <mat-label>Favorite food</mat-label>
+        <mat-select [(ngModel)]="formData.property" name="property">
+          <mat-option *ngFor="let p of properties$ | async" [value]="p.id">
+            {{p.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Adults</mat-label>
+        <input matInput type="number" [(ngModel)]="formData.adults"
+          name="adults"
+          required min="1" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Children</mat-label>
+        <input matInput type="number" [(ngModel)]="formData.children"
+          name="children" required min="0" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Start Date</mat-label>
+        <input matInput [matDatepicker]="startDatePicker"
+          [(ngModel)]="formData.start_date" name="start_date" required />
+        <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #startDatePicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>End Date</mat-label>
+        <input matInput [matDatepicker]="endDatePicker"
+          [(ngModel)]="formData.end_date" name="end_date" required />
+        <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #endDatePicker></mat-datepicker>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit"
+        [disabled]="!myForm.valid">Save</button>
+
+    </form>
+
+    <h3>Profiles</h3>
+
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-icon-button color="primary">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button color="warn">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+
+</mat-card>

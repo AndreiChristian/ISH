@@ -33,7 +33,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTreeModule } from '@angular/material/tree';
-
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   imports: [
@@ -51,7 +51,7 @@ import { MatTreeModule } from '@angular/material/tree';
     MatCheckboxModule,
     MatChipsModule,
     MatDatepickerModule,
-
+    MatNativeDateModule,
     MatDialogModule,
     MatDividerModule,
     MatExpansionModule,
@@ -72,7 +72,6 @@ import { MatTreeModule } from '@angular/material/tree';
     MatTableModule,
     MatTabsModule,
     MatTreeModule,
-
   ],
   exports: [
     MatAutocompleteModule,
@@ -89,7 +88,7 @@ import { MatTreeModule } from '@angular/material/tree';
     MatCheckboxModule,
     MatChipsModule,
     MatDatepickerModule,
-
+    MatNativeDateModule,
     MatDialogModule,
     MatDividerModule,
     MatExpansionModule,

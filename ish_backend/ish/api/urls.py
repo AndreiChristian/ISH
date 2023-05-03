@@ -1,5 +1,5 @@
 from django.urls import path
-from api.views import (LoginView, FacilityCategoryListCreateView, FacilityCategoryDetailView,
+from api.views import (RegisterView, LoginView, FacilityCategoryListCreateView, FacilityCategoryDetailView,
                        FacilitySubCategoryListCreateView, FacilitySubCategoryDetailView,
                        FacilityItemListCreateView, FacilityItemDetailView,
                        RegionListCreateView, RegionRetrieveUpdateDestroyView,
@@ -20,6 +20,7 @@ from api.views import (LoginView, FacilityCategoryListCreateView, FacilityCatego
                        StaffRetrieveUpdateDestroyView, GuestListCreateView, GuestRetrieveUpdateDestroyView)
 
 urlpatterns = [
+    path('register/', RegisterView.as_view(), name='register'),
     path('login/', LoginView.as_view(), name='login'),
     # Facility Category views
     path('facility_categories/', FacilityCategoryListCreateView.as_view(),

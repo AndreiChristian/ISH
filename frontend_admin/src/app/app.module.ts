@@ -52,6 +52,8 @@ import { ReservationsListActiveComponent } from './reservations/reservations-lis
 import { ReservationsListUpcomingComponent } from './reservations/reservations-list/reservations-list-upcoming/reservations-list-upcoming.component';
 import { ReservationsListPastComponent } from './reservations/reservations-list/reservations-list-past/reservations-list-past.component';
 import { ReservationsPostDialogComponent } from './reservations/reservations-dialog/reservations-post-dialog/reservations-post-dialog.component';
+import { ReservationsDeleteDialogComponent } from './reservations/reservations-dialog/reservations-delete-dialog/reservations-delete-dialog.component';
+import { ReservationsPutDialogComponent } from './reservations/reservations-dialog/reservations-put-dialog/reservations-put-dialog.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +97,8 @@ import { ReservationsPostDialogComponent } from './reservations/reservations-dia
     ReservationsListUpcomingComponent,
     ReservationsListPastComponent,
     ReservationsPostDialogComponent,
+    ReservationsDeleteDialogComponent,
+    ReservationsPutDialogComponent,
   ],
   imports: [
     BrowserModule,

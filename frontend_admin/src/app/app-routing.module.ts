@@ -11,6 +11,9 @@ import { AuthComponent } from './auth/auth.component';
 import { StaffComponent } from './staff/staff.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { GuestsComponent } from './guests/guests.component';
+import { ReservationsListComponent } from './reservations/reservations-list/reservations-list.component';
+import { ReservationsDetailComponent } from './reservations/reservations-detail/reservations-detail.component';
+import { ReservationsNewComponent } from './reservations/reservations-new/reservations-new.component';
 
 const routes: Routes = [
   {
@@ -35,6 +38,11 @@ const routes: Routes = [
       {
         path: 'reservations',
         component: ReservationsComponent,
+        children: [
+          { path: '', component: ReservationsListComponent },
+          { path: 'new', component: ReservationsNewComponent },
+          { path: ':id', component: ReservationsDetailComponent },
+        ],
       },
       {
         path: 'guests',

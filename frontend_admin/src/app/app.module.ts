@@ -47,6 +47,10 @@ import { GuestsComponent } from './guests/guests.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { ReservationsListComponent } from './reservations/reservations-list/reservations-list.component';
 import { ReservationsDetailComponent } from './reservations/reservations-detail/reservations-detail.component';
+import { ReservationsNewComponent } from './reservations/reservations-new/reservations-new.component';
+import { ReservationsListActiveComponent } from './reservations/reservations-list/reservations-list-active/reservations-list-active.component';
+import { ReservationsListUpcomingComponent } from './reservations/reservations-list/reservations-list-upcoming/reservations-list-upcoming.component';
+import { ReservationsListPastComponent } from './reservations/reservations-list/reservations-list-past/reservations-list-past.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +89,10 @@ import { ReservationsDetailComponent } from './reservations/reservations-detail/
     ReservationsComponent,
     ReservationsListComponent,
     ReservationsDetailComponent,
+    ReservationsNewComponent,
+    ReservationsListActiveComponent,
+    ReservationsListUpcomingComponent,
+    ReservationsListPastComponent,
   ],
   imports: [
     BrowserModule,

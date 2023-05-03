@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-guests',
   templateUrl: './guests.component.html',
-  styleUrls: ['./guests.component.scss']
+  styleUrls: ['./guests.component.scss'],
 })
-export class GuestsComponent {
-
-}
+export class GuestsComponent {}

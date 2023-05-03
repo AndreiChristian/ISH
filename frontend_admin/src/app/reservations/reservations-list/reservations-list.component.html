@@ -1,5 +1,12 @@
+<div class="row">
+  <h1>Reservations</h1>
+  <button mat-fab>
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+<mat-divider></mat-divider>
 <mat-progress-spinner mode="indeterminate" *ngIf="!(data$ | async)"></mat-progress-spinner>
-<mat-tab-group style="margin-top: 5vh;" *ngIf="(data$ | async)" >
+<mat-tab-group style="margin-top: 5vh;" *ngIf="(data$ | async)">
   <mat-tab label="Active">
     <app-reservations-list-active></app-reservations-list-active>
   </mat-tab>

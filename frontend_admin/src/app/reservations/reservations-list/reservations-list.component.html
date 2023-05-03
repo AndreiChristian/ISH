@@ -1,5 +1,12 @@
-<mat-tab-group style="margin-top: 5vh;">
-  <mat-tab label="Active"></mat-tab>
-  <mat-tab label="Upcoming"></mat-tab>
-  <mat-tab label="Past"></mat-tab>
+<mat-progress-spinner mode="indeterminate" *ngIf="!(data$ | async)"></mat-progress-spinner>
+<mat-tab-group style="margin-top: 5vh;" *ngIf="(data$ | async)" >
+  <mat-tab label="Active">
+    <app-reservations-list-active></app-reservations-list-active>
+  </mat-tab>
+  <mat-tab label="Upcoming">
+    <app-reservations-list-upcoming></app-reservations-list-upcoming>
+  </mat-tab>
+  <mat-tab label="Past">
+    <app-reservations-list-past></app-reservations-list-past>
+  </mat-tab>
 </mat-tab-group>

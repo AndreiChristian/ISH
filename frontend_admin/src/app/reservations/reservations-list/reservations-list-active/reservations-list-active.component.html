@@ -1,1 +1,31 @@
-<p>reservations-list-active works!</p>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+  <!-- Position Column -->
+  <ng-container matColumnDef="property">
+    <th mat-header-cell *matHeaderCellDef> Property </th>
+    <td mat-cell *matCellDef="let element"> {{element.property}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="start">
+    <th mat-header-cell *matHeaderCellDef> Checkin </th>
+    <td mat-cell *matCellDef="let element"> {{element.start_date | date }} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="end">
+    <th mat-header-cell *matHeaderCellDef> Checkout </th>
+    <td mat-cell *matCellDef="let element"> {{element.end_date | date }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="guests">
+    <th mat-header-cell *matHeaderCellDef> Guets </th>
+    <td mat-cell *matCellDef="let element"> {{ element.adults + element.children
+      }} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

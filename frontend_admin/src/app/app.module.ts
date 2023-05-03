@@ -45,6 +45,8 @@ import { AuthComponent } from './auth/auth.component';
 import { UserComponent } from './user/user.component';
 import { GuestsComponent } from './guests/guests.component';
 import { ReservationsComponent } from './reservations/reservations.component';
+import { ReservationsListComponent } from './reservations/reservations-list/reservations-list.component';
+import { ReservationsDetailComponent } from './reservations/reservations-detail/reservations-detail.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +83,8 @@ import { ReservationsComponent } from './reservations/reservations.component';
     UserComponent,
     GuestsComponent,
     ReservationsComponent,
+    ReservationsListComponent,
+    ReservationsDetailComponent,
   ],
   imports: [
     BrowserModule,

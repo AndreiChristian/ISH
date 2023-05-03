@@ -56,6 +56,7 @@ import { ReservationsDeleteDialogComponent } from './reservations/reservations-d
 import { ReservationsPutDialogComponent } from './reservations/reservations-dialog/reservations-put-dialog/reservations-put-dialog.component';
 import { ReservationsProfilesComponent } from './reservations/reservations-profiles/reservations-profiles.component';
 import { ReservationsPostProfileDialogComponent } from './reservations/reservations-dialog/reservations-post-profile-dialog/reservations-post-profile-dialog.component';
+import { ReservationNewFormComponent } from './reservations/reservations-new/reservation-new-form/reservation-new-form.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +104,7 @@ import { ReservationsPostProfileDialogComponent } from './reservations/reservati
     ReservationsPutDialogComponent,
     ReservationsProfilesComponent,
     ReservationsPostProfileDialogComponent,
+    ReservationNewFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_client/screens/about/about.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,36 +13,62 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: (value) {
-          setState(() {
-            _selectedIndex = value;
-          });
-        },
-        showSelectedLabels: false,
-        iconSize: 30,
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        selectedIconTheme:
-            IconThemeData(color: Theme.of(context).colorScheme.primary),
-        unselectedIconTheme:
-            IconThemeData(color: Theme.of(context).colorScheme.secondary),
-        items: const [
-          BottomNavigationBarItem(
-            label: "Home",
-            icon: Icon(Icons.home),
-          ),
-          BottomNavigationBarItem(
-            label: "Properties",
-            icon: Icon(Icons.hotel),
-          ),
-          BottomNavigationBarItem(
-            label: "F&B",
-            icon: Icon(Icons.fastfood),
-          ),
-        ],
+    final widgets = [
+      const Center(
+        child: Text("0"),
       ),
-    );
+      const Center(
+        child: Text("1"),
+      ),
+      const Center(
+        child: Text("3"),
+      ),
+      const AboutScreen(),
+      const Center(
+        child: Text("5"),
+      ),
+    ];
+
+    return Scaffold(
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _selectedIndex,
+          onTap: (value) {
+            setState(() {
+              _selectedIndex = value;
+            });
+          },
+          showSelectedLabels: false,
+          unselectedFontSize: 10,
+          selectedFontSize: 10,
+          showUnselectedLabels: false,
+          backgroundColor: Colors.black,
+          selectedIconTheme: IconThemeData(
+              color: Theme.of(context).colorScheme.primary, size: 24),
+          unselectedIconTheme: IconThemeData(
+              color: Theme.of(context).colorScheme.secondary, size: 24),
+          items: [
+            BottomNavigationBarItem(
+              label: "Home",
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              icon: const Icon(Icons.airplay_sharp),
+            ),
+            BottomNavigationBarItem(
+              label: "Properties",
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              icon: const Icon(Icons.home_filled),
+            ),
+            BottomNavigationBarItem(
+              label: "F&B",
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              icon: const Icon(Icons.wine_bar),
+            ),
+            BottomNavigationBarItem(
+              label: "Menu",
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              icon: const Icon(Icons.menu),
+            )
+          ],
+        ),
+        body: widgets[_selectedIndex]);
   }
 }

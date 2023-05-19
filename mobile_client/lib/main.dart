@@ -5,6 +5,7 @@ void main() {
   runApp(
     MaterialApp(
       theme: ThemeData(
+          brightness: Brightness.dark,
           colorSchemeSeed: Colors.amber.shade200,
           useMaterial3: true,
           scaffoldBackgroundColor: Colors.black),

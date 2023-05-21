@@ -7,9 +7,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './UI/navigation/navigation.component';
 import { FooterComponent } from './UI/footer/footer.component';
 import { MaterialModule } from './material.module';
+import { HomeComponent } from './home/home.component';
+import { FoodandbeverageComponent } from './foodandbeverage/foodandbeverage.component';
+import { FacilitiesComponent } from './facilities/facilities.component';
 
 @NgModule({
-  declarations: [AppComponent, NavigationComponent, FooterComponent],
+  declarations: [
+    AppComponent,
+    NavigationComponent,
+    FooterComponent,
+    HomeComponent,
+    FoodandbeverageComponent,
+    FacilitiesComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

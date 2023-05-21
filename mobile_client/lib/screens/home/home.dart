@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_client/screens/about/about.dart';
 import 'package:mobile_client/screens/home/home_list.dart';
+import 'package:mobile_client/screens/properties/properties.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,9 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final widgets = [
       const HomeList(),
-      const Center(
-        child: Text("1"),
-      ),
+      PropertiesScreen(),
       const Center(
         child: Text("3"),
       ),

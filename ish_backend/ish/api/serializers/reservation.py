@@ -21,8 +21,9 @@ class ReservationSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
-        representation['property'] = PropertySerializer(instance.property).data.get('name')
-        return representation    
+        representation['property'] = PropertySerializer(
+            instance.property).data.get('name')
+        return representation
 
 
 class ProfileFacilityCategorySerializer(serializers.ModelSerializer):

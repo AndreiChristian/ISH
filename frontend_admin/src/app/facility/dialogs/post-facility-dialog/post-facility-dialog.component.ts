@@ -63,7 +63,7 @@ export class PostFacilityDialogComponent implements OnInit {
       (data) => (this.facilitySubcategories = data)
     );
 
-    this.overlay.getContainerElement().classList.add('dark-mode');
+    // this.overlay.getContainerElement().classList.add('dark-mode');
   }
 
   postFacilityCategory() {

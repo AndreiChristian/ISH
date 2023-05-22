@@ -1,4 +1,8 @@
-const Pool = require("pg");
+import { Pool } from "pg";
+
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const { PGUSER, PGHOST, PGDATABASE, PGPASSWORD, PGPORT } = process.env;
 
@@ -16,13 +20,6 @@ const pool = new Pool({
   database: process.env.PGDATABASE,
   password: process.env.PGPASSWORD,
   port: process.env.PGPORT,
-});
-
-pool.query("SELECT * from users", (err: Error, result: any) => {
-  if (err) {
-    console.error(err);
-  }
-  console.log(result.rows[0]);
 });
 
 export const db = {

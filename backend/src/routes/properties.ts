@@ -9,10 +9,18 @@ router.get("/:id", async (req, res, next) => {
 
     const { rows } = await db.query("SELECT * FROM users WHERE id = $1", [id]);
 
+    if (!rows) {
+      throw new Error();
+    }
+
     res.json({
       rows,
     });
-  } catch {}
+  } catch {
+    (err: Error) => {
+      next(err);
+    };
+  }
 });
 
 export default router;

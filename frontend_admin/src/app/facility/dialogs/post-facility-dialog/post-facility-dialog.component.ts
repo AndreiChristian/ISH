@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import {
   FacilityCategoryInterface,
+  FacilityItem,
   FacilityItemInterface,
   FacilitySubcategoryInterface,
 } from '../../facility.models';
@@ -39,12 +40,12 @@ export class PostFacilityDialogComponent implements OnInit {
     items: [],
   };
 
-  newFacilityItem: FacilityItemInterface = {
+  newFacilityItem: FacilityItem = {
     name: '',
     subcategory: '',
-    price: 0,
-    adult_only: false,
-    level: '',
+    category: '',
+    description: '',
+    imageUrl: '',
   };
 
   constructor(

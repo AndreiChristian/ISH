@@ -1,6 +1,6 @@
 
 <h1 mat-dialog-title>Create a new faciliy</h1>
-<div mat-dialog-content>
+<div mat-dialog-content style="width: 70vw; height: 70vh;">
 
   <mat-tab-group>
 
@@ -59,70 +59,36 @@
     </mat-tab>
     <mat-tab label="Item">
 
-      <!-- THE SECTION FOR ITEMS -->
+      <form #facilityForm="ngForm" (ngSubmit)="postFacilityItem"
+        style="display: flex; flex-direction: column;  ">
+        <mat-form-field style="width: 100%;">
+          <mat-label>Name</mat-label>
+          <input matInput name="name" ngModel required>
+        </mat-form-field>
 
-      <!-- name -->
+        <mat-form-field style="width: 100%;">
+          <mat-label>Subcategory</mat-label>
+          <input matInput name="subcategory" ngModel required>
+        </mat-form-field>
 
-      <mat-form-field class="example-full-width" style="width: 100%; margin-top:
-        5vh; ">
-        <mat-label>Name for the new facility subcategory</mat-label>
-        <input matInput placeholder="Ex. Champagne"
-          [(ngModel)]="newFacilityItem.name" style="width: 100%;">
-      </mat-form-field>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Category</mat-label>
+          <input matInput name="category" ngModel required>
+        </mat-form-field>
 
-      <!-- subcategory -->
+        <mat-form-field style="width: 100%;">
+          <mat-label>Description</mat-label>
+          <textarea matInput name="description" ngModel required></textarea>
+        </mat-form-field>
 
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Subcategory</mat-label>
-        <input type="text"
-          placeholder="Select a subcategory"
-          aria-label="select a option"
-          matInput
-          [(ngModel)]="newFacilityItem.subcategory"
-          [matAutocomplete]="autoItem">
-        <mat-autocomplete #autoItem="matAutocomplete">
+        <mat-form-field style="width: 100%;">
+          <mat-label>Image URL</mat-label>
+          <input matInput name="imageUrl" ngModel>
+        </mat-form-field>
 
-          <mat-option *ngFor="let element of facilitySubcategories"
-            [value]="element.name">
-            {{element.name}}
-          </mat-option>
-
-        </mat-autocomplete>
-      </mat-form-field>
-
-      <!-- price -->
-
-      <mat-form-field class="example-full-width" style="width: 100%; ">
-        <mat-label>Price</mat-label>
-        <input matInput placeholder="Ex. Champagne"
-          [(ngModel)]="newFacilityItem.price" type="number">
-      </mat-form-field>
-
-
-      <mat-checkbox color="primary" labelPosition="before"
-        [(ngModel)]="newFacilityItem.adult_only">Adult
-        only</mat-checkbox>
-
-      <br>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Level</mat-label>
-        <mat-select [(ngModel)]="newFacilityItem.level">
-          <mat-option *ngFor="let i of itemLevelsOptions" [value]="i.value">
-            {{i.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <div mat-dialog-actions style="display: flex; align-items: center;
-        justify-content: space-between; ">
-        <button mat-button mat-dialog-close>Cancel</button>
-        <!-- <span fl ></span> -->
-        <button mat-button color="warn" mat-dialog-close
-          (click)="postFacilityItem()">Add</button>
-      </div>
-
-
+        <button mat-raised-button color="primary"
+          [disabled]="!facilityForm.valid">Submit</button>
+      </form>
 
     </mat-tab>
   </mat-tab-group>

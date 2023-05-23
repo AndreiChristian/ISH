@@ -19,3 +19,13 @@ export interface FacilityItemInterface {
   level: string;
   subcategory: string;
 }
+export interface FacilityItem {
+  id?: number;
+  name: string;
+  subcategory: string;
+  category: string;
+  description: string;
+  imageUrl?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+}

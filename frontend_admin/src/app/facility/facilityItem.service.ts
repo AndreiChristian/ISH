@@ -2,15 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, Observable, catchError, of, tap } from 'rxjs';
+import { FacilityItem } from './facility.models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FacilityItemService {
-  private baseUrl: string = 'http://127.0.0.1:8000/api/facility_items/';
+  private baseUrl: string = 'http://127.0.0.1:8080/api/facility_items/';
 
-  private dataSubject = new BehaviorSubject<any>(null);
-  public data$: Observable<any> = this.dataSubject.asObservable();
+  private dataSubject = new BehaviorSubject<FacilityItem>(null);
+  public data$: Observable<FacilityItem> = this.dataSubject.asObservable();
+
+  private listSubject = new BehaviorSubject<FacilityItem[]>(null);
+  public dataList$: Observable<FacilityItem[]> =
+    this.listSubject.asObservable();
 
   private loadingSubject = new BehaviorSubject<boolean>(false);
   public loading$: Observable<boolean> = this.loadingSubject.asObservable();
@@ -20,7 +25,7 @@ export class FacilityItemService {
   getList() {
     this.loadingSubject.next(true);
     this.http
-      .get(this.baseUrl)
+      .get<FacilityItem[] | null>(this.baseUrl)
       .pipe(
         catchError((error) => {
           console.error('An error occurred:', error);
@@ -30,7 +35,7 @@ export class FacilityItemService {
           return of(null);
         }),
         tap((data) => {
-          this.dataSubject.next(data);
+          this.listSubject.next(data);
           this.loadingSubject.next(false);
         })
       )
@@ -40,7 +45,7 @@ export class FacilityItemService {
   getOne(id: number) {
     this.loadingSubject.next(true);
     this.http
-      .get(`${this.baseUrl}${id}`)
+      .get<FacilityItem | null>(`${this.baseUrl}${id}`)
       .pipe(
         catchError((error) => {
           console.error('An error occurred:', error);
@@ -57,7 +62,7 @@ export class FacilityItemService {
       .subscribe();
   }
 
-  post(data: any) {
+  post(data: FacilityItem) {
     this.loadingSubject.next(true);
     this.http
       .post(this.baseUrl, data)
@@ -79,7 +84,7 @@ export class FacilityItemService {
       .subscribe();
   }
 
-  update(data: any, id: number) {
+  update(data: FacilityItem, id: number) {
     this.loadingSubject.next(true);
     this.http
       .put(`${this.baseUrl}${id}`, data)

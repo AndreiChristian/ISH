@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/services/http.service';
 import { FacilityItemService } from '../facilityItem.service';
+import { FacilityItem } from '../facility.models';
 
 @Component({
   selector: 'app-facility-item',
@@ -17,7 +18,7 @@ export class FacilityItemComponent implements OnInit, OnDestroy {
     'edit',
     'delete',
   ];
-  dataSource = [];
+  dataSource: FacilityItem[] = [];
 
   isLoading: boolean = true;
 
@@ -28,7 +29,7 @@ export class FacilityItemComponent implements OnInit, OnDestroy {
       (data) => (this.isLoading = data)
     );
     this.facilityItemsService.getList();
-    this.facilityItemsService.data$.subscribe((data) => {
+    this.facilityItemsService.dataList$.subscribe((data) => {
       this.dataSource = data;
     });
   }

@@ -15,8 +15,8 @@ router.get("/regions/:regionId", getOneRegion);
 
 router.post("/regions", postRegion);
 
-router.patch("/regions", patchRegion);
+router.patch("/regions/:regionId", patchRegion);
 
-router.delete("/regions", deleteRegion);
+router.delete("/regions/:regionId", deleteRegion);
 
 export default router;

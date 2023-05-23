@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
 import { db } from "../db";
-import { error } from "console";
 
 export const getRegionList = async (
   req: Request,
@@ -106,9 +105,9 @@ export const patchRegion = async (
     res.status(201).json({
       message: "patched success",
     });
-  } catch (error) {
-    console.log(error);
-    next(error);
+  } catch (err) {
+    console.log(err);
+    next(err);
   }
 };
 
@@ -132,7 +131,9 @@ export const deleteRegion = async (
       message: "patched success",
     });
   } catch {
-    (err: Error) => console.error(error);
-    next(error);
+    (err: Error) => {
+      console.error(err);
+      next(err);
+    };
   }
 };

@@ -1,5 +1,5 @@
 interface Facility {
-  id: number;
+  id?: number;
   name: string;
   subcategory: string;
   category: string;

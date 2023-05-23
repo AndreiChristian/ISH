@@ -1,16 +1,27 @@
-import { Router } from "express";
-import { getFacilityList } from "../controllers/facility";
+import { NextFunction, Request, Response, Router } from "express";
+import {
+  deleteFacility,
+  getFacilityList,
+  getOneFacility,
+  patchFacility,
+  postFacility,
+} from "../controllers/facility";
 
 const router = Router();
 
-router.get("/");
+router.use("/facilities", (req: Request, res: Response, next: NextFunction) => {
+  console.log("on the facilities route");
+  next(req);
+});
 
-router.get("/:facilityId", getFacilityList );
+router.get("/", getFacilityList);
 
-router.post("/");
+router.get("/:facilityId", getOneFacility);
 
-router.patch("/:facilityId");
+router.post("/", postFacility);
 
-router.delete("/:facilityId");
+router.patch("/:facilityId", patchFacility);
+
+router.delete("/:facilityId", deleteFacility);
 
 export default router;

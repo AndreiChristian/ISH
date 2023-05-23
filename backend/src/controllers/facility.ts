@@ -24,3 +24,31 @@ export const getFacilityList = async (
     };
   }
 };
+
+export const getOneFacility = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { facilityId } = req.params;
+
+  res.json({ facilityId });
+};
+
+export const postFacility = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {};
+
+export const patchFacility = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {};
+
+export const deleteFacility = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {};

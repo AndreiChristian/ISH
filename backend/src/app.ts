@@ -6,6 +6,8 @@ import propertiesRouter from "./routes/properties";
 import facilitiesRouter from "./routes/facility";
 import regionsRouter from "./routes/region";
 import adressRouter from "./routes/adress";
+import guestsRouter from "./routes/guests";
+import profilesRouter from "./routes/profiles";
 
 dotenv.config();
 
@@ -27,6 +29,8 @@ app.use(bodyParser.json());
 app.use("/api", facilitiesRouter);
 app.use("/api", regionsRouter);
 app.use("/api", adressRouter);
+app.use("/api", guestsRouter);
+app.use("/api", profilesRouter);
 
 app.get("/", (req, res, next) => {
   res.json({

@@ -13,14 +13,14 @@ import { Region } from './region.model';
 export class RegionComponent implements OnInit {
   showContent: boolean = false;
 
-  regions$: Observable<Region | Region[]>;
+  regions$: Observable<Region[]>;
 
   constructor(public dialog: MatDialog, private regionService: RegionService) {}
 
   ngOnInit(): void {
     this.regionService.getList();
 
-    this.regions$ = this.regionService.data$;
+    this.regions$ = this.regionService.list$;
   }
 
   toggleShowContent() {

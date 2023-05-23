@@ -1,15 +1,25 @@
 <h1 mat-dialog-title>Create a new region</h1>
 <div style="display: flex; align-items: flex-start; justify-content: center;
-  flex-direction: column; gap: 1vw; " mat-dialog-content>
+  flex-direction: column; gap: 1vw; width: 70vw;" mat-dialog-content>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" style="width: 100%;">
     <mat-label>Name</mat-label>
     <input matInput [(ngModel)]="newRegion.name">
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" style="width: 100%;">
     <mat-label>Description</mat-label>
     <textarea matInput [(ngModel)]="newRegion.description"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" style="width: 100%;">
+    <mat-label>State</mat-label>
+    <input matInput [(ngModel)]="newRegion.state">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" style="width: 100%;">
+    <mat-label>Counry</mat-label>
+    <input matInput [(ngModel)]="newRegion.country">
   </mat-form-field>
 
 </div>

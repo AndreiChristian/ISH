@@ -8,10 +8,13 @@ import { Region } from './region.model';
   providedIn: 'root',
 })
 export class RegionService {
-  baseUrl: string = 'http://localhost:3000/api/regions';
+  baseUrl: string = 'http://localhost:8080/api/regions';
 
   private dataSubject = new BehaviorSubject<Region | Region[]>(null);
   public data$: Observable<Region | Region[]> = this.dataSubject.asObservable();
+
+  private listSubject = new BehaviorSubject<Region[]>(null);
+  public list$: Observable<Region[]> = this.listSubject.asObservable();
 
   private loadingSubject = new BehaviorSubject<boolean>(false);
   public loading$: Observable<boolean> = this.loadingSubject.asObservable();
@@ -21,7 +24,7 @@ export class RegionService {
   getList() {
     this.loadingSubject.next(true);
     this.http
-      .get<Region | Region[]>(`${this.baseUrl}`)
+      .get<Region[]>(`${this.baseUrl}`)
       .pipe(
         catchError((error) => {
           console.error('An error occurred:', error);
@@ -31,7 +34,7 @@ export class RegionService {
           return of(null);
         }),
         tap((data) => {
-          this.dataSubject.next(data);
+          this.listSubject.next(data);
           this.loadingSubject.next(false);
         })
       )
@@ -80,10 +83,10 @@ export class RegionService {
       .subscribe();
   }
 
-  put(data: Region) {
+  put(data: Region, urlEnding: string) {
     this.loadingSubject.next(true);
     this.http
-      .put(`${this.baseUrl}`, data)
+      .put(`${this.baseUrl}/${urlEnding}`, data)
       .pipe(
         catchError((error) => {
           console.error('An error occurred:', error);
@@ -105,7 +108,7 @@ export class RegionService {
   delete(urlEnding: string) {
     this.loadingSubject.next(true);
     this.http
-      .delete(`${this.baseUrl}${urlEnding}`)
+      .delete(`${this.baseUrl}/${urlEnding}`)
       .pipe(
         catchError((error) => {
           console.error('An error occurred:', error);

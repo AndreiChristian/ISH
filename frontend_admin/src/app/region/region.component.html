@@ -8,6 +8,8 @@
 </header>
 <mat-divider></mat-divider>
 
+
+
 <p *ngFor="let region of regions$ | async, let index=index">
   <app-region-item [region]="region" [index]="index"></app-region-item>
 </p>

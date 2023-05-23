@@ -16,7 +16,7 @@ export class PutRegionDialog {
 
   putRegion(id: number) {
     console.log;
-    this.regionService.putRegion(this.region.id, this.region);
-    this.regionService.getAllRegions();
+    this.regionService.put(this.region, id.toString());
+    this.regionService.getList();
   }
 }

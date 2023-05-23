@@ -15,7 +15,7 @@ export const getAddressList = async (
 
     res.json(rows);
   } catch (err) {
-    console.error(err);
+    console.log(err);
     next(err);
   }
 };
@@ -38,7 +38,7 @@ export const getOneAddress = async (
 
     res.json(rows);
   } catch (err) {
-    console.error(err);
+    console.log(err);
     next(err);
   }
 };
@@ -60,7 +60,7 @@ export const postAddress = async (
       message: "Created address successfully",
     });
   } catch (err) {
-    console.error(err);
+    console.log(err);
     next(err);
   }
 };
@@ -112,7 +112,7 @@ export const deleteAddress = async (
       message: "deleted success",
     });
   } catch (err) {
-    console.error(err);
+    console.log(err);
     next(err);
   }
 };

@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 // app.use("/api", propertiesRouter);
 app.use("/api", facilitiesRouter);
 app.use("/api", regionsRouter);
-app.use("api", adressRouter);
+app.use("/api", adressRouter);
 
 app.get("/", (req, res, next) => {
   res.json({

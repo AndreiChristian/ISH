@@ -13,7 +13,7 @@ export class DeleteRegionDialog {
   ) {}
 
   deleteRegion(id: number) {
-    this.regionService.deleteRegion(id);
-    this.regionService.getAllRegions();
+    this.regionService.delete(id.toString());
+    this.regionService.getList();
   }
 }

@@ -2,33 +2,125 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, Observable, catchError, of, tap } from 'rxjs';
-import { HttpService } from '../services/http.service';
+import { Region } from './region.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RegionService {
-  urlEnding: string = 'regions/';
+  baseUrl: string = 'http://localhost:3000/api/regions';
 
-  constructor(private httpService: HttpService) {}
+  private dataSubject = new BehaviorSubject<Region | Region[]>(null);
+  public data$: Observable<Region | Region[]> = this.dataSubject.asObservable();
 
-  getAllRegions() {
-    this.httpService.getList(this.urlEnding);
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+  public loading$: Observable<boolean> = this.loadingSubject.asObservable();
+
+  constructor(private http: HttpClient, private _snackBar: MatSnackBar) {}
+
+  getList() {
+    this.loadingSubject.next(true);
+    this.http
+      .get<Region | Region[]>(`${this.baseUrl}`)
+      .pipe(
+        catchError((error) => {
+          console.error('An error occurred:', error);
+          this._snackBar.open('Error fetching data', 'Close', {
+            duration: 5000,
+          });
+          return of(null);
+        }),
+        tap((data) => {
+          this.dataSubject.next(data);
+          this.loadingSubject.next(false);
+        })
+      )
+      .subscribe();
   }
 
-  getOneRegion(id: number) {
-    this.httpService.getOne(this.urlEnding + id);
+  getOne(urlEnding: string) {
+    this.loadingSubject.next(true);
+    this.http
+      .get<Region | Region[]>(`${this.baseUrl}${urlEnding}`)
+      .pipe(
+        catchError((error) => {
+          console.error('An error occurred:', error);
+          this._snackBar.open('Error fetching data', 'Close', {
+            duration: 5000,
+          });
+          return of(null);
+        }),
+        tap((data) => {
+          this.dataSubject.next(data);
+          this.loadingSubject.next(false);
+        })
+      )
+      .subscribe();
   }
 
-  deleteRegion(id: number) {
-    this.httpService.delete(this.urlEnding + id);
+  post(data: Region) {
+    this.loadingSubject.next(true);
+    this.http
+      .post(`${this.baseUrl}`, data)
+      .pipe(
+        catchError((error) => {
+          console.error('An error occurred:', error);
+          this._snackBar.open('Error posting data', 'Close', {
+            duration: 5000,
+          });
+          return of(null);
+        }),
+        tap((response) => {
+          this.loadingSubject.next(false);
+          this._snackBar.open('Region posted successfully', 'Close', {
+            duration: 5000,
+          });
+        })
+      )
+      .subscribe();
   }
 
-  putRegion(id: number, data: any) {
-    this.httpService.put((data = data), this.urlEnding + id + '/');
+  put(data: Region) {
+    this.loadingSubject.next(true);
+    this.http
+      .put(`${this.baseUrl}`, data)
+      .pipe(
+        catchError((error) => {
+          console.error('An error occurred:', error);
+          this._snackBar.open('Error updating data', 'Close', {
+            duration: 5000,
+          });
+          return of(null);
+        }),
+        tap((response) => {
+          this.loadingSubject.next(false);
+          this._snackBar.open('Region updated successfully', 'Close', {
+            duration: 5000,
+          });
+        })
+      )
+      .subscribe();
   }
 
-  postRegion(data: any) {
-    this.httpService.post((data = data), this.urlEnding);
+  delete(urlEnding: string) {
+    this.loadingSubject.next(true);
+    this.http
+      .delete(`${this.baseUrl}${urlEnding}`)
+      .pipe(
+        catchError((error) => {
+          console.error('An error occurred:', error);
+          this._snackBar.open('Error deleting data', 'Close', {
+            duration: 5000,
+          });
+          return of(null);
+        }),
+        tap((response) => {
+          this.loadingSubject.next(false);
+          this._snackBar.open('Region deleted successfully', 'Close', {
+            duration: 5000,
+          });
+        })
+      )
+      .subscribe();
   }
 }

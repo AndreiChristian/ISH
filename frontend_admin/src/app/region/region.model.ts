@@ -1,8 +1,7 @@
-export interface RegionInterface {
-  description: string;
+export interface Region {
   id?: number;
-  managers: string[] | string;
   name: string;
-  properties: string[];
-  staff_members: string[];
+  description: string;
+  country?: string;
+  state?: string;
 }

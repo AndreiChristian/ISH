@@ -9,19 +9,15 @@ import {
 
 const router = Router();
 
-router.use("/facilities", (req: Request, res: Response, next: NextFunction) => {
-  console.log("on the facilities route");
-  next(req);
-});
 
-router.get("/", getFacilityList);
+router.get("/facilities", getFacilityList);
 
-router.get("/:facilityId", getOneFacility);
+router.get("facilities/:facilityId", getOneFacility);
 
-router.post("/", postFacility);
+router.post("/facilities", postFacility);
 
-router.patch("/:facilityId", patchFacility);
+router.patch("/facilities/:facilityId", patchFacility);
 
-router.delete("/:facilityId", deleteFacility);
+router.delete("/facilities/:facilityId", deleteFacility);
 
 export default router;

@@ -9,14 +9,14 @@ export const getFacilityList = async (
   try {
     const { rows } = await db.query("SELECT * FROM facilities", []);
 
-    if (!rows) {
+    if (!rows[0]) {
       res.status(404).json({
         message: "could not find data",
       });
       throw new Error("no data");
     }
 
-    res.json();
+    res.json(rows);
   } catch {
     (err: Error) => {
       console.error(err);

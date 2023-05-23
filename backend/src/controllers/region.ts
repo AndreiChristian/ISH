@@ -6,6 +6,9 @@ export const getRegionList = async (
   next: NextFunction
 ) => {
   try {
+    res.json({
+      message: "regions",
+    });
   } catch {
     (err: Error) => {
       console.error(err);

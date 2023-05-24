@@ -59,6 +59,8 @@ import { ReservationsPostProfileDialogComponent } from './reservations/reservati
 import { ReservationNewFormComponent } from './reservations/reservations-new/reservation-new-form/reservation-new-form.component';
 import { GuestsTableComponent } from './guests/guests-table/guests-table.component';
 import { GuestsItemComponent } from './guests/guests-item/guests-item.component';
+import { GuestReservationsComponent } from './guests/guests-item/guest-reservations/guest-reservations.component';
+import { GuestProfilesComponent } from './guests/guests-item/guest-profiles/guest-profiles.component';
 
 @NgModule({
   declarations: [
@@ -109,6 +111,8 @@ import { GuestsItemComponent } from './guests/guests-item/guests-item.component'
     ReservationNewFormComponent,
     GuestsTableComponent,
     GuestsItemComponent,
+    GuestReservationsComponent,
+    GuestProfilesComponent,
   ],
   imports: [
     BrowserModule,

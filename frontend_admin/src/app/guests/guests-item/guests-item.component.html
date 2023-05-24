@@ -1,1 +1,21 @@
-<p>guests-item works!</p>
+
+<mat-card *ngIf="guest$ | async">
+  <mat-card-header><h1>GUEST PROFILE</h1></mat-card-header>
+  <mat-card-content>
+    <div>First Name : {{(guest$ | async).first_name}}</div>
+    <div>Last Name : {{(guest$ | async).last_name}}</div>
+    <div>Email: {{(guest$| async).email}}</div>
+    <div> Adress: <span>{{(guest$ | async).city}}, {{(guest$ | async).street}}
+        {{(guest$ | async).number}}, {{(guest$ | async).state}}, {{(guest$ |
+        async).country}} </span> </div>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-icon-button>
+      <mat-icon>edit</mat-icon>
+    </button>
+    <div class="spacer"></div>
+    <button mat-icon-button color="warn">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

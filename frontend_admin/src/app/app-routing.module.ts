@@ -14,6 +14,8 @@ import { GuestsComponent } from './guests/guests.component';
 import { ReservationsListComponent } from './reservations/reservations-list/reservations-list.component';
 import { ReservationsDetailComponent } from './reservations/reservations-detail/reservations-detail.component';
 import { ReservationsNewComponent } from './reservations/reservations-new/reservations-new.component';
+import { GuestsTableComponent } from './guests/guests-table/guests-table.component';
+import { GuestsItemComponent } from './guests/guests-item/guests-item.component';
 
 const routes: Routes = [
   {
@@ -47,6 +49,10 @@ const routes: Routes = [
       {
         path: 'guests',
         component: GuestsComponent,
+        children: [
+          { path: '', component: GuestsTableComponent },
+          { path: ':id', component: GuestsItemComponent },
+        ],
       },
     ],
   },

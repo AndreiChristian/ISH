@@ -21,6 +21,30 @@ export const getGuestsList = async (
   }
 };
 
+export const getOneGuest = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { guestId } = req.params;
+
+    const { rows } = await db.query(
+      "SELECT * FROM guests AS g JOIN addresses AS a ON g.address_id = a.id WHERE g.id = $1",
+      [guestId]
+    );
+
+    if (!rows[0]) {
+      throw new Error("no guests");
+    }
+
+    res.status(200).json(rows[0]);
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};
+
 export const postGuest = async (
   req: Request,
   res: Response,
@@ -60,3 +84,4 @@ export const postGuest = async (
     next(err);
   }
 };
+

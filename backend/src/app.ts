@@ -8,6 +8,8 @@ import regionsRouter from "./routes/region";
 import adressRouter from "./routes/adress";
 import guestsRouter from "./routes/guests";
 import profilesRouter from "./routes/profiles";
+import guestsProfilesRouter from "./routes/guests_profiles";
+import employeesRouter from "./routes/employees";
 
 dotenv.config();
 
@@ -31,11 +33,7 @@ app.use("/api", regionsRouter);
 app.use("/api", adressRouter);
 app.use("/api", guestsRouter);
 app.use("/api", profilesRouter);
-
-app.get("/", (req, res, next) => {
-  res.json({
-    message: "hello",
-  });
-});
+app.use("/api", guestsProfilesRouter);
+app.use("/api", employeesRouter);
 
 app.listen(8080);

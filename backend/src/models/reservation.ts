@@ -1,7 +1,7 @@
 interface Reservation {
   id: number;
   propertyId: number;
-  guestId: number;
+  // guestId: number;
   startDate: Date;
   endDate: Date;
   adults: number;

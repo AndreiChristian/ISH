@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { db } from "../db";
+import { Console } from "console";
 
 interface Property {
   name: string;
@@ -22,7 +23,12 @@ export const getPropertiesList = async (
   next: NextFunction
 ) => {
   try {
-    const { rows } = await db.query("SELECT * FROM properties", []);
+    const { rows } = await db.query(
+      `SELECT p.id, p.name AS name, r.name AS region
+    FROM properties AS p
+    LEFT JOIN regions as r ON p.region_id = r.id`,
+      []
+    );
 
     if (!rows.length) {
       return res.status(404).json({ message: "No properties found" });
@@ -43,9 +49,20 @@ export const getOneProperty = async (
   const { propertyId } = req.params;
 
   try {
-    const { rows } = await db.query("SELECT * FROM properties WHERE id = $1", [
-      propertyId,
-    ]);
+    const { rows } = await db.query(
+      `SELECT property.id,
+    property.name AS name,
+    property.price,
+    region.name AS region,
+    address.city,
+    address.street,
+    address.number
+FROM properties AS property
+    JOIN regions As region ON property.region_id = region.id
+    JOIN addresses AS address ON property.address_id = address.id
+WHERE property.id = $1`,
+      [propertyId]
+    );
 
     if (!rows[0]) {
       return res.status(404).json({ message: "Property not found" });
@@ -64,7 +81,7 @@ export const postProperty = async (
   next: NextFunction
 ) => {
   const { name, address_id, region_id, description, price, rating } = req.body;
-
+  console.log("trying to post property");
   try {
     await db.query(
       "INSERT INTO properties (name, address_id, region_id, description, price, rating) VALUES ($1, $2, $3, $4, $5, $6)",

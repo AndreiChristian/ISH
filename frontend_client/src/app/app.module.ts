@@ -15,6 +15,8 @@ import { RegionsComponent } from './regions/regions.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { PropertiesListComponent } from './properties/properties-list/properties-list.component';
 import { PropertiesItemComponent } from './properties/properties-item/properties-item.component';
+import { ReservationsComponent } from './reservations/reservations.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { PropertiesItemComponent } from './properties/properties-item/properties
     RegionsComponent,
     PropertiesListComponent,
     PropertiesItemComponent,
+    ReservationsComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,8 @@ import { PropertiesItemComponent } from './properties/properties-item/properties
     MaterialModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [MaterialModule],
   bootstrap: [AppComponent],

@@ -1,1 +1,7 @@
-<p>properties-list works!</p>
+<ul>
+  <li *ngFor="let property of properties$ | async">
+    <a [routerLink]="[property.id]"><h4>{{property.name}},
+        {{property.region}}</h4></a>
+
+  </li>
+</ul>

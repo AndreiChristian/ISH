@@ -19,6 +19,7 @@ import { ReservationsComponent } from './reservations/reservations.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmComponent } from './reservations/confirm/confirm.component';
 import { ReservationsConfigureComponent } from './reservations/reservations-configure/reservations-configure.component';
+import { ReservationsFormComponent } from './reservations/reservations-form/reservations-form.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ReservationsConfigureComponent } from './reservations/reservations-conf
     ReservationsComponent,
     ConfirmComponent,
     ReservationsConfigureComponent,
+    ReservationsFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,5 @@
-<p>reservations-configure works!</p>
+<span *ngFor="let facility of facilities$ | async">
+  <h1>{{facility.name}}</h1>
+  <div>{{facility.description}}</div>
+  <img [src]="facility.image_url" style="width: 100px; height: 100px; ">
+</span>

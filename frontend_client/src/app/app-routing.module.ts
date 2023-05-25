@@ -16,7 +16,7 @@ const routes: Routes = [
       { path: ':id', component: PropertiesItemComponent },
     ],
   },
-  { path: 'reservation', component: ReservationsComponent },
+  { path: 'reservations', component: ReservationsComponent },
 ];
 
 @NgModule({

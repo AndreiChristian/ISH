@@ -1,1 +1,21 @@
-<p>reservations works!</p>
+<div style="display: flex; flex-direction: column;  gap: 1vh;">
+  <label for="propertyId">Property ID:</label>
+  <input type="number" id="propertyId" [(ngModel)]="newReservation.property_id">
+
+  <label for="adults">Number of Adults:</label>
+  <input type="number" id="adults" [(ngModel)]="newReservation.adults">
+
+  <label for="startDate">Start Date:</label>
+  <input type="date" id="startDate" [(ngModel)]="newReservation.start_date">
+
+  <label for="endDate">End Date:</label>
+  <input type="date" id="endDate" [(ngModel)]="newReservation.end_date">
+
+  <label for="kids">Number of Kids:</label>
+  <input type="number" id="kids" [(ngModel)]="newReservation.kids">
+
+  <label for="totalPrice">Total Price:</label>
+  <input type="number" id="totalPrice" [(ngModel)]="newReservation.total_price">
+</div>
+
+<button (click)="postReservation()"> Post </button>

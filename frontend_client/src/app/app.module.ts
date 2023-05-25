@@ -13,6 +13,8 @@ import { FacilitiesComponent } from './facilities/facilities.component';
 import { PropertiesComponent } from './properties/properties.component';
 import { RegionsComponent } from './regions/regions.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { PropertiesListComponent } from './properties/properties-list/properties-list.component';
+import { PropertiesItemComponent } from './properties/properties-item/properties-item.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     FacilitiesComponent,
     PropertiesComponent,
     RegionsComponent,
+    PropertiesListComponent,
+    PropertiesItemComponent,
   ],
   imports: [
     BrowserModule,

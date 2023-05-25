@@ -17,6 +17,8 @@ import { PropertiesListComponent } from './properties/properties-list/properties
 import { PropertiesItemComponent } from './properties/properties-item/properties-item.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ConfirmComponent } from './reservations/confirm/confirm.component';
+import { ReservationsConfigureComponent } from './reservations/reservations-configure/reservations-configure.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PropertiesListComponent,
     PropertiesItemComponent,
     ReservationsComponent,
+    ConfirmComponent,
+    ReservationsConfigureComponent,
   ],
   imports: [
     BrowserModule,

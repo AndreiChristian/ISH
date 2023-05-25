@@ -10,6 +10,9 @@ import { MaterialModule } from './material.module';
 import { HomeComponent } from './home/home.component';
 import { FoodandbeverageComponent } from './foodandbeverage/foodandbeverage.component';
 import { FacilitiesComponent } from './facilities/facilities.component';
+import { PropertiesComponent } from './properties/properties.component';
+import { RegionsComponent } from './regions/regions.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,12 +22,15 @@ import { FacilitiesComponent } from './facilities/facilities.component';
     HomeComponent,
     FoodandbeverageComponent,
     FacilitiesComponent,
+    PropertiesComponent,
+    RegionsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
+    HttpClientModule,
   ],
   providers: [MaterialModule],
   bootstrap: [AppComponent],

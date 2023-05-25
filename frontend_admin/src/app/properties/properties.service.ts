@@ -12,7 +12,7 @@ interface TreeNode {
   providedIn: 'root',
 })
 export class PropertiesService {
-  private baseUrl: string = 'http://127.0.0.1:8000/api/new_test_properties/';
+  private baseUrl: string = 'http://127.0.0.1:8080/api/property/';
 
   private dataSubject = new BehaviorSubject<any>(null);
   public data$: Observable<any> = this.dataSubject.asObservable();

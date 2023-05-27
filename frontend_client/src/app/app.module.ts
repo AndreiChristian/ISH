@@ -22,6 +22,7 @@ import { ReservationsConfigureComponent } from './reservations/reservations-conf
 import { ReservationsFormComponent } from './reservations/reservations-form/reservations-form.component';
 import { AuthComponent } from './auth/auth.component';
 import { ReservationsProfilesComponent } from './reservations/reservations-profiles/reservations-profiles.component';
+import { ReservationsFacilitiesComponent } from './reservations/reservations-facilities/reservations-facilities.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ReservationsProfilesComponent } from './reservations/reservations-profi
     ReservationsFormComponent,
     AuthComponent,
     ReservationsProfilesComponent,
+    ReservationsFacilitiesComponent,
   ],
   imports: [
     BrowserModule,

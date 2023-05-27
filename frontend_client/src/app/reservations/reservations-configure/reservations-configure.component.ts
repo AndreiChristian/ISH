@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-interface Facility {
+export interface Facility {
   id?: number;
   name: string;
   description: string;
@@ -19,14 +19,5 @@ interface Facility {
   styleUrls: ['./reservations-configure.component.scss'],
 })
 export class ReservationsConfigureComponent implements OnInit {
-  constructor(private http: HttpClient) {}
-
-  facilities$: Observable<Facility[]>;
-
-  ngOnInit(): void {
-    this.facilities$ = this.http.get<Facility[]>(
-      'http://localhost:8080/api/facilities'
-    );
-    this.facilities$.subscribe((data) => console.log(data));
-  }
+  ngOnInit(): void {}
 }

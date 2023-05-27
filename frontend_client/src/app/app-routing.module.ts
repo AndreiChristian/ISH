@@ -8,9 +8,11 @@ import { ReservationsComponent } from './reservations/reservations.component';
 import { ConfirmComponent } from './reservations/confirm/confirm.component';
 import { ReservationsFormComponent } from './reservations/reservations-form/reservations-form.component';
 import { ReservationsConfigureComponent } from './reservations/reservations-configure/reservations-configure.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'auth', component: AuthComponent },
   {
     path: 'properties',
     component: PropertiesComponent,

@@ -54,7 +54,7 @@ export const postGuest = async (
     const { first_name, last_name, email, phone_number, address_id, password } =
       req.body;
 
-    let password_hash;
+    let password_hash: string;
 
     if (password) {
       password_hash = await hash(password, 10);
@@ -84,4 +84,3 @@ export const postGuest = async (
     next(err);
   }
 };
-

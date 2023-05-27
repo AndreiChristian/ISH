@@ -11,6 +11,7 @@ import profilesRouter from "./routes/profiles";
 import guestsProfilesRouter from "./routes/guests_profiles";
 import employeesRouter from "./routes/employees";
 import reservationsRouter from "./routes/reservation";
+import profileFacilityRouter from "./routes/profile_facility";
 
 dotenv.config();
 
@@ -37,5 +38,6 @@ app.use("/api", profilesRouter);
 app.use("/api", guestsProfilesRouter);
 app.use("/api", employeesRouter);
 app.use("/api", reservationsRouter);
+app.use("/api", profileFacilityRouter);
 
 app.listen(8080);

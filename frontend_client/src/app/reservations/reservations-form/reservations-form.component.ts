@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Reservation } from '../reservations.component';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservations-form',
@@ -8,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./reservations-form.component.scss'],
 })
 export class ReservationsFormComponent {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   newReservation: Reservation = {
     property_id: 0,
@@ -26,8 +27,10 @@ export class ReservationsFormComponent {
 
   postReservation() {
     console.table(this.newReservation);
-    this.http
-      .post('http://localhost:8080/api/reservations', this.newReservation)
-      .subscribe((data) => console.log(data));
+    // this.http
+    //   .post('http://localhost:8080/api/reservations', this.newReservation)
+    //   .subscribe((data) => console.log(data));
+
+    this.router.navigate(['reservations', 'confirmation']);
   }
 }

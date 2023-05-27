@@ -1,5 +1,14 @@
-<span *ngFor="let facility of facilities$ | async">
-  <h1>{{facility.name}}</h1>
-  <div>{{facility.description}}</div>
-  <img [src]="facility.image_url" style="width: 100px; height: 100px; ">
-</span>
+<h1>Profiles</h1>
+
+<h1>Configure</h1>
+<div class="container" *ngFor="let facility of facilities$ | async">
+  <span>
+    <h4>{{facility.name}}</h4>
+    <div>{{facility.description}}</div>
+    <img
+      src="https://cdn.shopify.com/s/files/1/0131/6713/2731/products/veuve_clicquot_473x473.png?v=1547224326"
+      style="width: 100px; height: 100px; ">
+  </span>
+  <br>
+  <button>Add</button>
+</div>

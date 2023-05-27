@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 export interface Guest {
@@ -24,4 +25,13 @@ export class AuthComponent {
     addressId: 0,
     phoneNumber: '',
   };
+
+  constructor(private http: HttpClient) {}
+
+  submit() {
+    console.table(this.newGuest);
+    this.http
+      .post('http://localhost:8080/api/guests', this.newGuest)
+      .subscribe((data) => console.log(data));
+  }
 }

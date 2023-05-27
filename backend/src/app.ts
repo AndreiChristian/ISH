@@ -12,6 +12,8 @@ import guestsProfilesRouter from "./routes/guests_profiles";
 import employeesRouter from "./routes/employees";
 import reservationsRouter from "./routes/reservation";
 import profileFacilityRouter from "./routes/profile_facility";
+import { Server, Socket } from "socket.io";
+import { websocket } from "./websocket/websocket";
 
 dotenv.config();
 
@@ -40,4 +42,10 @@ app.use("/api", employeesRouter);
 app.use("/api", reservationsRouter);
 app.use("/api", profileFacilityRouter);
 
-app.listen(8080);
+const server = app.listen(8080);
+
+const io = websocket.init(server);
+
+io.on("connection", (socket: Socket) => {
+  console.log("client connected");
+});

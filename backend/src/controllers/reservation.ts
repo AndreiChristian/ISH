@@ -1,5 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import { db } from "../db";
+import { websocket } from "../websocket/websocket";
+
+const io = websocket;
 
 export const getReservationsList = async (
   req: Request,
@@ -47,16 +50,6 @@ export const postReservation = async (
     total_price,
   } = req.body;
 
-//   console.table({
-//     property_id,
-//     start_date,
-//     end_date,
-//     adults,
-//     kids,
-//     status,
-//     total_price,
-//   });
-
   try {
     const { rows } = await db.query(
       `INSERT INTO reservations (property_id, start_date, end_date, adults, kids, status, total_price) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING * `,
@@ -66,6 +59,8 @@ export const postReservation = async (
     if (!rows[0]) {
       throw new Error("could not store reservation");
     }
+
+    io.getIO().emit("reservation", { action: "new reservation" });
 
     res.json(rows);
   } catch (err) {

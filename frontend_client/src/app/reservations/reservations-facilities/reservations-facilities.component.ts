@@ -3,6 +3,11 @@ import { Facility } from '../reservations-configure/reservations-configure.compo
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+export interface ProfileFacility {
+  profile_id: number;
+  facility_id: number;
+  requested_call: boolean;
+}
 @Component({
   selector: 'app-reservations-facilities',
   templateUrl: './reservations-facilities.component.html',
@@ -13,10 +18,23 @@ export class ReservationsFacilitiesComponent {
 
   facilities$: Observable<Facility[]>;
 
+  newProfileFacility: ProfileFacility = {
+    requested_call: false,
+    facility_id: 1,
+    profile_id: 1,
+  };
+
   ngOnInit(): void {
     this.facilities$ = this.http.get<Facility[]>(
       'http://localhost:8080/api/facilities'
     );
     this.facilities$.subscribe((data) => console.log(data));
+  }
+
+  postFacility(facility_id: number) {
+    this.http.post(
+      'http://localhost:8080/api/profile_facilities',
+      this.newProfileFacility
+    );
   }
 }

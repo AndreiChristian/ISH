@@ -27,9 +27,9 @@ export class ReservationsFormComponent {
 
   postReservation() {
     console.table(this.newReservation);
-    // this.http
-    //   .post('http://localhost:8080/api/reservations', this.newReservation)
-    //   .subscribe((data) => console.log(data));
+    this.http
+      .post('http://localhost:8080/api/reservations', this.newReservation)
+      .subscribe((data) => console.log(data));
 
     this.router.navigate(['reservations', 'confirmation']);
   }

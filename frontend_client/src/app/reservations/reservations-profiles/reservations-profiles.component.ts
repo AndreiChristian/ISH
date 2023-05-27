@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ReservationsService } from '../reservations.service';
 
 @Component({
   selector: 'app-reservations-profiles',
@@ -8,7 +9,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./reservations-profiles.component.scss'],
 })
 export class ReservationsProfilesComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private reservationsService: ReservationsService
+  ) {}
 
   profiles$: Observable<any>;
 
@@ -17,5 +21,9 @@ export class ReservationsProfilesComponent implements OnInit {
       'http://localhost:8080/api/guests_profiles/6'
     );
     this.profiles$.subscribe((data) => console.log(data));
+  }
+
+  selectProfile(profile: any) {
+    this.reservationsService.selectProfile(profile);
   }
 }

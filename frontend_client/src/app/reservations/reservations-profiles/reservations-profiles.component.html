@@ -1,6 +1,7 @@
 
 <span *ngIf="profiles$|async" style="outline: 4px solid black;">
   <div *ngFor="let profile of profiles$ | async">
-    <button><h4>{{profile.first_name}} {{profile.last_name}} </h4></button>
+    <button (click)="selectProfile(profile)"><h4>{{profile.first_name}}
+        {{profile.last_name}} </h4></button>
   </div>
 </span>

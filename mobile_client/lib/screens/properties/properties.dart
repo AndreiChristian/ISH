@@ -61,11 +61,11 @@ class CardWidget extends StatelessWidget {
       builder: (context, constraints) {
         if (constraints.maxWidth > 600) {
           return Center(
-            child: Text('Card $index', style: TextStyle(fontSize: 32)),
+            child: Text('Card $index', style: const TextStyle(fontSize: 32)),
           );
         } else {
           return Center(
-            child: Text('Card $index', style: TextStyle(fontSize: 24)),
+            child: Text('Card $index', style: const TextStyle(fontSize: 24)),
           );
         }
       },

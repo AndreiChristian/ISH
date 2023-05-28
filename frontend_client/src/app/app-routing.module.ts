@@ -10,6 +10,8 @@ import { ReservationsFormComponent } from './reservations/reservations-form/rese
 import { ReservationsConfigureComponent } from './reservations/reservations-configure/reservations-configure.component';
 import { AuthComponent } from './auth/auth.component';
 import { NavigationComponent } from './UI/navigation/navigation.component';
+import { ReservationsFacilitiesCategoryComponent } from './reservations/reservations-facilities/reservations-facilities-category/reservations-facilities-category.component';
+import { ReservationsFacilitiesComponent } from './reservations/reservations-facilities/reservations-facilities.component';
 
 const routes: Routes = [
   {
@@ -34,7 +36,13 @@ const routes: Routes = [
     children: [
       { path: '', component: ReservationsFormComponent },
       { path: 'confirmation', component: ConfirmComponent },
-      { path: 'configure', component: ReservationsConfigureComponent },
+      {
+        path: 'configure',
+        component: ReservationsFacilitiesComponent,
+        children: [
+          { path: ':id', component: ReservationsFacilitiesCategoryComponent },
+        ],
+      },
     ],
   },
 ];

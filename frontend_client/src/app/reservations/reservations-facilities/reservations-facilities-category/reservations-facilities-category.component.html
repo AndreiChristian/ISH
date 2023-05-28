@@ -1,1 +1,9 @@
-<p>reservations-facilities-category works!</p>
+<h3>FacilityCategory : {{(facilitiesCategory$ | async).name }}</h3>
+
+<button (click)="navigateToPreviousCategory()">
+  Previous
+</button>
+
+<button (click)="navigateToNextCategory()">
+  Next
+</button>

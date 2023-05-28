@@ -15,46 +15,12 @@ export interface ProfileFacility {
   styleUrls: ['./reservations-facilities.component.scss'],
 })
 export class ReservationsFacilitiesComponent implements OnInit, OnDestroy {
-  constructor(
-    private http: HttpClient,
-    private reservationsService: ReservationsService
-  ) {}
-
-  facilities$: Observable<Facility[]>;
-
-  subscription: Subscription;
-
-  profile_id: number;
+  constructor(private reservationsService: ReservationsService) {}
 
   ngOnInit(): void {
-    this.facilities$ = this.http.get<Facility[]>(
-      'http://localhost:8080/api/facilities'
-    );
-    this.facilities$.subscribe((data) => console.log(data));
-    this.subscription = this.reservationsService.selectedProfile$.subscribe(
-      (data) => {
-        if (data) {
-          this.profile_id = data.id;
-        }
-      }
-    );
+    this.reservationsService.getFacilityCategories();
+    console.log('fetching data');
   }
 
-  postFacility(facility_id: number) {
-    const newProfileFacility: ProfileFacility = {
-      facility_id,
-      profile_id: this.profile_id,
-      requested_call: false,
-    };
-
-    console.log(newProfileFacility);
-
-    this.http
-      .post('http://localhost:8080/api/profile_facility', newProfileFacility)
-      .subscribe((data) => console.log(data));
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
+  ngOnDestroy(): void {}
 }

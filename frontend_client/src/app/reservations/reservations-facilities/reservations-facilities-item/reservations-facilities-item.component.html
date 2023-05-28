@@ -1,1 +1,7 @@
-<p>reservations-facilities-item works!</p>
+<section>
+  <div *ngFor="let facility of facilities$ | async">
+    <span>{{facility.name}}</span>
+    <img
+      src="https://drive.google.com/uc?export=view&id=1dpXjf9dY97B9xjNCAZ7WbZtJNrR3sL8z" />
+  </div>
+</section>

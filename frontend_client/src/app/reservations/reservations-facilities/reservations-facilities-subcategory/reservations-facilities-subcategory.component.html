@@ -1,1 +1,5 @@
-<p>reservations-facilities-subcategory works!</p>
+
+<div *ngFor="let subcategory of facilitiesSubcategories$ | async">
+  <h4>{{subcategory.name}}</h4>
+  <app-reservations-facilities-item [subcategory_id]="subcategory.id"></app-reservations-facilities-item>
+</div>

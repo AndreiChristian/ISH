@@ -1,39 +1,57 @@
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from '../services/local-storage.service';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { of, BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private currentUserSubject: BehaviorSubject<any>;
+  public currentUser: Observable<any>;
+  public isLoggedIn: Observable<boolean>; // <-- Add this line
+
   constructor(
     private storageService: LocalStorageService,
     private http: HttpClient
-  ) {}
+  ) {
+    this.currentUserSubject = new BehaviorSubject<any>(
+      this.storageService.retrieveData('guest')
+    );
+    this.currentUser = this.currentUserSubject.asObservable();
+    this.isLoggedIn = this.currentUserSubject
+      .asObservable()
+      .pipe(map((user) => !!user)); // <-- And this line
+  }
 
-  login(email: string, password: string): Observable<any> {
+  public get currentUserValue() {
+    return this.currentUserSubject.value;
+  }
+
+  login(email: string, password: string) {
     return this.http
       .post('http://localhost:8080/auth/login', { email, password })
       .pipe(
         map((data: any) => {
-          if (data.error) {
+          if (data && !data.error) {
+            this.storageService.storeData('guest', data);
+            this.currentUserSubject.next(data);
+          } else {
             throw new Error('Invalid credentials');
           }
-
-          // store only the necessary data, not the entire response
-          this.storageService.storeData('guest', data);
-
-          return data;
         }),
         catchError((err) => {
-          console.error(err);
-          return throwError(err);
+          console.log(err);
+          throw err;
         })
       );
   }
 
-
-
+  logout() {
+    // Remove user from local storage
+    this.storageService.removeData('guest');
+    // Set current user to null
+    this.currentUserSubject.next(null);
+  }
 }

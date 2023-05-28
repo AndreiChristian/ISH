@@ -1,15 +1,18 @@
 <div>
-  <label for="password">Password:</label>
-  <input type="password" id="password" [(ngModel)]="guest.password"
-    name="password" required>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" [(ngModel)]="guest.password"
+      name="password" required>
+  </div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" [(ngModel)]="guest.email" name="email"
+      required>
+  </div>
+
+  <p *ngIf="invalidCredentials">Invalid Credentials</p>
+
+  <button (click)="login()">Login</button>
+
 </div>
-
-<div>
-  <label for="email">Email:</label>
-  <input type="email" id="email" [(ngModel)]="guest.email" name="email"
-    required>
-</div>
-
-<p *ngIf="invalidCredentials">Invalid Credentials</p>
-
-<button (click)="login()">Login</button>

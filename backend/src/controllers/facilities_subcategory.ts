@@ -20,6 +20,33 @@ export const getFacilitySubcategoryList = async (
   }
 };
 
+export const getOneFacilitySubcategoryByCategory = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { categoryId } = req.params;
+    console.log(categoryId);
+
+    const { rows } = await db.query(
+      `SELECT *
+        FROM facilities_subcategory
+        WHERE category_id = $1`,
+      [categoryId]
+    );
+
+    if (!rows[0]) {
+      throw new Error("no data");
+    }
+
+    res.json(rows);
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};
+
 export const getOneFacilitySubcategory = async (
   req: Request,
   res: Response,
@@ -49,12 +76,12 @@ export const postFacilitySubcategory = async (
   next: NextFunction
 ) => {
   try {
-    const { name } = req.body;
+    const { name, category_id } = req.body;
 
     const { rows } = await db.query(
-      `INSERT INTO facilities_subcategory(name)
-        VALUES ($1) RETURNING *`,
-      [name]
+      `INSERT INTO facilities_subcategory(name, category_id)
+        VALUES ($1, $2) RETURNING *`,
+      [name, category_id]
     );
 
     if (!rows[0]) {

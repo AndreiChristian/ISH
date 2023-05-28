@@ -3,6 +3,7 @@ import {
   deleteFacilitySubcategory,
   getFacilitySubcategoryList,
   getOneFacilitySubcategory,
+  getOneFacilitySubcategoryByCategory,
   patchFacilitySubcategory,
   postFacilitySubcategory,
 } from "../controllers/facilities_subcategory";
@@ -10,6 +11,12 @@ import {
 const router = Router();
 
 router.get("/facilities_subcategory", getFacilitySubcategoryList);
+
+router.get(
+  "/facilities_subcategory/category/:categoryId",
+  getOneFacilitySubcategoryByCategory
+);
+
 router.get(
   "/facilities_subcategory/:facilitySubcategoryId",
   getOneFacilitySubcategory

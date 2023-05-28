@@ -7,7 +7,7 @@ export const getFacilitySubcategoryList = async (
   next: NextFunction
 ) => {
   try {
-    const { rows } = await db.query("", []);
+    const { rows } = await db.query("SELECT * FROM facilities_subcategory", []);
 
     if (!rows[0]) {
       throw new Error("no data");
@@ -26,7 +26,12 @@ export const getOneFacilitySubcategory = async (
   next: NextFunction
 ) => {
   try {
-    const { rows } = await db.query("", []);
+    const { facilitySubcategoryId } = req.params;
+
+    const { rows } = await db.query(
+      "SELECT * FROM facilities_subcategory WHERE id = $1",
+      [facilitySubcategoryId]
+    );
 
     if (!rows[0]) {
       throw new Error("no data");
@@ -44,7 +49,13 @@ export const postFacilitySubcategory = async (
   next: NextFunction
 ) => {
   try {
-    const { rows } = await db.query("", []);
+    const { name } = req.body;
+
+    const { rows } = await db.query(
+      `INSERT INTO facilities_subcategory(name)
+        VALUES ($1) RETURNING *`,
+      [name]
+    );
 
     if (!rows[0]) {
       throw new Error("no data");

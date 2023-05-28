@@ -7,7 +7,7 @@ export const getFacilityCategoryList = async (
   next: NextFunction
 ) => {
   try {
-    const { rows } = await db.query("", []);
+    const { rows } = await db.query(`SELECT * FROM facilities_category`, []);
 
     if (!rows[0]) {
       throw new Error("no data");
@@ -26,7 +26,12 @@ export const getOneFacilityCategory = async (
   next: NextFunction
 ) => {
   try {
-    const { rows } = await db.query("", []);
+    const { facilityCategoryId } = req.params;
+
+    const { rows } = await db.query(
+      "SELECT * FROM facilities_category WHERE id = $1",
+      [facilityCategoryId]
+    );
 
     if (!rows[0]) {
       throw new Error("no data");
@@ -44,7 +49,13 @@ export const postFacilityCategory = async (
   next: NextFunction
 ) => {
   try {
-    const { rows } = await db.query("", []);
+    const { name } = req.body;
+
+    const { rows } = await db.query(
+      `INSERT INTO facilities_category(name)
+    VALUES ($1) RETURNING *`,
+      [name]
+    );
 
     if (!rows[0]) {
       throw new Error("no data");

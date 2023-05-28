@@ -17,9 +17,11 @@ export interface ProfileFacility {
 export class ReservationsFacilitiesComponent implements OnInit, OnDestroy {
   constructor(private reservationsService: ReservationsService) {}
 
+  facilityCategories: Observable<any>;
+
   ngOnInit(): void {
     this.reservationsService.getFacilityCategories();
-    console.log('fetching data');
+    this.facilityCategories = this.reservationsService.facilityCategories$;
   }
 
   ngOnDestroy(): void {}

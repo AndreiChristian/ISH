@@ -1,3 +1,6 @@
-<h1>Reservations Facility Component</h1>
-
-<router-outlet></router-outlet>
+<mat-tab-group>
+  <mat-tab [label]="category.name"
+    *ngFor="let category of facilityCategories| async">
+    <app-reservations-facilities-category [facilityCategory]="category"></app-reservations-facilities-category>
+  </mat-tab>
+</mat-tab-group>

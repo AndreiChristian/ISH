@@ -17,4 +17,8 @@ export interface Reservation {
   templateUrl: './reservations.component.html',
   styleUrls: ['./reservations.component.scss'],
 })
-export class ReservationsComponent {}
+export class ReservationsComponent implements OnInit {
+  constructor(private http: HttpClient) {}
+
+  ngOnInit(): void {}
+}

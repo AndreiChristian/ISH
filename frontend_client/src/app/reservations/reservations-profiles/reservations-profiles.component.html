@@ -1,4 +1,4 @@
-
+<h4>Profiles</h4>
 <span *ngIf="profiles$|async" style="outline: 4px solid black;">
   <div *ngFor="let profile of profiles$ | async">
     <button (click)="selectProfile(profile)"><h4>{{profile.first_name}}

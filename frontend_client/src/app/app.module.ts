@@ -24,6 +24,9 @@ import { AuthComponent } from './auth/auth.component';
 import { ReservationsProfilesComponent } from './reservations/reservations-profiles/reservations-profiles.component';
 import { ReservationsFacilitiesComponent } from './reservations/reservations-facilities/reservations-facilities.component';
 import { ReservationsDrawerComponent } from './reservations/reservations-drawer/reservations-drawer.component';
+import { ReservationsFacilitiesCategoryComponent } from './reservations/reservations-facilities/reservations-facilities-category/reservations-facilities-category.component';
+import { ReservationsFacilitiesSubcategoryComponent } from './reservations/reservations-facilities/reservations-facilities-subcategory/reservations-facilities-subcategory.component';
+import { ReservationsFacilitiesItemComponent } from './reservations/reservations-facilities/reservations-facilities-item/reservations-facilities-item.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,9 @@ import { ReservationsDrawerComponent } from './reservations/reservations-drawer/
     ReservationsProfilesComponent,
     ReservationsFacilitiesComponent,
     ReservationsDrawerComponent,
+    ReservationsFacilitiesCategoryComponent,
+    ReservationsFacilitiesSubcategoryComponent,
+    ReservationsFacilitiesItemComponent,
   ],
   imports: [
     BrowserModule,

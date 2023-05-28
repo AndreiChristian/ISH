@@ -9,16 +9,23 @@ import { ConfirmComponent } from './reservations/confirm/confirm.component';
 import { ReservationsFormComponent } from './reservations/reservations-form/reservations-form.component';
 import { ReservationsConfigureComponent } from './reservations/reservations-configure/reservations-configure.component';
 import { AuthComponent } from './auth/auth.component';
+import { NavigationComponent } from './UI/navigation/navigation.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'auth', component: AuthComponent },
   {
-    path: 'properties',
-    component: PropertiesComponent,
+    path: '',
+    component: NavigationComponent,
     children: [
-      { path: '', component: PropertiesListComponent },
-      { path: ':id', component: PropertiesItemComponent },
+      { path: '', component: HomeComponent },
+      { path: 'auth', component: AuthComponent },
+      {
+        path: 'properties',
+        component: PropertiesComponent,
+        children: [
+          { path: '', component: PropertiesListComponent },
+          { path: ':id', component: PropertiesItemComponent },
+        ],
+      },
     ],
   },
   {

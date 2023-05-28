@@ -1,6 +1,6 @@
 <div style="display: flex; flex-direction: column;  gap: 1vh;">
-  <label for="propertyId">Property ID:</label>
-  <input type="number" id="propertyId" [(ngModel)]="newReservation.property_id">
+
+  <h3> Property Name {{(property$| async).name}}</h3>
 
   <label for="adults">Number of Adults:</label>
   <input type="number" id="adults" [(ngModel)]="newReservation.adults">

@@ -36,14 +36,19 @@ export class ReservationsFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.property$ = this.propertiesService.selectedProperty$;
     this.subscription = this.property$.subscribe(
-      (data) => (this.propertyId = data)
+      (data) => ((this.propertyId = data.id), console.log(this.propertyId))
     );
   }
 
   postReservation() {
+    const reservationToPost: Reservation = {
+      ...this.newReservation,
+      property_id: this.propertyId,
+    };
+
     console.table(this.newReservation);
     this.http
-      .post('http://localhost:8080/api/reservations', this.newReservation)
+      .post('http://localhost:8080/api/reservations', reservationToPost)
       .subscribe((data) => console.log(data));
 
     this.router.navigate(['reservations', 'confirmation']);

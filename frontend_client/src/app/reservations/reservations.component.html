@@ -1,4 +1,23 @@
-<h1>Reservations</h1>
-
-<router-outlet></router-outlet>
-
+<mat-drawer-container class="example-container">
+  <mat-drawer-content class="container">
+    <mat-toolbar color="primary" style="gap: 2vh;">
+      <span>frontend_client</span>
+      <span class="spacer"></span>
+      <a routerLink="/">Home</a>
+      <a routerLink="/properties">Properties</a>
+      <a routerLink="/reservations">Reservations</a>
+      <a routerLink="/auth">Auth</a>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+  <mat-drawer #drawer mode="side" opened position="end" class="sidenav"
+    fixedInViewport>Drawer
+    content</mat-drawer>
+</mat-drawer-container>

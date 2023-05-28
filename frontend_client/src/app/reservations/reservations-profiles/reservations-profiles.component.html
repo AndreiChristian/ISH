@@ -1,7 +1,10 @@
 <h4>Profiles</h4>
 <span *ngIf="profiles$|async" style="outline: 4px solid black;">
   <div *ngFor="let profile of profiles$ | async">
-    <button (click)="selectProfile(profile)"><h4>{{profile.first_name}}
+    <button mat-stroked-button
+      class="profile-button"
+      [color]="profile.id === (selectedProfile$|async).id? 'primary':''"
+      (click)="selectProfile(profile)"><h4>{{profile.first_name}}
         {{profile.last_name}} </h4></button>
   </div>
 </span>

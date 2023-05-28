@@ -21,6 +21,7 @@ export class ReservationsService {
   getProfiles() {}
 
   selectProfile(profile: any) {
+    console.log(profile);
     this.selectedProfileSubject.next(profile);
   }
 
@@ -29,16 +30,6 @@ export class ReservationsService {
       'http://localhost:8080/api/facilities_category'
     );
   }
-
-  // getFacilityCategoriesArray(): any[] {
-  //   let categoriesArray: any[];
-  //   this.http
-  //     .get<any[]>('http://localhost:8080/api/facilities_category')
-  //     .subscribe((data) => {
-  //       categoriesArray = data;
-  //     });
-  //   return categoriesArray;
-  // }
 
   getOneFacilityCategory(id: number): Observable<any> {
     const facilityCategory$ = this.facilityCategories$.pipe(

@@ -14,12 +14,15 @@ export class ReservationsProfilesComponent implements OnInit {
     private reservationsService: ReservationsService
   ) {}
 
+  selectedProfile$: Observable<any>;
+
   profiles$: Observable<any>;
 
   ngOnInit(): void {
     this.profiles$ = this.http.get(
       'http://localhost:8080/api/guests_profiles/6'
     );
+    this.selectedProfile$ = this.reservationsService.selectedProfile$;
     this.profiles$.subscribe((data) => console.log(data));
   }
 

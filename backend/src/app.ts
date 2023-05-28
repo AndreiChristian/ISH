@@ -1,6 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
+import { Server, Socket } from "socket.io";
+import { websocket } from "./websocket/websocket";
 
 import propertiesRouter from "./routes/properties";
 import facilitiesRouter from "./routes/facility";
@@ -12,8 +14,8 @@ import guestsProfilesRouter from "./routes/guests_profiles";
 import employeesRouter from "./routes/employees";
 import reservationsRouter from "./routes/reservation";
 import profileFacilityRouter from "./routes/profile_facility";
-import { Server, Socket } from "socket.io";
-import { websocket } from "./websocket/websocket";
+import facilityCategoryRouter from "./routes/facilities_category";
+import facilitySubcategoryRouter from "./routes/facilities_subcategory";
 
 dotenv.config();
 
@@ -41,6 +43,8 @@ app.use("/api", guestsProfilesRouter);
 app.use("/api", employeesRouter);
 app.use("/api", reservationsRouter);
 app.use("/api", profileFacilityRouter);
+app.use("/api", facilityCategoryRouter);
+app.use("/api", facilitySubcategoryRouter);
 
 const server = app.listen(8080);
 

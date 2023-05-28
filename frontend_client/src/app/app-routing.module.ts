@@ -12,6 +12,9 @@ import { AuthComponent } from './auth/auth.component';
 import { NavigationComponent } from './UI/navigation/navigation.component';
 import { ReservationsFacilitiesCategoryComponent } from './reservations/reservations-facilities/reservations-facilities-category/reservations-facilities-category.component';
 import { ReservationsFacilitiesComponent } from './reservations/reservations-facilities/reservations-facilities.component';
+import { LoginComponent } from './auth/login/login.component';
+import { LogoutComponent } from './auth/logout/logout.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 const routes: Routes = [
   {
@@ -19,7 +22,15 @@ const routes: Routes = [
     component: NavigationComponent,
     children: [
       { path: '', component: HomeComponent },
-      { path: 'auth', component: AuthComponent },
+      {
+        path: 'auth',
+        component: AuthComponent,
+        children: [
+          { path: 'login', component: LoginComponent },
+          { path: 'logout', component: LogoutComponent },
+          { path: 'signup', component: SignupComponent },
+        ],
+      },
       {
         path: 'properties',
         component: PropertiesComponent,

@@ -17,21 +17,5 @@ export interface Guest {
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent {
-  newGuest: Guest = {
-    first_name: '',
-    last_name: '',
-    password: '',
-    email: '',
-    addressId: 0,
-    phoneNumber: '',
-  };
 
-  constructor(private http: HttpClient) {}
-
-  submit() {
-    console.table(this.newGuest);
-    this.http
-      .post('http://localhost:8080/api/guests', this.newGuest)
-      .subscribe((data) => console.log(data));
-  }
 }

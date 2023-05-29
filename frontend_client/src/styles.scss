@@ -35,7 +35,7 @@ $frontend_client-theme: mat.define-light-theme(
 @include mat.all-component-themes($frontend_client-theme);
 
 /* You can add global styles to this file, and also import other style files */
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital@0;1&family=Nanum+Myeongjo&family=Playfair+Display:wght@500&display=swap");
 html,
 body {
   height: 100%;
@@ -43,5 +43,5 @@ body {
 body {
   margin: 0;
   // font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-family: "Playfair Display", serif;
+  font-family: "Bodoni Moda", serif;
 }

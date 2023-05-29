@@ -1,5 +1,7 @@
 <section>
-  <div *ngFor="let facility of facilities$ | async">
+  <div *ngFor="let facility of facilities$ | async"
+    (click)="selectFacility(facility)"
+    [ngClass]="{'selected':isFacilitySelectedFunc(facility)}">
     <span>{{facility.name}}</span>
     <img
       src="https://drive.google.com/uc?export=view&id=1dpXjf9dY97B9xjNCAZ7WbZtJNrR3sL8z" />

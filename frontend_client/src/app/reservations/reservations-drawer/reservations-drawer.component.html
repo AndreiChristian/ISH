@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Selected Facilities</h1>
+  <ul>
+    <li *ngFor="let f of selectedFacilities$ | async">
+      <span>{{f.name}}</span>
+      <mat-icon (click)="toggleFacility(f)">clear</mat-icon>
+    </li>
+  </ul>
+
+</div>

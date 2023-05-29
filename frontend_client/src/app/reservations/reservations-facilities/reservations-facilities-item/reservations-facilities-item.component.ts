@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ReservationsService } from '../../reservations.service';
 
 @Component({
   selector: 'app-reservations-facilities-item',
@@ -12,7 +13,12 @@ export class ReservationsFacilitiesItemComponent implements OnInit, OnDestroy {
 
   facilities$: Observable<any>;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private reservationsService: ReservationsService
+  ) {}
+
+  isSelected: Observable<boolean>;
 
   ngOnInit(): void {
     this.facilities$ = this.http.get(
@@ -20,5 +26,17 @@ export class ReservationsFacilitiesItemComponent implements OnInit, OnDestroy {
     );
   }
 
+  selectFacility(facility: any) {
+    this.reservationsService.toggleFacility(facility);
+  }
+
   ngOnDestroy(): void {}
+
+  isFacilitySelectedFunc(facility): boolean {
+    let isFacilitySelected: boolean;
+    this.reservationsService
+      .isFacilitySelected(facility)
+      .subscribe((data) => (isFacilitySelected = data));
+    return isFacilitySelected;
+  }
 }

@@ -13,10 +13,30 @@ export class ReservationsService {
   private facilityCategoriesSubject = new BehaviorSubject<any>([]);
   public facilityCategories$: Observable<any>;
 
-  private facilitySubcategoriesSubject = new BehaviorSubject<any>([]);
+  private facilitySubcategoriesSubject = new BehaviorSubject<any[]>([]);
   public facilitySubcategories$: Observable<any>;
 
+  private selectedFacilitiesSubject = new BehaviorSubject<any>([]);
+  public selectedFacilities$ = this.selectedFacilitiesSubject.asObservable();
+
   constructor(private http: HttpClient) {}
+
+  toggleFacility(facility: any) {
+    let currentFacilities: any[] = this.selectedFacilitiesSubject.getValue();
+    if (currentFacilities.includes(facility)) {
+      currentFacilities = currentFacilities.filter((f) => f !== facility);
+    } else {
+      currentFacilities.push(facility);
+    }
+    console.table(currentFacilities);
+    this.selectedFacilitiesSubject.next(currentFacilities);
+  }
+
+  isFacilitySelected(facility: any): Observable<boolean> {
+    return this.selectedFacilities$.pipe(
+      map((facilities) => facilities.includes(facility))
+    );
+  }
 
   getProfiles() {}
 

@@ -42,6 +42,29 @@ export const getOneFacility = async (
     return next(err);
   }
 };
+export const getOneFacilityBySubcategory = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { subcategoryId } = req.params;
+
+  try {
+    const { rows } = await db.query(
+      "SELECT * FROM facilities WHERE subcategory_id = $1",
+      [subcategoryId]
+    );
+
+    if (!rows[0]) {
+      throw new Error("no data");
+    }
+
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    return next(err);
+  }
+};
 
 export const postFacility = async (
   req: Request,
@@ -101,9 +124,10 @@ export const deleteFacility = async (
   try {
     const { facilityId } = req.params;
 
-    const { rowCount } = await db.query("DELETE FROM facilities WHERE id = $1", [
-      facilityId,
-    ]);
+    const { rowCount } = await db.query(
+      "DELETE FROM facilities WHERE id = $1",
+      [facilityId]
+    );
 
     if (rowCount === 0) {
       throw new Error("could not delete facility");

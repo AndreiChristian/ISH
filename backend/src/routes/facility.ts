@@ -3,16 +3,21 @@ import {
   deleteFacility,
   getFacilityList,
   getOneFacility,
+  getOneFacilityBySubcategory,
   patchFacility,
   postFacility,
 } from "../controllers/facility";
 
 const router = Router();
 
-
 router.get("/facilities", getFacilityList);
 
-router.get("facilities/:facilityId", getOneFacility);
+router.get("/facilities/:facilityId", getOneFacility);
+
+router.get(
+  "/facilities/subcategory/:subcategoryId",
+  getOneFacilityBySubcategory
+);
 
 router.post("/facilities", postFacility);
 

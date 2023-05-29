@@ -1,0 +1,42 @@
+.container {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.7)),
+    url("https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=626&q=80");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 10vh;
+  gap: 3vh;
+  flex-direction: column;
+}
+
+.form-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30vw;
+  margin: 0 auto;
+  border-bottom: 1px solid white;
+}
+
+input {
+  background-color: inherit;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: inherit;
+  text-align: center;
+}
+
+button {
+  background-color: inherit;
+  border: 1px solid white;
+  color: inherit;
+  font-family: inherit;
+  padding: 1vh 1vw;
+}

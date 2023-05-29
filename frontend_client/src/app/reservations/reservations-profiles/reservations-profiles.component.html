@@ -1,10 +1,18 @@
-<h4>Profiles</h4>
-<span *ngIf="profiles$|async" style="outline: 4px solid black;">
-  <div *ngFor="let profile of profiles$ | async">
-    <button mat-stroked-button
-      class="profile-button"
-      [color]="profile.id === (selectedProfile$|async).id? 'primary':''"
-      (click)="selectProfile(profile)"><h4>{{profile.first_name}}
-        {{profile.last_name}} </h4></button>
-  </div>
+<h2>Profiles</h2>
+<span *ngIf="profiles$|async" class="list">
+
+  <button
+    *ngFor="let profile of profiles$ | async"
+    mat-stroked-button
+    class="profile-button"
+    [color]="profile.id === (selectedProfile$|async).id? 'primary':''"
+    (click)="selectProfile(profile)"><h4>{{profile.first_name}}
+      {{profile.last_name}} </h4></button>
+  <button mat-stroked-button color="primary" class="profile-button"
+    (click)="openDialog()"> Create New
+    Profile</button>
+</span>
+
+<span *ngIf="!(profiles$| async)">
+  <h4>No profiles yet!</h4>
 </span>

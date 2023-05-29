@@ -1,4 +1,20 @@
 .profile-button {
-  width: 70%;
-  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+}
+
+h2 {
+  margin: 0 25px;
+}
+
+button {
+  font-family: inherit;
+}
+
+.list {
+  margin: 0 25px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 25px;
 }

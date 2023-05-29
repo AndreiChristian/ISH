@@ -10,6 +10,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [],
   imports: [
@@ -24,6 +25,7 @@ import { MatCardModule } from '@angular/material/card';
     MatNativeDateModule,
     MatFormFieldModule,
     MatCardModule,
+    MatDialogModule,
   ],
   exports: [
     LayoutModule,
@@ -37,6 +39,7 @@ import { MatCardModule } from '@angular/material/card';
     MatNativeDateModule,
     MatFormFieldModule,
     MatCardModule,
+    MatDialogModule,
   ],
 })
 export class MaterialModule {}

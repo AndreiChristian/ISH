@@ -1,0 +1,21 @@
+.form-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  border-bottom: 1px solid black;
+}
+
+input {
+  background-color: inherit;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: inherit;
+  text-align: center;
+}
+* {
+  font-family: inherit;
+  color: black;
+}

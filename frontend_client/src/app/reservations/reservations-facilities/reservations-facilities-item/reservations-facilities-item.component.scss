@@ -4,10 +4,38 @@ img {
   object-fit: cover;
 }
 
-div {
-  border: 1px solid black;
+section {
+  width: 97%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0 auto;
 }
 
 .selected {
-  border: 2px solid green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 30%;
+  height: 30%;
+  margin: 1% 1%;
+  border-radius: 10px;
+  box-shadow: 0 0 3px 3px rgba(81, 203, 120, 0.555);
+  border-radius: 10px;
+  padding: 0.5%;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 0 3px 3px rgba(204, 204, 204, 0.325);
+  width: 30%;
+  height: 30%;
+  margin: 1% 1%;
+  border-radius: 10px;
+  padding: 0.5%;
 }

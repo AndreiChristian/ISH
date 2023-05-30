@@ -1,0 +1,17 @@
+<mat-toolbar style="gap: 2vh;">
+  <span>frontend_client</span>
+  <span class="spacer"></span>
+  <a routerLink="/">Home</a>
+  <a routerLink="/properties">Properties</a>
+  <a routerLink="/reservations">Reservations</a>
+  <a *ngIf="!(isLoggedIn | async)" routerLink="/auth/login">Login</a>
+  <span *ngIf="isLoggedIn |async" (click)="logout()">Logout</span>
+  <a *ngIf="!(isLoggedIn | async)" routerLink="/auth/signup">Register</a>
+  <button
+    type="button"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    (click)="closeDrawer()">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+</mat-toolbar>

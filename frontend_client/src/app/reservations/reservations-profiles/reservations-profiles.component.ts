@@ -37,7 +37,6 @@ export class ReservationsProfilesComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(ReservationsProfilesDialogComponent, {
-      height: '60vh',
       width: '70vw',
     });
   }

@@ -7,6 +7,10 @@
   border-bottom: 1px solid black;
 }
 
+.header {
+  margin: 0 2vh;
+}
+
 section {
   width: 100%;
   display: flex;
@@ -14,17 +18,26 @@ section {
   justify-content: space-evenly;
   flex-direction: column;
   height: 50vh;
+  // margin: 0 2vh;
 }
 
 input {
   background-color: inherit;
   border: none;
   outline: none;
-  width: 100%;
+  flex: 1;
   color: inherit;
   text-align: center;
 }
-* {
-  font-family: inherit;
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+*,
+h1 {
   color: black;
+  font-family: "Bodoni Moda", serif;
 }

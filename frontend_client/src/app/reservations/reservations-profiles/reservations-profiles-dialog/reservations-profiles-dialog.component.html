@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Create a new Profile</h1>
+<span mat-dialog-title><h1>Create a new Profile</h1></span>
 <section mat-dialog-content>
 
   <div class="form-field">
@@ -22,12 +22,13 @@
   </div>
 
   <div class="form-field">
-    <label for="password">Password</label>
-    <input type="password" id="password" [(ngModel)]="newProfile.password"
-      name="password" required>
+    <label for="phone_number">Phone number</label>
+    <input type="text" id="phone_number" [(ngModel)]="newProfile.phone_number"
+      name="phone_number" required>
   </div>
 
 </section>
-<div mat-dialog-actions>
+<div class="actions" mat-dialog-actions>
   <button mat-button mat-dialog-close>Close</button>
+  <button mat-button color="primary" mat-dialog-close (click)="createProfile()">Add</button>
 </div>

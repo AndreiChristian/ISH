@@ -27,12 +27,10 @@ export class ReservationsProfilesComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.authService.currentUserValue[0].id;
-    console.log(this.userId[0]);
     this.profiles$ = this.http.get(
-      'http://localhost:8080/api/guests_profiles/6'
+      `http://localhost:8080/api/guests_profiles/${this.userId}`
     );
     this.selectedProfile$ = this.reservationsService.selectedProfile$;
-    this.profiles$.subscribe((data) => console.log(data));
   }
 
   openDialog() {

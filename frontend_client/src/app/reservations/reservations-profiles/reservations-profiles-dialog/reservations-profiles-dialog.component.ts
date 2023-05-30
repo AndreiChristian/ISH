@@ -16,8 +16,7 @@ export class ReservationsProfilesDialogComponent implements OnInit {
     first_name: '',
     last_name: '',
     email: '',
-    password: '',
-    phone_number: '0772576199',
+    phone_number: '',
   };
 
   ngOnInit(): void {
@@ -25,8 +24,11 @@ export class ReservationsProfilesDialogComponent implements OnInit {
     console.log(this.userId);
   }
 
-  createPost() {
+  createProfile() {
     const newProfile = { ...this.newProfile, guest_id: this.userId };
-    this.http.post('', newProfile);
+    this.http
+      .post('http://localhost:8080/api/profiles', newProfile)
+      .subscribe((data) => console.log(data));
+    // console.table(newProfile);
   }
 }

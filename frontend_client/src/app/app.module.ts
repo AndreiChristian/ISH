@@ -33,6 +33,9 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { ReservationsProfilesDialogComponent } from './reservations/reservations-profiles/reservations-profiles-dialog/reservations-profiles-dialog.component';
 import { NavbarComponent } from './UI/navbar/navbar.component';
 import { HomeHeroComponent } from './home/home-hero/home-hero.component';
+import { HomeHeroPropertiesComponent } from './home/home-hero/home-hero-properties/home-hero-properties.component';
+import { HomeHeroFacilitiesComponent } from './home/home-hero/home-hero-facilities/home-hero-facilities.component';
+import { HomeHeroMainComponent } from './home/home-hero/home-hero-main/home-hero-main.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +66,9 @@ import { HomeHeroComponent } from './home/home-hero/home-hero.component';
     ReservationsProfilesDialogComponent,
     NavbarComponent,
     HomeHeroComponent,
+    HomeHeroPropertiesComponent,
+    HomeHeroFacilitiesComponent,
+    HomeHeroMainComponent,
   ],
   imports: [
     BrowserModule,

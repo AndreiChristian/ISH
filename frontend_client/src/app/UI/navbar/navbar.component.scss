@@ -1,29 +1,19 @@
-.sidenav-container {
-  height: 100%;
-}
-
-.sidenav {
-  width: 200px;
-}
-
-.sidenav .mat-toolbar {
-  background: inherit;
-}
-
-.mat-toolbar.mat-primary {
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2vh;
+  box-sizing: border-box;
+  padding: 0 2vw;
   position: sticky;
-  top: 0;
-  z-index: 1;
+  height: 7vh;
 }
 
 .spacer {
-  flex: 1 1 0;
-}
-.scrolled-down {
-  color: red;
+  flex: 2;
 }
 
-.mat-toolbar {
+.dark {
   background-color: black;
   color: white;
 }

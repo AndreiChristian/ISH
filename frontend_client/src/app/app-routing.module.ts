@@ -39,19 +39,23 @@ const routes: Routes = [
           { path: ':id', component: PropertiesItemComponent },
         ],
       },
-    ],
-  },
-  {
-    path: 'reservations',
-    component: ReservationsComponent,
-    children: [
-      { path: '', component: ReservationsFormComponent },
-      { path: 'confirmation', component: ConfirmComponent },
+
       {
-        path: 'configure',
-        component: ReservationsFacilitiesComponent,
+        path: 'reservations',
+        component: ReservationsComponent,
         children: [
-          { path: ':id', component: ReservationsFacilitiesCategoryComponent },
+          { path: '', component: ReservationsFormComponent },
+          { path: 'confirmation', component: ConfirmComponent },
+          {
+            path: 'configure',
+            component: ReservationsFacilitiesComponent,
+            children: [
+              {
+                path: ':id',
+                component: ReservationsFacilitiesCategoryComponent,
+              },
+            ],
+          },
         ],
       },
     ],

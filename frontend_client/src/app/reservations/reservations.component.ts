@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 export interface Reservation {
   id?: number;
@@ -20,5 +21,7 @@ export interface Reservation {
 export class ReservationsComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(environment.apiUrl);
+  }
 }

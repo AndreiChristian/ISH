@@ -1,7 +1,13 @@
 .container {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.159), rgba(0, 0, 0, 0.914)),
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.159) 40%, rgb(0, 0, 0)),
     url("../../../assets/images/hero.png");
   background-size: cover;
+}
+
+.tab-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
 }

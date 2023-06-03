@@ -32,6 +32,7 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { ReservationsProfilesDialogComponent } from './reservations/reservations-profiles/reservations-profiles-dialog/reservations-profiles-dialog.component';
 import { NavbarComponent } from './UI/navbar/navbar.component';
+import { HomeHeroComponent } from './home/home-hero/home-hero.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { NavbarComponent } from './UI/navbar/navbar.component';
     SignupComponent,
     ReservationsProfilesDialogComponent,
     NavbarComponent,
+    HomeHeroComponent,
   ],
   imports: [
     BrowserModule,

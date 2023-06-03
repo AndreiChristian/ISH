@@ -37,6 +37,8 @@ import { HomeHeroPropertiesComponent } from './home/home-hero/home-hero-properti
 import { HomeHeroFacilitiesComponent } from './home/home-hero/home-hero-facilities/home-hero-facilities.component';
 import { HomeHeroMainComponent } from './home/home-hero/home-hero-main/home-hero-main.component';
 import { AuthCodeComponent } from './auth/auth-code/auth-code.component';
+import { PropertiesItemDescriptionComponent } from './properties/properties-item/properties-item/properties-item-description/properties-item-description.component';
+import { PropertiesItemGalleryComponent } from './properties/properties-item/properties-item/properties-item-gallery/properties-item-gallery.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +73,8 @@ import { AuthCodeComponent } from './auth/auth-code/auth-code.component';
     HomeHeroFacilitiesComponent,
     HomeHeroMainComponent,
     AuthCodeComponent,
+    PropertiesItemDescriptionComponent,
+    PropertiesItemGalleryComponent,
   ],
   imports: [
     BrowserModule,

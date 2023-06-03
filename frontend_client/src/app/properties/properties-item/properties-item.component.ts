@@ -31,10 +31,14 @@ export class PropertiesItemComponent implements OnInit, OnDestroy {
     this.property$ = this.http.get(
       `http://localhost:8080/api/property/${this.id}`
     );
+
+    this.property$.subscribe((data) => console.log(data));
   }
 
   ngOnDestroy(): void {
-    this.routeSubscription.unsubscribe();
+    if (this.routeSubscription) {
+      this.routeSubscription.unsubscribe();
+    }
   }
 
   bookProperty() {

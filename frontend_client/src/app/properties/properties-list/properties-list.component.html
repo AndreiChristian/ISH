@@ -1,7 +1,18 @@
-<ul>
-  <li *ngFor="let property of properties$ | async">
-    <a [routerLink]="[property.id]"><h4>{{property.name}},
-        {{property.region}}</h4></a>
+<section>
+  <h1>All Properties</h1>
 
-  </li>
-</ul>
+  <div class="container">
+    <div *ngFor="let property of properties$ | async" class="card">
+      <img
+        src="../../../assets/images/hero.png"
+        alt>
+      <div class="info">
+        <h2>{{property.name}}</h2>
+        <h4>{{property.region}}</h4>
+        <a [routerLink]="[property.id]"><button mat-button
+            color="primary">Discover
+            more</button></a>
+      </div>
+    </div>
+  </div>
+</section>

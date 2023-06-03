@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Guest } from '../auth.component';
 import { HttpClient } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -19,10 +20,8 @@ export class SignupComponent {
 
   constructor(private http: HttpClient) {}
 
-  submit() {
-    console.table(this.newGuest);
-    this.http
-      .post('http://localhost:8080/api/guests', this.newGuest)
-      .subscribe((data) => console.log(data));
+  submit(form: NgForm) {
+    console.table(form.value);
+    console.log(form.valid);
   }
 }

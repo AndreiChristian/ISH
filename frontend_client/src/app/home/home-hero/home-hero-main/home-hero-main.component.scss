@@ -1,11 +1,11 @@
 .container {
   width: 100%;
-  height: 100vh;
+  height: 95vh;
   background: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.159),
+      rgba(0, 0, 0, 0.25) 50%,
       rgba(0, 0, 0, 0.914)
     ),
-    url("../../../../assets/images/hero.png");
+    url("../../../../assets/images/hero-lvx.jpg");
   background-size: cover;
 }

@@ -36,6 +36,7 @@ import { HomeHeroComponent } from './home/home-hero/home-hero.component';
 import { HomeHeroPropertiesComponent } from './home/home-hero/home-hero-properties/home-hero-properties.component';
 import { HomeHeroFacilitiesComponent } from './home/home-hero/home-hero-facilities/home-hero-facilities.component';
 import { HomeHeroMainComponent } from './home/home-hero/home-hero-main/home-hero-main.component';
+import { AuthCodeComponent } from './auth/auth-code/auth-code.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { HomeHeroMainComponent } from './home/home-hero/home-hero-main/home-hero
     HomeHeroPropertiesComponent,
     HomeHeroFacilitiesComponent,
     HomeHeroMainComponent,
+    AuthCodeComponent,
   ],
   imports: [
     BrowserModule,

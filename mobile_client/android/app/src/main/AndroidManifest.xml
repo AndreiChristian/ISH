@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mobile_client">
    <application
+        android:usesCleartextTraffic="true"
         android:label="mobile_client"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

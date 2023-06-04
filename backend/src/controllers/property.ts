@@ -53,6 +53,7 @@ export const getOneProperty = async (
       `SELECT property.id,
     property.name AS name,
     property.price,
+    property.description,
     region.name AS region,
     address.city,
     address.street,

@@ -16,6 +16,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AuthCodeComponent } from './auth/auth-code/auth-code.component';
+import { RegionsComponent } from './regions/regions.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
           { path: 'code', component: AuthCodeComponent },
           { path: 'signup', component: SignupComponent },
         ],
+      },
+      {
+        path: 'regions',
+        component: RegionsComponent,
       },
       {
         path: 'properties',

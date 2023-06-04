@@ -1,0 +1,31 @@
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2vh;
+  padding: 5vh;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.form-field {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1px solid black;
+}
+
+.form-field input {
+  flex: 1;
+  outline: none;
+  background-color: inherit;
+  border: none;
+  text-align: center;
+}
+
+button {
+  align-self: flex-end;
+}

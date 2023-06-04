@@ -31,7 +31,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     return this.http
-      .post('http://localhost:8080/auth/login', { email, password })
+      .post('http://localhost:3000/auth/login', { email, password })
       .pipe(
         map((data: any) => {
           if (data && !data.error) {

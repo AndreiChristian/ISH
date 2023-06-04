@@ -3,6 +3,7 @@
   <span class="spacer"></span>
   <a routerLink="/properties">Properties</a>
   <a routerLink="/reservations">Reservations</a>
+  <a routerLink="/regions">Regions</a>
   <a *ngIf="!(isLoggedIn | async)" routerLink="/auth/login">Login</a>
   <span *ngIf="isLoggedIn |async" (click)="logout()">Logout</span>
   <a *ngIf="!(isLoggedIn | async)" routerLink="/auth/code">Register</a>

@@ -5,10 +5,10 @@ import { environment } from 'src/environments/environment';
 export interface Reservation {
   id?: number;
   property_id: number;
-  start_date: Date;
-  end_date: Date;
+  start_date: Date | null;
+  end_date: Date | null;
   adults: number;
-  kids: number;
+  children: number;
   status: string;
   total_price: number;
 }

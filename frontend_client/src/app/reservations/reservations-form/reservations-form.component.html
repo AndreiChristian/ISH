@@ -1,21 +1,55 @@
-<div style="display: flex; flex-direction: column;  gap: 1vh;">
+<div class="form">
 
   <h3> Property Name {{(property$| async).name}}</h3>
 
-  <label for="adults">Number of Adults:</label>
-  <input type="number" id="adults" [(ngModel)]="newReservation.adults">
+  <div class="form-field">
+    <label for="first_name">First Name</label>
+    <input type="text" id="first_name" disabled="true"
+      [(ngModel)]="user.first_name">
+  </div>
 
-  <label for="startDate">Start Date:</label>
-  <input type="date" id="startDate" [(ngModel)]="newReservation.start_date">
+  <div class="form-field">
+    <label for="last_name">Last Name</label>
+    <input type="text" id="last_name" disabled="true"
+      [(ngModel)]="user.last_name">
+  </div>
 
-  <label for="endDate">End Date:</label>
-  <input type="date" id="endDate" [(ngModel)]="newReservation.end_date">
+  <div class="form-field">
+    <label for="email">Email</label>
+    <input type="text" id="email" disabled="true"
+      [(ngModel)]="user.email">
+  </div>
 
-  <label for="kids">Number of Kids:</label>
-  <input type="number" id="kids" [(ngModel)]="newReservation.kids">
+  <div class="form-field">
+    <label for="adults">Phone Number</label>
+    <input type="number" id="adults" disabled="true"
+      [(ngModel)]="user.phone_number">
+  </div>
 
-  <label for="totalPrice">Total Price:</label>
-  <input type="number" id="totalPrice" [(ngModel)]="newReservation.total_price">
+  <div class="form-field">
+    <label for="adults">Adults</label>
+    <input type="number" id="adults" [(ngModel)]="newReservation.adults">
+  </div>
+
+  <div class="form-field">
+    <label for="children">Children</label>
+    <input type="number" id="children" [(ngModel)]="newReservation.children">
+  </div>
+
+  <mat-form-field>
+    <mat-label>Select Dates</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate [(ngModel)]="newReservation.start_date"
+        appearance="outline"
+        placeholder="Start date">
+      <input matEndDate [(ngModel)]="newReservation.end_date"
+        appearance="outline"
+        placeholder="End date">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker touchUi #picker></mat-date-range-picker>
+  </mat-form-field>
+
+  <button mat-button color="primary">Confirm</button>
+
 </div>
-
-<button (click)="postReservation()"> Post </button>

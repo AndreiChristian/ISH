@@ -13,6 +13,7 @@ export class PropertiesListComponent {
   properties$: Observable<any>;
 
   ngOnInit(): void {
-    this.properties$ = this.http.get('http://localhost:8080/api/property');
+    this.properties$ = this.http.get('http://localhost:3000/api/property');
+    this.properties$.subscribe((data) => console.log(data));
   }
 }

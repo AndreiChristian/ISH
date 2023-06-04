@@ -1,18 +1,16 @@
-<div class="hero"
-  style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.101) 40%, rgba(0, 0, 0, 0.664) 70%,black),url('../../../assets/images/hero-proprties.jpg');">
-  <h1>{{(property$ | async).name}}</h1>
-  <h3>{{(property$ | async).region}}</h3>
-  <h3> {{(property$ | async).description}} </h3>
+<div *ngIf="property$ | async as property" class="hero"
+  [style.background]="getBackground(property.image_url) "
+  style="background-size: cover;">
+  <h1>{{property.name}}</h1>
+  <h3>{{property.region}}</h3>
+  <h3> {{property.description}} </h3>
   <h4>Scroll down to discover more</h4>
 </div>
 
-<div class="description">
-  <div class="row"></div>
-  <!-- <div> Id {{(property$ | async).id}}</div>
-    <div>Name {{(property$ | async).name}}</div>
-    <div>Region {{(property$ | async).region}}</div>
-    <div>Street {{(property$ | async).street}}</div>
-    <div> Number {{(property$ | async).number}}</div>
-    <div> Price {{(property$ | async).price}}</div> -->
+<div *ngIf="property$ | async as property" class="description">
+  <h4>Bedrooms: {{property.bedrooms}}</h4>
+  <h4>Bathrooms: {{property.bathrooms}}</h4>
+  <h4>Surface :{{property.square_meters}}</h4>
+  <h4></h4>
+  <h4>Adress: {{property.city}},{{property.street}} {{property.number}}</h4>
 </div>
-<!-- <button (click)="bookProperty()">book</button> -->

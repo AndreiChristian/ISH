@@ -15,10 +15,21 @@
 
 .description {
   background-color: black;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 5vh;
+  gap: 1vh;
+  flex-direction: column;
 }
 
 .description h4 {
   margin: 0;
+}
+
+.description button {
+  align-self: center;
 }
 
 h1,

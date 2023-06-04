@@ -22,6 +22,7 @@ export class PropertiesItemComponent implements OnInit, OnDestroy {
   property$: Observable<Property>;
 
   routeSubscription: Subscription;
+  propertySubscription: Subscription;
 
   ngOnInit(): void {
     this.routeSubscription = this.route.params.subscribe(
@@ -39,16 +40,17 @@ export class PropertiesItemComponent implements OnInit, OnDestroy {
     if (this.routeSubscription) {
       this.routeSubscription.unsubscribe();
     }
+    if (this.propertySubscription) {
+      this.propertySubscription.unsubscribe();
+    }
   }
 
   bookProperty() {
-    console.log('bookProperty has been called');
     let selectedProperty: any;
-    const subscription = this.property$.subscribe((data) => {
+    this.propertySubscription = this.property$.subscribe((data) => {
       console.log(data);
       selectedProperty = data;
       this.propertyService.selectProperty(selectedProperty);
-      subscription.unsubscribe();
     });
     this.router.navigate(['reservations']);
   }

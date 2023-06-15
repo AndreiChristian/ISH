@@ -1,6 +1,6 @@
 <div class="form">
 
-  <h3> Property Name {{(property$| async).name}}</h3>
+  <h3 *ngIf="property$"> Property Name {{(property$| async).name}}</h3>
 
   <div class="form-field">
     <label for="first_name">First Name</label>

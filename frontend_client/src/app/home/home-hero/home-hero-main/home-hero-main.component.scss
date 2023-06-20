@@ -8,4 +8,21 @@
     ),
     url("../../../../assets/images/hero-lvx.jpg");
   background-size: cover;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+section {
+  background-color: white;
+  width: 70%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 2vh;
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.39);
 }

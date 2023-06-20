@@ -1,0 +1,75 @@
+h1,
+h2 {
+  font-size: xx-large;
+}
+
+p {
+  font-size: large;
+}
+
+.container {
+  width: 100%;
+  padding: 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2vh;
+  box-sizing: border-box;
+  background-color: black;
+  color: white;
+  transition: background-color 1s, color 1s;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 2vw;
+  box-sizing: border-box;
+}
+
+.row:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.row img,
+.row p {
+  width: 50%;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0%;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-in {
+  animation: slideInFromLeft 2s forwards;
+}
+
+.fade-in {
+  animation: fadeIn 2s forwards;
+}
+
+.white-bg {
+  background-color: white;
+  color: black;
+}

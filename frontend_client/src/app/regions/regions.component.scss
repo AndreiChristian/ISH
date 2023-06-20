@@ -1,6 +1,7 @@
 h1,
 h2 {
-  font-size: xx-large;
+  font-size: 4rem;
+  text-align: center;
 }
 
 p {
@@ -9,16 +10,13 @@ p {
 
 .container {
   width: 100%;
-  padding: 5vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 2vh;
   box-sizing: border-box;
   background-color: black;
   color: white;
-  transition: background-color 1s, color 1s;
 }
 
 .row {
@@ -39,37 +37,25 @@ p {
   width: 50%;
 }
 
-@keyframes slideInFromLeft {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0%;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 100%;
-  }
+section {
+  width: 100%;
+  padding: 5vh;
+  box-sizing: border-box;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-@keyframes fadeIn {
-  0% {
-    transform: translateY(100px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.slide-in {
-  animation: slideInFromLeft 2s forwards;
-}
-
-.fade-in {
-  animation: fadeIn 2s forwards;
-}
-
-.white-bg {
+section:nth-child(4),
+section:nth-child(5) {
   background-color: white;
   color: black;
+}
+
+section:nth-child(1) {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.268), black),
+    url("https://images.english.elpais.com/resizer/_q4PfhSfWJDM2nTsw7tTKgjZfus=/1960x1103/filters:focal(851x782:861x792)/cloudfront-eu-central-1.images.arcpublishing.com/prisa/YYRW6ACK6ZG7RGBE6JRO2EYYXM.jpg");
 }

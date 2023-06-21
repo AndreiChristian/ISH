@@ -28,6 +28,7 @@ export class PropertiesService {
   constructor() {}
 
   selectProperty(property: any) {
+    console.log(property);
     this.selectedPropertySubject.next(property);
   }
 }

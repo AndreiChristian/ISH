@@ -47,11 +47,12 @@ export class PropertiesItemComponent implements OnInit, OnDestroy {
 
   bookProperty() {
     let selectedProperty: any;
-    this.propertySubscription = this.property$.subscribe((data) => {
-      console.log(data);
-      selectedProperty = data;
-      this.propertyService.selectProperty(selectedProperty);
-    });
+    // this.propertySubscription = this.property$.subscribe((data) => {
+    //   console.log(data);
+    //   selectedProperty = data;
+    //   this.propertyService.selectProperty(selectedProperty);
+    // });
+    this.propertyService.selectedProperty$ = this.property$;
     this.router.navigate(['reservations']);
   }
 

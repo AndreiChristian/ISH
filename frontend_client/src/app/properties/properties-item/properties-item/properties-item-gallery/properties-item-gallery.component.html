@@ -1,1 +1,6 @@
-<p>properties-item-gallery works!</p>
+<div class="container">
+  <div class="row" *ngFor="let g of property.gallery">
+    <img [src]="g.imgPath" alt>
+    <p>{{g.description}}</p>
+  </div>
+</div>

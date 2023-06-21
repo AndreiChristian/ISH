@@ -1,0 +1,32 @@
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2vh;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  background-color: black;
+  color: white;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+input {
+  background-color: inherit;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid white;
+  width: 50%;
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+}
+
+* {
+  font-family: inherit;
+}

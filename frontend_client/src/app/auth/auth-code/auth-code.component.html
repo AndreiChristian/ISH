@@ -1,1 +1,9 @@
-<a routerLink="/auth/signup">NAVIGATE</a>
+<section>
+
+  <h1>Insert the code</h1>
+
+  <input type="text" [(ngModel)]="code">
+
+  <button [disabled]="!(code === 'lvx2023')" mat-button color="primary"
+    routerLink="/auth/signup"><h2>Register</h2></button>
+</section>

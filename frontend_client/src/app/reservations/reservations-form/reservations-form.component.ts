@@ -23,7 +23,12 @@ export class ReservationsFormComponent implements OnInit, OnDestroy {
 
   propertyId: number = 0;
 
-  user: any;
+  user: any = {
+    first_name: '',
+    last_name: '',
+    phone_number: '',
+    email: '',
+  };
 
   newReservation: Reservation = {
     property_id: this.propertyId,
@@ -47,17 +52,18 @@ export class ReservationsFormComponent implements OnInit, OnDestroy {
   }
 
   postReservation() {
-    // const reservationToPost: Reservation = {
-    //   ...this.newReservation,
-    //   property_id: this.propertyId,
-    // };
+    const reservationToPost: Reservation = {
+      creator_id: this.user.id,
+      ...this.newReservation,
+      property_id: this.propertyId,
+    };
 
-    // console.table(this.newReservation);
-    // this.http
-    //   .post('http://localhost:8080/api/reservations', reservationToPost)
-    //   .subscribe((data) => console.log(data));
+    console.table(reservationToPost);
+    this.http
+      .post('http://localhost:3000/api/reservations', reservationToPost)
+      .subscribe((data) => console.log(data));
 
-    // this.router.navigate(['reservations', 'confirmation']);
+    this.router.navigate(['reservations', 'confirmation']);
 
     console.table(this.newReservation);
   }

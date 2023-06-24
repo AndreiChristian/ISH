@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 export interface Reservation {
+  creator_id?: number;
   id?: number;
   property_id: number;
   start_date: Date | null;

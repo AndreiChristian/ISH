@@ -1,6 +1,6 @@
 <div class="form">
 
-  <h3 *ngIf="property$"> Property Name {{(property$| async).name}}</h3>
+  <h3 *ngIf="property$">{{(property$| async).name}}</h3>
 
   <div class="form-field">
     <label for="first_name">First Name</label>
@@ -50,6 +50,6 @@
     <mat-date-range-picker touchUi #picker></mat-date-range-picker>
   </mat-form-field>
 
-  <button mat-button color="primary">Confirm</button>
+  <button mat-button color="primary" (click)="postReservation()">Confirm</button>
 
 </div>

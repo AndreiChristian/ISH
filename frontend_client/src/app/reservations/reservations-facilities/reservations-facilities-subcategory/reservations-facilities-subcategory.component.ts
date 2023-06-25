@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ReservationsService } from '../../reservations.service';
 
 @Component({
   selector: 'app-reservations-facilities-subcategory',
@@ -12,11 +13,12 @@ export class ReservationsFacilitiesSubcategoryComponent implements OnInit {
 
   facilitiesSubcategories$: Observable<any>;
 
-  constructor(private http: HttpClient) {}
+  constructor(private reservationsService: ReservationsService) {}
 
   ngOnInit(): void {
-    this.facilitiesSubcategories$ = this.http.get(
-      `http://localhost:8080/api/facilities_category/${this.category_id}`
-    );
+    this.facilitiesSubcategories$ =
+      this.reservationsService.getFacilitySubcategoriesByCategoryId(
+        this.category_id
+      );
   }
 }

@@ -8,6 +8,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './reservations-facilities-category.component.html',
   styleUrls: ['./reservations-facilities-category.component.scss'],
 })
-export class ReservationsFacilitiesCategoryComponent {
+export class ReservationsFacilitiesCategoryComponent implements OnInit {
   @Input() facilityCategory: any;
+
+  ngOnInit(): void {
+    console.log(this.facilityCategory);
+  }
 }

@@ -67,9 +67,18 @@ export class ReservationsService {
     );
   }
 
+  getFacilitySubcategoriesByCategoryId(categoryId: number) {
+    return this.http.get(
+      `http://localhost:3000/api//facilities_subcategory/category/${categoryId}`
+    );
+  }
+
   getProfilesByGuestId(userId: number) {
     this.http.get(`http://localhost:3000/api/profiles/${userId}`).subscribe({
-      next: (value) => this.ProfilesSubject.next(value),
+      next: (value) => {
+        this.ProfilesSubject.next(value);
+        this.selectProfile(value[0]);
+      },
       error: (err) => console.log(err),
     });
   }

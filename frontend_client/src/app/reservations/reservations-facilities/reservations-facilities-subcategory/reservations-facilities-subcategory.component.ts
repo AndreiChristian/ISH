@@ -8,15 +8,15 @@ import { Observable } from 'rxjs';
   styleUrls: ['./reservations-facilities-subcategory.component.scss'],
 })
 export class ReservationsFacilitiesSubcategoryComponent implements OnInit {
-  constructor(private http: HttpClient) {}
-
   @Input() category_id: number;
 
   facilitiesSubcategories$: Observable<any>;
 
+  constructor(private http: HttpClient) {}
+
   ngOnInit(): void {
     this.facilitiesSubcategories$ = this.http.get(
-      `http://localhost:8080/api/facilities_subcategory/category/${this.category_id}`
+      `http://localhost:8080/api/facilities_category/${this.category_id}`
     );
   }
 }

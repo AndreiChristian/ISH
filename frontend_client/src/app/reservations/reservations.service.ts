@@ -19,6 +19,9 @@ export class ReservationsService {
   private selectedFacilitiesSubject = new BehaviorSubject<any>([]);
   public selectedFacilities$ = this.selectedFacilitiesSubject.asObservable();
 
+  private ProfilesSubject = new BehaviorSubject<any>([]);
+  public profiles$ = this.ProfilesSubject.asObservable();
+
   constructor(private http: HttpClient) {}
 
   toggleFacility(facility: any) {
@@ -47,7 +50,7 @@ export class ReservationsService {
 
   getFacilityCategories() {
     this.facilityCategories$ = this.http.get(
-      'http://localhost:8080/api/facilities_category'
+      'http://localhost:3000/api/facilities_category'
     );
   }
 
@@ -60,7 +63,20 @@ export class ReservationsService {
 
   getFacilitySubcategories() {
     this.facilitySubcategories$ = this.http.get(
-      'http://localhost:8080/api/facilities_subcategory'
+      'http://localhost:3000/api/facilities_subcategory'
     );
+  }
+
+  getProfilesByGuestId(userId: number) {
+    this.http.get(`http://localhost:3000/api/profiles/${userId}`).subscribe({
+      next: (value) => this.ProfilesSubject.next(value),
+      error: (err) => console.log(err),
+    });
+  }
+
+  postProfile(data: any, userId: number) {
+    this.http
+      .post('http://localhost:3000/api/profiles', data)
+      .subscribe((data) => this.getProfilesByGuestId(userId));
   }
 }

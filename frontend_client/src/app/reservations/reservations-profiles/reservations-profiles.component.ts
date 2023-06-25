@@ -27,9 +27,9 @@ export class ReservationsProfilesComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.authService.currentUserValue[0].id;
-    this.profiles$ = this.http.get(
-      `http://localhost:8080/api/guests_profiles/${this.userId}`
-    );
+
+    this.reservationsService.getProfilesByGuestId(this.userId);
+    this.profiles$ = this.reservationsService.profiles$;
     this.selectedProfile$ = this.reservationsService.selectedProfile$;
   }
 

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
+import { ReservationsService } from '../../reservations.service';
 
 @Component({
   selector: 'app-reservations-profiles-dialog',
@@ -8,15 +9,16 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./reservations-profiles-dialog.component.scss'],
 })
 export class ReservationsProfilesDialogComponent implements OnInit {
-  constructor(private authService: AuthService, private http: HttpClient) {}
+  constructor(
+    private authService: AuthService,
+    private reservationService: ReservationsService
+  ) {}
 
   userId: number;
 
   newProfile = {
     first_name: '',
     last_name: '',
-    email: '',
-    phone_number: '',
   };
 
   ngOnInit(): void {
@@ -26,9 +28,6 @@ export class ReservationsProfilesDialogComponent implements OnInit {
 
   createProfile() {
     const newProfile = { ...this.newProfile, guest_id: this.userId };
-    this.http
-      .post('http://localhost:8080/api/profiles', newProfile)
-      .subscribe((data) => console.log(data));
-    // console.table(newProfile);
+    this.reservationService.postProfile(newProfile, this.userId);
   }
 }

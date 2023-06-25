@@ -11,7 +11,5 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ReservationsFacilitiesCategoryComponent implements OnInit {
   @Input() facilityCategory: any;
 
-  ngOnInit(): void {
-    console.log(this.facilityCategory);
-  }
+  ngOnInit(): void {}
 }

@@ -21,8 +21,9 @@ export class ReservationsFacilitiesItemComponent implements OnInit, OnDestroy {
   isSelected: Observable<boolean>;
 
   ngOnInit(): void {
+    console.log(this.subcategory_id);
     this.facilities$ = this.http.get(
-      `http://localhost:8080/api/facilities/subcategory/${this.subcategory_id}`
+      `http://localhost:3000/api/facilities/subcategory/${this.subcategory_id}`
     );
   }
 

@@ -1,5 +1,5 @@
 <!-- subcategory -->
 <div *ngFor="let subcategory of facilitiesSubcategories$ | async">
   <h2>{{subcategory.name}}</h2>
-  <!-- <app-reservations-facilities-item [subcategory_id]="subcategory.id"></app-reservations-facilities-item> -->
+  <app-reservations-facilities-item [subcategory_id]="subcategory.id"></app-reservations-facilities-item>
 </div>

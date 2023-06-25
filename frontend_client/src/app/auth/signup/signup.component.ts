@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Guest } from '../auth.component';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -9,7 +11,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent {
-  newGuest: Guest = {
+  newGuest: any = {
     first_name: '',
     last_name: '',
     password: '',
@@ -18,10 +20,16 @@ export class SignupComponent {
     phoneNumber: '',
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   submit(form: NgForm) {
     console.table(form.value);
-    console.log(form.valid);
+    this.authService.signup(form.value).subscribe((data) => console.log(data));
+    console.log('Hello');
+    this.router.navigate(['/']);
   }
 }

@@ -10,7 +10,7 @@ import { catchError, map } from 'rxjs/operators';
 export class AuthService {
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
-  public isLoggedIn: Observable<boolean>; // <-- Add this line
+  public isLoggedIn: Observable<boolean>;
 
   constructor(
     private storageService: LocalStorageService,
@@ -53,5 +53,22 @@ export class AuthService {
     this.storageService.removeData('guest');
     // Set current user to null
     this.currentUserSubject.next(null);
+  }
+
+  signup(user: any) {
+    return this.http.post('http://localhost:3000/auth/signup', user).pipe(
+      map((data: any) => {
+        if (data && !data.error) {
+          this.storageService.storeData('guest', data);
+          this.currentUserSubject.next(data);
+        } else {
+          throw new Error('Invalid credentials');
+        }
+      }),
+      catchError((err) => {
+        console.log(err);
+        throw err;
+      })
+    );
   }
 }

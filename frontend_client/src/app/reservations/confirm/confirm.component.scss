@@ -1,0 +1,23 @@
+.container {
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.256), black),
+    url("https://cf.bstatic.com/xdata/images/hotel/max1024x768/357917305.jpg?k=22f4101f0afc7432f0f5f907981638e1c5af81c1ab3a1be7147cf479b8ef1df0&o=&hp=1");
+}
+
+.card {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 70vw;
+  height: 70vh;
+  padding: 5vh;
+  border-radius: 5px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.262);
+}

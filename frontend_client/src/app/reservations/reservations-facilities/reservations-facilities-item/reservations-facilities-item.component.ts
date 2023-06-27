@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ReservationsService } from '../../reservations.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-reservations-facilities-item',
@@ -23,7 +24,7 @@ export class ReservationsFacilitiesItemComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     console.log(this.subcategory_id);
     this.facilities$ = this.http.get(
-      `http://localhost:3000/api/facilities/subcategory/${this.subcategory_id}`
+      `${environment.production}/api/facilities/subcategory/${this.subcategory_id}`
     );
   }
 

@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ReservationsService {
-  url = 'http://localhost:3000/api/';
+  url = `${environment.apiUrl}/api/`;
 
   private selectedProfileSubject = new BehaviorSubject<any>({});
   public selectedProfile$: Observable<any> =
@@ -26,24 +27,51 @@ export class ReservationsService {
 
   constructor(private http: HttpClient) {}
 
+  // toggleFacility(facility: any) {
+  //   const profileId = this.selectedProfileSubject.getValue().id;
+  //   let currentFacilities: any[] = this.selectedFacilitiesSubject.getValue();
+  //   if (currentFacilities.includes(facility)) {
+  //     console.log('trying to delete');
+  //     this.deleteFacility(profileId, facility.id);
+  //     currentFacilities = currentFacilities.filter((f) => f !== facility);
+  //   } else {
+  //     console.log('trying to post');
+  //     this.postFacility({
+  //       profile_id: profileId,
+  //       facility_id: facility.id,
+  //       requested_call: false,
+  //     });
+  //     currentFacilities.push(facility);
+  //   }
+  //   console.table(currentFacilities);
+  //   this.selectedFacilitiesSubject.next(currentFacilities);
+  // }
+
   toggleFacility(facility: any) {
+    const profileId = this.selectedProfileSubject.getValue().id;
     let currentFacilities: any[] = this.selectedFacilitiesSubject.getValue();
-    if (currentFacilities.includes(facility)) {
-      // delete it from the server
-      currentFacilities = currentFacilities.filter((f) => f !== facility);
+
+    if (currentFacilities.some((f) => f.id === facility.id)) {
+      console.log('trying to delete');
+      this.deleteFacility(profileId, facility.id);
+      currentFacilities = currentFacilities.filter((f) => f.id !== facility.id);
     } else {
-      // post it to the server
+      console.log('trying to post');
+      this.postFacility({
+        profile_id: profileId,
+        facility_id: facility.id,
+        requested_call: false,
+      });
       currentFacilities.push(facility);
     }
+
     console.table(currentFacilities);
     this.selectedFacilitiesSubject.next(currentFacilities);
   }
 
-  // getSelectedFacilities(){}
-
   isFacilitySelected(facility: any): Observable<boolean> {
     return this.selectedFacilities$.pipe(
-      map((facilities) => facilities.includes(facility))
+      map((facilities) => facilities.some((f) => f.id === facility.id))
     );
   }
 
@@ -57,36 +85,38 @@ export class ReservationsService {
 
   getFacilityCategories() {
     this.facilityCategories$ = this.http.get(
-      'http://localhost:3000/api/facilities_category'
+      `${environment.production}/api/facilities_category`
     );
   }
 
   getFacilitySubcategories() {
     this.facilitySubcategories$ = this.http.get(
-      'http://localhost:3000/api/facilities_subcategory'
+      `${environment.production}/api/facilities_subcategory`
     );
   }
 
   getFacilitySubcategoriesByCategoryId(categoryId: number) {
     return this.http.get(
-      `http://localhost:3000/api//facilities_subcategory/category/${categoryId}`
+      `${environment.production}/api/facilities_subcategory/category/${categoryId}`
     );
   }
 
   getProfilesByGuestId(userId: number) {
-    this.http.get(`http://localhost:3000/api/profiles/${userId}`).subscribe({
-      next: (value) => {
-        this.ProfilesSubject.next(value);
-        this.selectProfile(value[0]);
-      },
-      error: (err) => console.log(err),
-    });
+    this.http
+      .get(`${environment.production}/api/profiles/${userId}`)
+      .subscribe({
+        next: (value) => {
+          this.ProfilesSubject.next(value);
+          this.selectProfile(value[0]);
+        },
+        error: (err) => console.log(err),
+      });
   }
 
   getFacilitiesByProfile(profileId: number) {
     console.log(profileId);
     this.http
-      .get(`http://localhost:3000/api/profile_facility/${profileId}`)
+      .get(`${environment.production}/api/profile_facility/${profileId}`)
       .subscribe({
         next: (value) => {
           console.log(value);
@@ -98,7 +128,7 @@ export class ReservationsService {
 
   postProfile(data: any, userId: number) {
     this.http
-      .post('http://localhost:3000/api/profiles', data)
+      .post(`${environment.production}/api/profiles`, data)
       .subscribe((data) => this.getProfilesByGuestId(userId));
   }
 
@@ -106,9 +136,9 @@ export class ReservationsService {
     this.http.post(this.url + 'profile_facility', data).subscribe();
   }
 
-  deletFacility(profileId: number, facility_id: number) {
-    // this.http.delete();
+  deleteFacility(profileId: number, facilityId: number) {
+    this.http
+      .delete(`${this.url}profile_facility/${profileId}/${facilityId}`)
+      .subscribe((data) => console.log(data));
   }
-
-  deleteFacility() {}
 }

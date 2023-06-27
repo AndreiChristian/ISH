@@ -3,6 +3,7 @@ import { LocalStorageService } from '../services/local-storage.service';
 import { HttpClient } from '@angular/common/http';
 import { of, BehaviorSubject, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
@@ -31,7 +32,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     return this.http
-      .post('http://localhost:3000/auth/login', { email, password })
+      .post(`${environment.apiUrl}/auth/login`, { email, password })
       .pipe(
         map((data: any) => {
           if (data && !data.error) {
@@ -56,7 +57,7 @@ export class AuthService {
   }
 
   signup(user: any) {
-    return this.http.post('http://localhost:3000/auth/signup', user).pipe(
+    return this.http.post(`${environment.production}/auth/signup`, user).pipe(
       map((data: any) => {
         if (data && !data.error) {
           this.storageService.storeData('guest', data);

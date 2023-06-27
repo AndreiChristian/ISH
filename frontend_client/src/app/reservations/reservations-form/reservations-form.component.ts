@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { PropertiesService } from 'src/app/properties/properties.service';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-reservations-form',
@@ -60,7 +61,7 @@ export class ReservationsFormComponent implements OnInit, OnDestroy {
 
     console.table(reservationToPost);
     this.http
-      .post('http://localhost:3000/api/reservations', reservationToPost)
+      .post(`${environment.production}/api/reservations`, reservationToPost)
       .subscribe((data) => console.log(data));
 
     this.router.navigate(['reservations', 'confirmation']);

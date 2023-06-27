@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { PropertiesService, Property } from '../properties.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-properties-item',
@@ -30,7 +31,7 @@ export class PropertiesItemComponent implements OnInit, OnDestroy {
     );
 
     this.property$ = this.http.get<Property>(
-      `http://localhost:3000/api/property/${this.id}`
+      `${environment.apiUrl}/api/property/${this.id}`
     );
 
     this.property$.subscribe((data) => console.log(data));

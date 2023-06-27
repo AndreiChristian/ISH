@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-properties-list',
@@ -13,7 +14,7 @@ export class PropertiesListComponent {
   properties$: Observable<any>;
 
   ngOnInit(): void {
-    this.properties$ = this.http.get('http://localhost:3000/api/property');
+    this.properties$ = this.http.get(`${environment.production}/api/property`);
     this.properties$.subscribe((data) => console.log(data));
   }
 }

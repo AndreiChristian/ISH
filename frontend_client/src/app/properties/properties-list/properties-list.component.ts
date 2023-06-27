@@ -14,7 +14,7 @@ export class PropertiesListComponent {
   properties$: Observable<any>;
 
   ngOnInit(): void {
-    this.properties$ = this.http.get(`${environment.production}/api/property`);
+    this.properties$ = this.http.get(`${environment.apiUrl}/api/property`);
     this.properties$.subscribe((data) => console.log(data));
   }
 }

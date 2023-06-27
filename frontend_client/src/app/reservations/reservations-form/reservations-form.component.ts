@@ -61,7 +61,7 @@ export class ReservationsFormComponent implements OnInit, OnDestroy {
 
     console.table(reservationToPost);
     this.http
-      .post(`${environment.production}/api/reservations`, reservationToPost)
+      .post(`${environment.apiUrl}/api/reservations`, reservationToPost)
       .subscribe((data) => console.log(data));
 
     this.router.navigate(['reservations', 'confirmation']);

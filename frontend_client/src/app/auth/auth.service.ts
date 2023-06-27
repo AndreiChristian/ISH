@@ -57,7 +57,7 @@ export class AuthService {
   }
 
   signup(user: any) {
-    return this.http.post(`${environment.production}/auth/signup`, user).pipe(
+    return this.http.post(`${environment.apiUrl}/auth/signup`, user).pipe(
       map((data: any) => {
         if (data && !data.error) {
           this.storageService.storeData('guest', data);

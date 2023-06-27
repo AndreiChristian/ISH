@@ -58,6 +58,6 @@ export class PropertiesItemComponent implements OnInit, OnDestroy {
   }
 
   getBackground(url: string) {
-    return `linear-gradient(to bottom, rgba(0, 0, 0, 0.101) 40%, rgba(0, 0, 0, 0.664) 70%,black), url(${url})`;
+    return `linear-gradient(to bottom, rgba(0, 0, 0, 0.101) 40%, rgba(0, 0, 0, 0.664) 70%,black), url(${url}) `;
   }
 }

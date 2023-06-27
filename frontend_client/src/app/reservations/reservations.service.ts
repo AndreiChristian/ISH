@@ -85,38 +85,36 @@ export class ReservationsService {
 
   getFacilityCategories() {
     this.facilityCategories$ = this.http.get(
-      `${environment.production}/api/facilities_category`
+      `${environment.apiUrl}/api/facilities_category`
     );
   }
 
   getFacilitySubcategories() {
     this.facilitySubcategories$ = this.http.get(
-      `${environment.production}/api/facilities_subcategory`
+      `${environment.apiUrl}/api/facilities_subcategory`
     );
   }
 
   getFacilitySubcategoriesByCategoryId(categoryId: number) {
     return this.http.get(
-      `${environment.production}/api/facilities_subcategory/category/${categoryId}`
+      `${environment.apiUrl}/api/facilities_subcategory/category/${categoryId}`
     );
   }
 
   getProfilesByGuestId(userId: number) {
-    this.http
-      .get(`${environment.production}/api/profiles/${userId}`)
-      .subscribe({
-        next: (value) => {
-          this.ProfilesSubject.next(value);
-          this.selectProfile(value[0]);
-        },
-        error: (err) => console.log(err),
-      });
+    this.http.get(`${environment.apiUrl}/api/profiles/${userId}`).subscribe({
+      next: (value) => {
+        this.ProfilesSubject.next(value);
+        this.selectProfile(value[0]);
+      },
+      error: (err) => console.log(err),
+    });
   }
 
   getFacilitiesByProfile(profileId: number) {
     console.log(profileId);
     this.http
-      .get(`${environment.production}/api/profile_facility/${profileId}`)
+      .get(`${environment.apiUrl}/api/profile_facility/${profileId}`)
       .subscribe({
         next: (value) => {
           console.log(value);
@@ -128,7 +126,7 @@ export class ReservationsService {
 
   postProfile(data: any, userId: number) {
     this.http
-      .post(`${environment.production}/api/profiles`, data)
+      .post(`${environment.apiUrl}/api/profiles`, data)
       .subscribe((data) => this.getProfilesByGuestId(userId));
   }
 

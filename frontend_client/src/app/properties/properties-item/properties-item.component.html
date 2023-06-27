@@ -1,6 +1,6 @@
 <div *ngIf="property$ | async as property" class="hero"
   [style.background]="getBackground(property.image_url) "
-  style="background-size: cover;">
+  style="background-size: cover; background-repeat: no-repeat;">
   <h1>{{property.name}}</h1>
   <h3>{{property.region}}</h3>
   <h3> {{property.description}} </h3>
@@ -18,4 +18,4 @@
 
 </div>
 
-<app-properties-item-gallery [id]="id" ></app-properties-item-gallery>
+<app-properties-item-gallery [id]="id"></app-properties-item-gallery>

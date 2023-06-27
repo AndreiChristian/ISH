@@ -24,7 +24,7 @@ export class ReservationsFacilitiesItemComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     console.log(this.subcategory_id);
     this.facilities$ = this.http.get(
-      `${environment.production}/api/facilities/subcategory/${this.subcategory_id}`
+      `${environment.apiUrl}/api/facilities/subcategory/${this.subcategory_id}`
     );
   }
 

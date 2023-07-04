@@ -1,9 +1,14 @@
-<!-- top level -->
+<mat-drawer-container>
+  <mat-drawer #drawer class="example-sidenav" mode="over" (closed)="true">
+    <app-reservations-drawer></app-reservations-drawer>
+  </mat-drawer>
 
-<app-reservations-profiles></app-reservations-profiles>
-<!-- <mat-tab-group>
+  <app-reservations-profiles [drawer]="drawer"></app-reservations-profiles>
+  <mat-tab-group>
   <mat-tab [label]="category.name"
     *ngFor="let category of facilityCategories| async">
     <app-reservations-facilities-category [facilityCategory]="category"></app-reservations-facilities-category>
   </mat-tab>
-</mat-tab-group> -->
+</mat-tab-group>
+
+</mat-drawer-container>

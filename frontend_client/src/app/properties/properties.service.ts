@@ -79,23 +79,17 @@ export class PropertiesService {
   }
 
   getIndividualProperty(id: number) {
-    if (this.PropertyIndividualSubject.getValue()) {
-      console.log(
-        `Using the data for individual nr ${id} property from local storage`
-      );
-    } else {
-      this.http
-        .get<Property>(`${environment.apiUrl}/api/property/${id}`)
-        .subscribe({
-          next: (value) => {
-            this.localStorageService.storeData(
-              propertyIndividualStorageKey,
-              value
-            );
-            this.PropertyIndividualSubject.next(value);
-          },
-          error: (err) => console.error(err),
-        });
-    }
+    this.http
+      .get<Property>(`${environment.apiUrl}/api/property/${id}`)
+      .subscribe({
+        next: (value) => {
+          this.localStorageService.storeData(
+            propertyIndividualStorageKey,
+            value
+          );
+          this.PropertyIndividualSubject.next(value);
+        },
+        error: (err) => console.error(err),
+      });
   }
 }

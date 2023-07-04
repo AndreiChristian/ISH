@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { ReservationsService } from '../reservations.service';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -13,6 +13,7 @@ import {
 } from 'src/app/properties/properties.service';
 import { ReservationsProfilesListDialogComponent } from '../reservations-profiles-list-dialog/reservations-profiles-list-dialog.component';
 import { ReservationProfilesService } from '../reservation-profiles.service';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-reservations-profiles',
@@ -28,6 +29,12 @@ export class ReservationsProfilesComponent implements OnInit, OnDestroy {
     private propertiesService: PropertiesService,
     private reservationsProfilesService: ReservationProfilesService
   ) {}
+
+  @Input() drawer: MatDrawer;
+
+  toggleDrawer() {
+    this.drawer.toggle();
+  }
 
   selectedProfile$: Observable<any>;
   userId: any;

@@ -1,4 +1,6 @@
-<h2>Welcome back, {{(selectedProfile$| async).first_name}}</h2>
+<h2>Welcome back, {{(selectedProfile$| async).first_name}} <button
+    mat-icon-button (click)="toggleDrawer()"><mat-icon>add</mat-icon></button>
+</h2>
 
 <p>Configure your reservation for Property {{ (selectedProperty$|async).name }}
   for

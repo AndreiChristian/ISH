@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ReservationsService } from '../reservations.service';
 import { Observable } from 'rxjs';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-reservations-drawer',
@@ -10,13 +11,15 @@ import { Observable } from 'rxjs';
 export class ReservationsDrawerComponent implements OnInit {
   constructor(private reservationsService: ReservationsService) {}
 
-  selectedFacilities$: Observable<any>;
+  @Input() drawer:MatDrawer
 
-  ngOnInit(): void {
-    this.selectedFacilities$ = this.reservationsService.selectedFacilities$;
+  closeDrawer(){
+
+    this.drawer.close()
+
   }
 
-  toggleFacility(faciltity) {
-    this.reservationsService.toggleFacility(faciltity);
-  }
+ ngOnInit(): void {
+
+ }
 }

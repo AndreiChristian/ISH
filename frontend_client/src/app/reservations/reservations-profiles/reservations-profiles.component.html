@@ -1,10 +1,15 @@
 <h2>Welcome back, {{(selectedProfile$| async).first_name}}</h2>
 
-<p>Configure your reservation for Property {{ (reservation$| async)[0].property_id }} for
+<p>Configure your reservation for Property {{ (selectedProperty$|async).name }}
+  for
   {{((reservation$| async)[0].start_date)|date }}-{{((reservation$|
   async)[0].end_date)|date }}</p>
 
 <h2>Profiles</h2>
+<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora quidem ipsa
+  nostrum explicabo asperiores voluptates molestias, ab voluptatibus qui,
+  possimus aliquid sint itaque maxime quod. Eum ex ipsa nemo beatae.</p>
+
 <span *ngIf="profiles$|async" class="list">
 
   <button
@@ -15,7 +20,7 @@
     (click)="selectProfile(profile)"><h4>{{profile.first_name}}
       {{profile.last_name}} </h4></button>
   <button mat-stroked-button color="primary" class="profile-button"
-    (click)="openDialog()"> Create New
+    (click)="openCreateNewProfileDialog()"> Create New
     Profile</button>
 </span>
 

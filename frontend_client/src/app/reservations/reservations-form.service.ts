@@ -32,4 +32,10 @@ export class ReservationsFormService {
         error: (err) => console.error(err),
       });
   };
+
+  getReservationId() {
+    const reservation: Reservation = this.reservationSubject.getValue();
+
+    return reservation.id;
+  }
 }

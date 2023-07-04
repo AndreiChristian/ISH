@@ -40,6 +40,7 @@ import { AuthCodeComponent } from './auth/auth-code/auth-code.component';
 import { PropertiesItemDescriptionComponent } from './properties/properties-item/properties-item/properties-item-description/properties-item-description.component';
 import { PropertiesItemGalleryComponent } from './properties/properties-item/properties-item/properties-item-gallery/properties-item-gallery.component';
 import { AboutComponent } from './about/about.component';
+import { ReservationsProfilesListDialogComponent } from './reservations/reservations-profiles-list-dialog/reservations-profiles-list-dialog.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { AboutComponent } from './about/about.component';
     PropertiesItemDescriptionComponent,
     PropertiesItemGalleryComponent,
     AboutComponent,
+    ReservationsProfilesListDialogComponent,
   ],
   imports: [
     BrowserModule,

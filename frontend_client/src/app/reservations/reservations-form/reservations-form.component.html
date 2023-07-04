@@ -53,3 +53,60 @@
   <button mat-button color="primary" (click)="postReservation()">Confirm</button>
 
 </div>
+
+<!-- <div class="form">
+
+  <h3 *ngIf="property$">{{(property$| async).name}}</h3>
+
+  <form #formRef="ngForm" (ngSubmit)="postReservation()">
+
+    <div class="form-field">
+      <label for="first_name">First Name</label>
+      <input type="text" id="first_name" [(ngModel)]="user.first_name" name="first_name" disabled>
+    </div>
+
+    <div class="form-field">
+      <label for="last_name">Last Name</label>
+      <input type="text" id="last_name" [(ngModel)]="user.last_name" name="last_name" disabled>
+    </div>
+
+    <div class="form-field">
+      <label for="email">Email</label>
+      <input type="text" id="email" [(ngModel)]="user.email" name="email" disabled>
+    </div>
+
+    <div class="form-field">
+      <label for="phone_number">Phone Number</label>
+      <input type="number" id="phone_number" [(ngModel)]="user.phone_number" name="phone_number" disabled>
+    </div>
+
+    <div class="form-field">
+      <label for="adults">Adults</label>
+      <input type="number" id="adults" [(ngModel)]="newReservation.adults" name="adults">
+    </div>
+
+    <div class="form-field">
+      <label for="children">Children</label>
+      <input type="number" id="children" [(ngModel)]="newReservation.children" name="children">
+    </div>
+
+    <mat-form-field>
+      <mat-label>Select Dates</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate [(ngModel)]="newReservation.start_date" name="start_date"
+          appearance="outline"
+          placeholder="Start date">
+        <input matEndDate [(ngModel)]="newReservation.end_date" name="end_date"
+          appearance="outline"
+          placeholder="End date">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker touchUi #picker></mat-date-range-picker>
+    </mat-form-field>
+
+    <button mat-button color="primary" type="submit">Confirm</button>
+
+  </form>
+
+</div> -->
+

@@ -5,17 +5,114 @@
   <h3>{{property.region}}</h3>
   <h3> {{property.description}} </h3>
   <h4>Scroll down to discover more</h4>
+
 </div>
 
 <div *ngIf="property$ | async as property" class="description">
-  <h4>Bedrooms: {{property.bedrooms}}</h4>
-  <h4>Bathrooms: {{property.bathrooms}}</h4>
-  <h4>Surface :{{property.square_meters}}</h4>
-  <h4></h4>
-  <h4>Adress: {{property.city}},{{property.street}} {{property.number}}</h4>
+  <button mat-button color="primary" (click)="selectProperty()"><h1
+      style="font-family: inherit; color: unset;">Book</h1></button>
 
-  <button mat-button color="primary" (click)="selectProperty()">Book</button>
+  <div class="facilities-list">
 
-</div>
+    <div class="rows"><mat-icon color="primary"> place</mat-icon><button
+        mat-button>
+        Adress: {{property.city}},{{property.street}} {{property.number}}</button></div>
 
-<app-properties-item-gallery [id]="id"></app-properties-item-gallery>
+    <div class="rows"><mat-icon color="primary"> hotel</mat-icon><button
+        mat-button>Luxury with villa {{property.bedrooms}} bedrooms and
+        {{property.bathrooms}} bathrooms with a total of
+        {{property.square_meters}} squared meters
+      </button></div>
+
+    <div class="rows"><mat-icon color="primary">beach_access</mat-icon><button
+        mat-button>Private
+        beach with golden sand at your doorstep</button></div>
+    <div class="rows"><mat-icon color="primary">child_care</mat-icon><button
+        mat-button>Professional
+        nanny services available for your peace of mind</button></div>
+    <div class="rows"><mat-icon color="primary">golf_course</mat-icon><button
+        mat-button>Access
+        to an exclusive local golf course</button></div>
+
+    <div class="rows"><mat-icon color="primary"> local_dining</mat-icon><button
+        mat-button>Private
+        chef and local gourmet dining options</button></div>
+    <div class="rows"><mat-icon color="primary">flight_land</mat-icon><button
+        mat-button>Conveniently
+        located near the airport</button></div>
+    <div class="rows"><mat-icon color="primary">home</mat-icon><button
+        mat-button>Your
+        home
+        away from home</button></div>
+    <div class="rows"><mat-icon color="primary">language</mat-icon><button
+        mat-button>Multilingual
+        staff to cater to all your needs</button></div>
+    <div class="rows"><mat-icon color="primary">pets</mat-icon><button
+        mat-button>Pet-friendly
+        accommodations, because they're family too</button></div>
+    <div class="rows"><mat-icon color="primary">supervisor_account</mat-icon><button
+        mat-button>Exclusive
+        concierge service for personalized assistance</button></div>
+    <div class="rows"><mat-icon color="primary">touch_app</mat-icon><button
+        mat-button>High-tech
+        smart home features for your convenience</button></div>
+    <div class="rows"><mat-icon color="primary">movie</mat-icon><button
+        mat-button>State-of-the-art
+        home theater system for movie nights</button></div>
+    <div class="rows"><mat-icon color="primary">audiotrack</mat-icon><button
+        mat-button>Hi-fi
+        audio system to set the perfect ambiance</button></div>
+    <div class="rows"><mat-icon color="primary">nature</mat-icon><button
+        mat-button>Beautifully
+        landscaped gardens to connect with nature</button></div>
+
+  </div>
+
+  <table>
+    <tr>
+      <th>Week (Start - End)</th>
+      <th>Price (Per Week)</th>
+    </tr>
+    <tr>
+      <td>July 10 - July 16, 2023</td>
+      <td>$10,500</td>
+    </tr>
+    <tr>
+      <td>July 17 - July 23, 2023</td>
+      <td>$10,800</td>
+    </tr>
+    <tr>
+      <td>July 24 - July 30, 2023</td>
+      <td>$10,500</td>
+    </tr>
+    <tr>
+      <td>July 31 - August 6, 2023</td>
+      <td>$11,000</td>
+    </tr>
+    <tr>
+      <td>August 7 - August 13, 2023</td>
+      <td>$11,200</td>
+    </tr>
+    <tr>
+      <td>August 14 - August 20, 2023</td>
+      <td>$10,900</td>
+    </tr>
+    <tr>
+      <td>August 21 - August 27, 2023</td>
+      <td>$10,700</td>
+    </tr>
+    <tr>
+      <td>August 28 - September 3, 2023</td>
+      <td>$10,600</td>
+    </tr>
+    <tr>
+      <td>September 4 - September 10, 2023</td>
+      <td>$10,300</td>
+    </tr>
+    <tr>
+      <td>September 11 - September 17, 2023</td>
+      <td>$10,500</td>
+    </tr>
+  </table>
+
+  <app-properties-item-gallery [id]="id"></app-properties-item-gallery>

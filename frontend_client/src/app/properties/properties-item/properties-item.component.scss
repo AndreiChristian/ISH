@@ -9,8 +9,9 @@
   flex-direction: column;
   gap: 2vh;
   padding: 5vh;
-  background-position: center;
-  background-size: cover;
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
 }
 
 .description {
@@ -37,3 +38,20 @@ h3,
 h4 {
   color: white;
 }
+
+.facilities-list button {
+  color: white;
+  font-size: larger;
+}
+
+table {
+  width: 100%;
+  color: white;
+  margin: 5vh 0;
+}
+
+th {
+  color: gold;
+  font-size: larger;
+}
+

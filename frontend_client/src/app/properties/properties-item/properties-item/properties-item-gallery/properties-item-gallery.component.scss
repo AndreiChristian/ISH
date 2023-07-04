@@ -4,6 +4,7 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
+  background-color: white;
 }
 
 .row {
@@ -20,3 +21,17 @@
 .row:nth-child(even) {
   flex-direction: row-reverse;
 }
+
+img{
+
+  width: 50vw;
+  height: 500px;
+  object-fit: cover;
+
+}
+
+p{
+  box-sizing: border-box;
+  margin: 2vh;
+}
+

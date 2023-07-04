@@ -30,15 +30,10 @@ export class ReservationsProfilesComponent implements OnInit, OnDestroy {
   ) {}
 
   selectedProfile$: Observable<any>;
-
   userId: any;
-
   profiles$: Observable<any>;
-
   reservation$: Observable<Reservation>;
-
   selectedProperty$: Observable<Property>;
-
   reservationSubscription: Subscription;
   reservationId: number;
 

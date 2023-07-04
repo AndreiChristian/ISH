@@ -18,7 +18,8 @@
     class="profile-button"
     [color]="profile.id === (selectedProfile$|async).id? 'primary':''"
     (click)="selectProfile(profile)"><h4>{{profile.first_name}}
-      {{profile.last_name}} </h4></button>
+      {{profile.last_name}} <span
+        *ngIf="profile.global">(Global)</span> </h4></button>
   <button mat-stroked-button color="primary" class="profile-button"
     (click)="openCreateNewProfileDialog()"> Create New
     Profile</button>

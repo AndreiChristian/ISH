@@ -30,30 +30,23 @@ export class PropertiesItemComponent implements OnInit, OnDestroy {
       (data) => (this.id = data['id'])
     );
 
-    this.property$ = this.http.get<Property>(
-      `${environment.apiUrl}/api/property/${this.id}`
-    );
+    this.propertyService.getIndividualProperty(+this.id);
 
-    this.property$.subscribe((data) => console.log(data));
+    this.property$ = this.propertyService.propertyIndividual$;
+
+    // this.property$.subscribe((data) => console.log(data));
   }
 
   ngOnDestroy(): void {
-    if (this.routeSubscription) {
-      this.routeSubscription.unsubscribe();
-    }
-    if (this.propertySubscription) {
-      this.propertySubscription.unsubscribe();
-    }
+    this.routeSubscription && this.routeSubscription.unsubscribe();
+    this.propertySubscription && this.propertySubscription.unsubscribe();
   }
 
-  bookProperty() {
-    let selectedProperty: any;
-    // this.propertySubscription = this.property$.subscribe((data) => {
-    //   console.log(data);
-    //   selectedProperty = data;
-    //   this.propertyService.selectProperty(selectedProperty);
-    // });
-    this.propertyService.selectedProperty$ = this.property$;
+  selectProperty() {
+    this.propertySubscription = this.property$.subscribe((data) =>
+      this.propertyService.selectProperty(data)
+    );
+
     this.router.navigate(['reservations']);
   }
 

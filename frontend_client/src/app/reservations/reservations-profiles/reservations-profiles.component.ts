@@ -5,6 +5,8 @@ import { ReservationsService } from '../reservations.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ReservationsProfilesDialogComponent } from './reservations-profiles-dialog/reservations-profiles-dialog.component';
+import { ReservationsFormService } from '../reservations-form.service';
+import { Reservation } from '../reservations.component';
 
 @Component({
   selector: 'app-reservations-profiles',
@@ -13,10 +15,10 @@ import { ReservationsProfilesDialogComponent } from './reservations-profiles-dia
 })
 export class ReservationsProfilesComponent implements OnInit {
   constructor(
-    private http: HttpClient,
     private reservationsService: ReservationsService,
     private authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private reservationForm: ReservationsFormService
   ) {}
 
   selectedProfile$: Observable<any>;
@@ -24,6 +26,8 @@ export class ReservationsProfilesComponent implements OnInit {
   userId: any;
 
   profiles$: Observable<any>;
+
+  reservation$: Observable<Reservation>;
 
   ngOnInit(): void {
     this.userId = this.authService.currentUserValue[0].id;
@@ -33,6 +37,9 @@ export class ReservationsProfilesComponent implements OnInit {
     this.selectedProfile$ = this.reservationsService.selectedProfile$;
 
     this.selectedProfile$.subscribe((data) => console.log(data));
+    this.reservation$ = this.reservationForm.reservation$;
+
+    this.reservation$.subscribe((data) => console.log(data));
   }
 
   openDialog() {

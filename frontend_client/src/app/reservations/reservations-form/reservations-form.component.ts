@@ -6,6 +6,7 @@ import { PropertiesService } from 'src/app/properties/properties.service';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { environment } from 'src/environments/environment.prod';
+import { ReservationsFormService } from '../reservations-form.service';
 
 @Component({
   selector: 'app-reservations-form',
@@ -14,10 +15,10 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class ReservationsFormComponent implements OnInit, OnDestroy {
   constructor(
-    private http: HttpClient,
     private router: Router,
     private propertiesService: PropertiesService,
-    private authService: AuthService
+    private authService: AuthService,
+    private reservationsFormService: ReservationsFormService
   ) {}
 
   property$: Observable<any>;
@@ -59,9 +60,7 @@ export class ReservationsFormComponent implements OnInit, OnDestroy {
       property_id: this.propertyId,
     };
 
-    this.http
-      .post(`${environment.apiUrl}/api/reservations`, reservationToPost)
-      .subscribe((data) => console.log(data));
+    this.reservationsFormService.postReservation(reservationToPost);
 
     this.router.navigate(['reservations', 'confirmation']);
   }

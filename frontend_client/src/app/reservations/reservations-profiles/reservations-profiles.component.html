@@ -1,5 +1,10 @@
 <h2>Welcome back, {{(selectedProfile$| async).first_name}}</h2>
 
+<p>Configure your reservation for Property {{ (reservation$| async)[0].property_id }} for
+  {{((reservation$| async)[0].start_date)|date }}-{{((reservation$|
+  async)[0].end_date)|date }}</p>
+
+<h2>Profiles</h2>
 <span *ngIf="profiles$|async" class="list">
 
   <button

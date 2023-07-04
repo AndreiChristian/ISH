@@ -12,6 +12,7 @@ import {
   Property,
 } from 'src/app/properties/properties.service';
 import { ReservationsProfilesListDialogComponent } from '../reservations-profiles-list-dialog/reservations-profiles-list-dialog.component';
+import { ReservationProfilesService } from '../reservation-profiles.service';
 
 @Component({
   selector: 'app-reservations-profiles',
@@ -24,7 +25,8 @@ export class ReservationsProfilesComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private dialog: MatDialog,
     private reservationForm: ReservationsFormService,
-    private propertiesService: PropertiesService
+    private propertiesService: PropertiesService,
+    private reservationsProfilesService: ReservationProfilesService
   ) {}
 
   selectedProfile$: Observable<any>;
@@ -38,7 +40,7 @@ export class ReservationsProfilesComponent implements OnInit, OnDestroy {
   selectedProperty$: Observable<Property>;
 
   reservationSubscription: Subscription;
-  // reservationId:number;
+  reservationId: number;
 
   isDialogOpened = false;
 
@@ -50,26 +52,20 @@ export class ReservationsProfilesComponent implements OnInit, OnDestroy {
     this.reservationsService.getProfilesByGuestId(this.userId);
     this.profiles$ = this.reservationsService.profiles$;
 
-    this.reservationSubscription = this.profiles$.subscribe((data) => {
-      if (data && !this.isDialogOpened) {
-        this.isDialogOpened = true;
-        this.dialog.open(ReservationsProfilesListDialogComponent, {
-          width: '70vw',
-
-          hasBackdrop: true,
-          data: {
-            userId: this.userId,
-          },
-        });
-      }
-    });
-
     this.selectedProfile$ = this.reservationsService.selectedProfile$;
 
-    this.selectedProfile$.subscribe((data) => console.log(data));
+    // this.selectedProfile$.subscribe((data) => console.log(data));
     this.reservation$ = this.reservationForm.reservation$;
 
-    this.reservation$.subscribe((data) => console.log(data));
+    this.reservationSubscription = this.reservation$.subscribe((data) => {
+      this.reservationId = data[0].id;
+    });
+
+    this.reservationsProfilesService.getReservationProfiles(this.reservationId);
+    this.reservationsProfilesService.reservationProfiles$ &&
+      this.reservationsProfilesService.reservationProfiles$.subscribe((data) =>
+        console.log(data)
+      );
   }
 
   ngOnDestroy(): void {
@@ -88,3 +84,16 @@ export class ReservationsProfilesComponent implements OnInit, OnDestroy {
     this.reservationsService.selectProfile(profile);
   }
 }
+// this.reservationSubscription = this.profiles$.subscribe((data) => {
+//   if (data && !this.isDialogOpened) {
+//     this.isDialogOpened = true;
+//     this.dialog.open(ReservationsProfilesListDialogComponent, {
+//       width: '70vw',
+
+//       hasBackdrop: true,
+//       data: {
+//         userId: this.userId,
+//       },
+//     });
+//   }
+// });

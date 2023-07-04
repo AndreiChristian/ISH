@@ -28,8 +28,6 @@ export class ReservationsService {
 
   constructor(private http: HttpClient) {}
 
-
-
   toggleFacility(facility: any) {
     const profileId = this.selectedProfileSubject.getValue().id;
     let currentFacilities: any[] = this.selectedFacilitiesSubject.getValue();
@@ -121,5 +119,14 @@ export class ReservationsService {
     this.http
       .delete(`${this.url}profile_facility/${profileId}/${facilityId}`)
       .subscribe((data) => console.log(data));
+  }
+
+  addProfileToReservation(profileId: number, reservationId: number) {
+    console.table({ profileId, reservationId });
+
+    // get the id of the profile
+    // get the id of the reservation
+    // make a post request to add the new profile to the reservation if the user selects it
+    // update the reservation profiles
   }
 }

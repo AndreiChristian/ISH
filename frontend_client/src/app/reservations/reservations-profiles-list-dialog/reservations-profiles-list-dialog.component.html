@@ -1,10 +1,34 @@
-<span mat-dialog-title><h1>Create a new Profile</h1></span>
+<span mat-dialog-title><h1>Use your existing profiles</h1></span>
 <section mat-dialog-content>
 
-  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo blanditiis
-    placeat, sequi illum molestiae dolores optio, incidunt quis aspernatur
-    maiores perferendis suscipit iusto ipsa voluptatum cumque quibusdam beatae,
-    autem dicta?</p>
+  <ng-template *ngIf="(profiles$ | async).length===0;else profiles">
+
+    <mat-spinner color="primary"></mat-spinner>
+
+  </ng-template>
+
+  <ng-template #profiles>
+
+    <p>You have existing profiles. Would you like to use any of them for this
+      reservation? </p>
+
+    <mat-accordion>
+
+      <mat-expansion-panel *ngFor="let profile of profiles$ | async">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{profile.first_name}} {{profile.last_name}}
+          </mat-panel-title>
+          <mat-panel-description>
+            Created at {{profile.created_at|date}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Add this profile <button mat-icon-button color="primary"
+            (click)="addProfileToReservation(profile.id)"><mat-icon>add</mat-icon></button></p>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </ng-template>
 
 </section>
 <div class="actions" mat-dialog-actions>

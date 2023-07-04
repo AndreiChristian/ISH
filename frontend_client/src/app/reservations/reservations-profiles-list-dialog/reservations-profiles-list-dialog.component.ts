@@ -4,6 +4,11 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Dialog } from '@angular/cdk/dialog';
 import { Observable } from 'rxjs';
 
+export interface ProfileListDialogData{
+
+  userId:number
+
+}
 @Component({
   selector: 'app-reservations-profiles-list-dialog',
   templateUrl: './reservations-profiles-list-dialog.component.html',
@@ -14,7 +19,7 @@ export class ReservationsProfilesListDialogComponent implements OnInit {
 
   constructor(
     private reservationService: ReservationsService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: ProfileListDialogData
   ) {}
 
   ngOnInit(): void {
@@ -22,5 +27,12 @@ export class ReservationsProfilesListDialogComponent implements OnInit {
     this.profiles$ = this.reservationService.profiles$;
 
     this.profiles$.subscribe((data) => console.log(data));
+  }
+
+  addProfileToReservation(profileId: number) {
+    this.reservationService.addProfileToReservation(
+      profileId,
+      this.data.userId
+    );
   }
 }

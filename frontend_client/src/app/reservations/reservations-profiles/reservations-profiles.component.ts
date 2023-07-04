@@ -55,7 +55,7 @@ export class ReservationsProfilesComponent implements OnInit, OnDestroy {
         this.isDialogOpened = true;
         this.dialog.open(ReservationsProfilesListDialogComponent, {
           width: '70vw',
-          height: '70vh',
+
           hasBackdrop: true,
           data: {
             userId: this.userId,

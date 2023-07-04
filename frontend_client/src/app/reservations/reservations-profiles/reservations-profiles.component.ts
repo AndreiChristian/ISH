@@ -31,6 +31,8 @@ export class ReservationsProfilesComponent implements OnInit {
     this.reservationsService.getProfilesByGuestId(this.userId);
     this.profiles$ = this.reservationsService.profiles$;
     this.selectedProfile$ = this.reservationsService.selectedProfile$;
+
+    this.selectedProfile$.subscribe((data) => console.log(data));
   }
 
   openDialog() {

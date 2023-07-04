@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
+import { Reservation } from './reservations.component';
 
 @Injectable({
   providedIn: 'root',
@@ -27,25 +28,7 @@ export class ReservationsService {
 
   constructor(private http: HttpClient) {}
 
-  // toggleFacility(facility: any) {
-  //   const profileId = this.selectedProfileSubject.getValue().id;
-  //   let currentFacilities: any[] = this.selectedFacilitiesSubject.getValue();
-  //   if (currentFacilities.includes(facility)) {
-  //     console.log('trying to delete');
-  //     this.deleteFacility(profileId, facility.id);
-  //     currentFacilities = currentFacilities.filter((f) => f !== facility);
-  //   } else {
-  //     console.log('trying to post');
-  //     this.postFacility({
-  //       profile_id: profileId,
-  //       facility_id: facility.id,
-  //       requested_call: false,
-  //     });
-  //     currentFacilities.push(facility);
-  //   }
-  //   console.table(currentFacilities);
-  //   this.selectedFacilitiesSubject.next(currentFacilities);
-  // }
+
 
   toggleFacility(facility: any) {
     const profileId = this.selectedProfileSubject.getValue().id;

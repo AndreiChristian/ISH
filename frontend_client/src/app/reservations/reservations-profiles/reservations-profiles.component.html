@@ -1,4 +1,5 @@
-<h2>Profiles</h2>
+<h2>Welcome back, {{(selectedProfile$| async).first_name}}</h2>
+
 <span *ngIf="profiles$|async" class="list">
 
   <button

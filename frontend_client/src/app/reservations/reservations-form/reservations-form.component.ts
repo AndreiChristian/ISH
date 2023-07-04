@@ -59,14 +59,11 @@ export class ReservationsFormComponent implements OnInit, OnDestroy {
       property_id: this.propertyId,
     };
 
-    console.table(reservationToPost);
     this.http
       .post(`${environment.apiUrl}/api/reservations`, reservationToPost)
       .subscribe((data) => console.log(data));
 
     this.router.navigate(['reservations', 'confirmation']);
-
-    console.table(this.newReservation);
   }
 
   ngOnDestroy(): void {

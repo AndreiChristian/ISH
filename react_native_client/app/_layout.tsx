@@ -1,15 +1,16 @@
 import { Stack } from "expo-router";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { View } from "../components/Themed";
+import { SafeAreaView } from "react-native";
 
 const StackLayout = () => {
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider style={{ backgroundColor: "transparent" }}>
       <Stack
         screenOptions={{
-          headerTitle:"",
+          headerTitle: "Properties",
           headerBackground: () => {
-            return <View style={{ flex: 1, backgroundColor: "black" }}></View>;
+            return <View style={{ flex: 1 }}></View>;
           },
         }}
       >

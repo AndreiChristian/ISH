@@ -1,26 +1,49 @@
 import { Pressable, StyleSheet, Text } from "react-native";
 import { View } from "../../components/Themed";
 import { Link, useRouter } from "expo-router";
+import { useEffect, useState } from "react";
+import { Value } from "react-native-reanimated";
+import { globalStyles } from "../../constants/GlobalStyles";
+
+interface Property {
+  id: number;
+  image_url: string;
+  name: string;
+  region: string;
+}
 
 const List = () => {
-  const router = useRouter();
+  const [properties, setProperties] = useState<Property[]>([]);
 
-  const ids = [1, 2, 3];
+  useEffect(() => {
+    fetch(
+      "https://expressjs-postgres-production-3411.up.railway.app/api/property"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setProperties(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const ids = [1, 2, 3, 4];
 
   return (
     <View style={styles.container}>
-      {ids.map((id) => {
+      {properties.map((property) => {
         return (
           <Link
-            key={id}
+            key={property.id}
             href={{
               pathname: "properties/[id]",
-              params: { id: id },
+              params: { id: property.id },
             }}
             asChild
           >
             <Pressable>
-              <Text style={styles.link}>{id}</Text>
+              <Text style={globalStyles.h1}>{property.name}</Text>
             </Pressable>
           </Link>
         );

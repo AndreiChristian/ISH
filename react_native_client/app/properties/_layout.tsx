@@ -8,7 +8,7 @@ export default () => {
       <Stack.Screen
         options={{
           headerShown: true,
-          headerTitle: "Properties",
+          headerTitle: "",
         }}
       ></Stack.Screen>
       <Slot />

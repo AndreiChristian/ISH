@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { lvx } from "./Colors";
 
 export const globalStyles = StyleSheet.create({
   h1: {
@@ -14,5 +15,6 @@ export const globalStyles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: lvx.colors.secondary,
   },
 });

@@ -4,17 +4,11 @@ const Layout = () => {
   return (
     <Tabs
       screenOptions={{
-        headerShown: true,
+        headerShown: false,
       }}
     >
       <Tabs.Screen name="home"></Tabs.Screen>
       <Tabs.Screen name="property"></Tabs.Screen>
-      <Tabs.Screen
-        name="properties/[id]"
-        options={{
-          href: null,
-        }}
-      ></Tabs.Screen>
     </Tabs>
   );
 };
